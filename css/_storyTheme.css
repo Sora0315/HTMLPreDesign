@@ -1,0 +1,62 @@
+.common.story.hamburger {
+    color: #f6f5f1 !important;
+    background-color: rgba(236, 146, 95, 0.9);
+    margin-top: 2%;
+}
+
+#storySidebar {
+    background: url('../images/storySideBar-bg.png') left top repeat;
+}
+
+.common.story .nav-link:hover .wonderfulType:first-child {
+    border-bottom: 4px solid #ec925f;
+    margin-bottom: 0px;
+}
+
+.story .grandmaStory,
+.story .pomeloFarm {
+    margin: 7.5vh auto;
+}
+
+.story .grandmaStory {
+    width: 95%;
+}
+
+.story .pomeloFarm {
+    width: 100%;
+    margin-right: -6%;
+    margin-left: 6%;
+}
+
+.story-footer {
+    margin-top: 5vh;
+    position: relative;
+}
+
+.story-footer>.img-fluid {
+    width: 100%;
+}
+
+.story-footer .story-footer-link {
+    position: absolute;
+    width: 15%;
+    bottom: 6%;
+    right: 28%;
+    text-align: center;
+}
+
+.story-footer .story-footer-link a {
+    cursor: pointer;
+}
+
+.story-footer .story-footer-link .img-fluid {
+    width: 20%;
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+    opacity: 0.7;
+}
+
+.story-footer .story-footer-link .img-fluid:hover {
+    opacity: 1.0;
+}

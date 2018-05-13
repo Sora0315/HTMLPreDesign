@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- X-UA-Compatible設置IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--RWD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <meta name="author" content="萊茵巴赫科技" />
+    <meta name="copyright" content="萊茵巴赫科技" />
+    <!-- 結構化資料 SEO 與 meta 標籤 -->
+    <meta property="og:title" content="柚美。柚好" />
+    <meta property="og:url" content="">
+    <meta property="og:image" content="要顯示的縮圖網址" />
+    <meta property="og:description" content="網頁描述" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>柚美。柚好</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/semantic.js"></script>
+    <script src="js/jquery.elevatezoom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var productDetail, productImage, productComment, member;
+        $(function() {
+            var referrer = document.referrer;
+            console.log(location.search.substr(location.search.indexOf('=') + 1));
+            // $.getJSON('.......url', {
+            //     'ProductID': location.search.substr(location.search.indexOf('=') + 1)
+            // }, function(data) {
+            //     productDetail = data;
+            //     console.log(productDetail);
+            // })
+
+            var page = document.referrer.replace(/^[^:]+:\/\/[^/]+/, '').replace(/#.*/, '');
+
+            //不同商品分類頁面的CSS
+            productDetailCss = [{
+                'pageName': '文旦禮盒',
+                'path': '/product-pomelo.html',
+                'class': 'pomelo',
+                'hr': 'pomelo-hr',
+                'footer': 'images/pomelo-footer-bg.png'
+            }, {
+                'pageName': '其他水果',
+                'path': '/product-otherfruit.html',
+                'class': 'other-fruit',
+                'hr': 'other-fruit-hr',
+                'footer': 'images/other-fruit-footer-bg.png'
+            }, {
+                'pageName': '周邊商品',
+                'path': '/product-related.html',
+                'class': 'related',
+                'hr': 'related-hr',
+                'footer': 'images/related-footer-bg.png'
+            }]
+
+            //商品分類頁面的樣式，會因各類別不同而帶進商品資訊的頁面
+            $.each(productDetailCss, function(i, v) {
+                if (v.path == page) {
+                    $('nav').addClass(v.class);
+                    $('.product-detail .section-header a:nth-child(3)').attr('href', v.path);
+                    $('.product-detail .section-header a:nth-child(3) .title').text(v.pageName);
+                    $('.product-detail-hr').addClass(v.hr);
+                    $('.product-common.product-detail').addClass(v.class);
+                    $('footer>.img-fluid').attr('src', v.footer);
+                }
+            })
+
+            productDetail = {
+                'ProductID': 'P000000001',
+                'Name': '十斤裝手提禮盒',
+                'Title': '嚴選40年以上老欉文旦柚',
+                'SubTitle': '手提文旦禮盒',
+                'Description': '<h1>老園Ｘ老農Ｘ老欉。</h1><h2>近三百年的歲月沉澱，麻豆文旦濃縮了世代的精華，綻放最美好的樣貌。</br>柚美柚好用心呵護上百株樹齡超過40年的老欉文旦樹。</br>' +
+                    '六十餘載的日夜澆灌，阿嬤為果園付出了一輩子的心血，那佈滿皺紋的雙手、微駝的背，是驕傲，也是滿滿的成就感。</h2><br/>' +
+                    '<h1>時間淬煉出甘甜與幸福。</h1><h2>三代傳承的柚美柚好，不僅是阿嬤的心頭寶，更是凝聚家族情感的大功臣。</br>每逢採柚季，大大小小回到果園，一邊採收，一邊聯繫彼此感情，</br>' +
+                    '我們有多愛阿嬤就有多愛這片果園，而在充滿愛意環境下成長茁壯的文旦樹，怎會不孕育出甘美香甜的果實呢！</h2></br>' +
+                    '<h1>耕耘美好時光，釀造柚人美味。</h1><h2>「薑是老的辣，文旦是老的甜。」老欉根系穩定，枝葉不過於茂盛，因此果實能完全吸收養分，這就是老欉柚口口甜蜜好滋味的小秘密。</br>' +
+                    '柚美柚好為您嚴選巴掌大小、皮薄汁多、柚米細緻的文旦，果皮細緻光滑、果形上尖底寬，狀似不倒翁、沉重手感是優質文旦的最佳保證。</h2></br>' +
+                    '<h1>柚美柚好，值得等待的美好滋味。</h1><h2>文旦不僅要老的好，辭水（消水）之後會更好。收到文旦先別急著品嚐，開箱置於陰涼通風處（建議放置7-10天），<br/>' +
+                    '待水份逐漸蒸散，表皮由亮綠變成土黃，此時果肉漸軟，甜度提升，正是大快朵頤的好時機。</h2></br>',
+                'Price': '675',
+                'Spec': '10斤/箱，約12-18顆',
+                'Origin': '麻豆',
+                'Rank': '',
+                'Stock': 5
+            };
+
+            productImage = [{
+                'Batch': 1,
+                'ImgUrl': 'images/pomelo-2.png',
+            }, {
+                'Batch': 2,
+                'ImgUrl': 'images/pomelo-5.png',
+            }, {
+                'Batch': 3,
+                'ImgUrl': 'images/pomelo-3.png',
+            }, {
+                'Batch': 4,
+                'ImgUrl': 'images/pomelo-4.png',
+            }];
+
+            productComment = [{
+                'ProductID': 'P000000001',
+                'MemberID': 'M000000025',
+                'Mail': 'annatahisa5655515515155@gmail.com',
+                // 'Name': 'Anna',
+                'MemberImgUrl': 'images/fe2.png',
+                'Star': 5,
+                'Text': '每一箱柚子裡都有美好專屬的貼心小紙條，真的能夠感受到他們的用心。柚子的美味程度更不用多說，我已經吃他們家的柚子很多年了，真的很推薦給大家喔！',
+                'ImgUrl': [],
+                'Time': '5小時前'
+            }, {
+                'ProductID': 'P000000001',
+                'MemberID': 'M000000035',
+                'Mail': 'matsushima@gmail.com',
+                'Name': 'Martin',
+                'MemberImgUrl': 'images/m1.png',
+                'Star': 5,
+                'Text': '第一次訂購柚美柚好的柚子分送給親朋好友， 大家都讚不絕口！柚子果肉又甜又飽滿， 明年一定會繼續回購。Highly recommend. : )',
+                'ImgUrl': ['images/pomelo-5.png', 'images/pomelo-6.png'],
+                'Time': '10小時前'
+            }, {
+                'ProductID': 'P000000001',
+                'MemberID': 'M000000065',
+                'Mail': 'matsushima@gmail.com',
+                'Name': '石原聰美',
+                'MemberImgUrl': 'images/fe1.png',
+                'Star': 5,
+                'Text': '每一箱柚子裡都有美好專屬的貼心小紙條，真的能夠感受到他們的用心。柚子的美味程度更不用多說，我已經吃他們家的柚子很多年了，真的很推薦給大家喔！',
+                'ImgUrl': [],
+                'Time': '1天前'
+            }, {
+                'ProductID': 'P000000001',
+                'MemberID': 'M000000075',
+                'Mail': 'matsushima@gmail.com',
+                'Name': '松島菜菜子',
+                'MemberImgUrl': 'images/fe2.png',
+                'Star': 5,
+                'Text': '每一箱柚子裡都有美好專屬的貼心小紙條，真的能夠感受到他們的用心。柚子的美味程度更不用多說，我已經吃他們家的柚子很多年了，真的很推薦給大家喔！',
+                'ImgUrl': [],
+                'Time': '20天前'
+            }, {
+                'ProductID': 'P000000001',
+                'MemberID': 'M000000085',
+                'Mail': 'matsushima@gmail.com',
+                'Name': '王力宏',
+                'MemberImgUrl': 'images/m2.png',
+                'Star': 5,
+                'Text': '每一箱柚子裡都有美好專屬的貼心小紙條，真的能夠感受到他們的用心。柚子的美味程度更不用多說，我已經吃他們家的柚子很多年了，真的很推薦給大家喔！',
+                'ImgUrl': [],
+                'Time': '1個月前前'
+            }, {
+                'ProductID': 'P000000001',
+                'MemberID': 'M000000095',
+                'Mail': 'matsushima@gmail.com',
+                'Name': '掘北真希',
+                'MemberImgUrl': 'images/fe1.png',
+                'Star': 5,
+                'Text': '每一箱柚子裡都有美好專屬的貼心小紙條，真的能夠感受到他們的用心。柚子的美味程度更不用多說，我已經吃他們家的柚子很多年了，真的很推薦給大家喔！',
+                'ImgUrl': ['images/pomelo-4.png'],
+                'Time': '50天前'
+            }, {
+                'ProductID': 'P000000001',
+                'MemberID': 'M000000015',
+                'Mail': 'matsushima@gmail.com',
+                'Name': '木村拓哉',
+                'MemberImgUrl': 'images/m1.png',
+                'Star': 5,
+                'Text': '每一箱柚子裡都有美好專屬的貼心小紙條，真的能夠感受到他們的用心。柚子的美味程度更不用多說，我已經吃他們家的柚子很多年了，真的很推薦給大家喔！',
+                'ImgUrl': [],
+                'Time': '3個月前'
+            }, {
+                'ProductID': 'P000000001',
+                'MemberID': 'M000000005',
+                'Mail': 'matsushima@gmail.com',
+                'Name': '松隆子',
+                'MemberImgUrl': 'images/fe2.png',
+                'Star': 5,
+                'Text': '每一箱柚子裡都有美好專屬的貼心小紙條，真的能夠感受到他們的用心。柚子的美味程度更不用多說，我已經吃他們家的柚子很多年了，真的很推薦給大家喔！',
+                'ImgUrl': [],
+                'Time': '6個月前'
+            }];
+
+            cookiesData = [{
+                'ProductID': 'P000000001',
+                'ImgUrl': 'images/pomelo-2.png',
+                'Name': '十斤裝手提禮盒',
+                'Qty': 3,
+                'Price': 675,
+            }, {
+                'ProductID': 'P000000005',
+                'ImgUrl': 'images/pomelo-3.png',
+                'Name': '五斤裝手提禮盒',
+                'Qty': 1,
+                'Price': 360,
+            }]
+
+            member = {
+                'MemberID': 'M0000000009',
+                // 'Name': '',
+                'Mail': 'matsushima@gmail.com',
+                // 'ImgUrl': '',
+                'ImgUrl': 'images/m2.png'
+            }
+
+            // member = {
+            //     'MemberID': '',
+            //     'Name': '',
+            //     'Mail': '',
+            //     'ImgUrl': ''
+            // }
+
+            $('.product-detail .section-header .product-common-link:last-child .title').text(productDetail.Name);
+            $('.product-description .fully-text').html(productDetail.Description);
+
+            $.each(productImage, function(i, value) {
+                $('.product-small-photo .img-fluid:nth-child(' + (i + 1) + ')').attr('src', value.ImgUrl).css('display', 'inline-block');
+                $('.product-small-photo .img-fluid:nth-child(' + (i + 1) + ')').data('data-zoom-image', value.ImgUrl);
+                if (i == 0) {
+                    $('#product-big-photo').attr('src', value.ImgUrl);
+                    $('#product-big-photo').data('data-zoom-image', value.ImgUrl);
+                    $('#product-detail-show-full-img .img-fluid').attr('src', value.ImgUrl);
+                }
+            });
+
+            $('#product-big-photo').elevateZoom({
+                cursor: 'pointer',
+                zoomType: "lens",
+                lensShape: "round",
+                lensSize: 200,
+                borderSize: 0,
+                gallery: 'gallery_01',
+                galleryActiveClass: 'active'
+            });
+
+            lodaProduct();
+
+            //判斷是否已經給姓名，沒有的話取Mail的帳號
+            if (member.hasOwnProperty('Name')) {
+                $('form > .comment-name').append(member.Name);
+            } else {
+                $('form > .comment-name').append(member.Mail.substring(0, member.Mail.indexOf('@')).substr(0, 10));
+            }
+
+            if (member.ImgUrl.length != 0) {
+                $('form > .comment-name > .img-fluid').attr('src', member.ImgUrl);
+            }
+
+            loadProductComment(productComment, productCommentIndex, 3);
+        })
+    </script>
+
+    <!-- 購物車Sidebar -->
+    <div class="ui right vertical inverted sidebar menu cart-content">
+        <div class="section-header">購物車(<span></span>)
+            <img src='images/cart-content-arrow.png' class='img-fluid'>
+        </div>
+        <div class="cart-bottom">
+            <div class="cart-subtotal">
+                小計<span></span>
+            </div>
+            <div class="cart-button">
+                <button type="none" class="cart-submit">我要結帳</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            // 測試用先建Cookie
+            Cookies.set('cart', JSON.stringify(cookiesData));
+            if (typeof Cookies.get('cart') === 'undefined') {
+                console.log('no cookie');
+            } else {
+                cookiesData = JSON.parse(Cookies.get('cart'));
+                initLoadCart(cookiesData);
+            }
+            countCartSubtotal();
+            countCartNumber();
+            $('.cart-products').change(
+                function() {
+                    countCartNumber();
+                }
+            )
+            checkSelected();
+        })
+
+        // 從Cookie取得資訊並設定給購物車(動態生成)
+        function initLoadCart(cookieDataIn) {
+            var arry = [];
+            $.each(cookieDataIn, function(i, v) {
+                var title = $('<div></div>').addClass('title').text(v.Name).append($('<img/>').addClass('img-fluid cart-cancel-icon').attr('src', 'images/cart-green-close.png'));
+                var pidSpan = $('<h6></h6>').addClass('product-id').text(v.ProductID);
+                var priceSpan = $('<h6></h6>').addClass('cart-price').text(v.Price);
+                var productImgUrlSpan = $('<h6></h6>').addClass('cart-product-img').text(v.ImgUrl);
+
+                var addIcon = $('<img/>').addClass('img-fluid').attr('src', 'images/cart-content-add.png');
+                var minusIcon = $('<img/>').addClass('img-fluid').attr('src', 'images/cart-content-minus.png');
+
+                var number = $('<div></div>').addClass('number').text(v.Qty);
+                var subtotal = $('<div></div>').addClass('subtotal').text(
+                    function() {
+                        if (parseInt(v.Qty) == 0) {
+                            return "$" + 0;
+                        } else {
+                            return "$" + parseInt(v.Price) * (v.Qty);
+                        }
+                    }());
+
+                var confirmDelete = $('<div></div>').addClass('confirm-delete').append([
+                    $('<img/>').addClass('img-fluid').attr('src', 'images/cart-delete-icon.png'),
+                    $('<div></div>').addClass('title').text('確認刪除')
+                ]);
+
+                var cancelDelete = $('<div></div>').addClass('cancel-delete').append([
+                    $('<img/>').addClass('img-fluid').attr('src', 'images/cart-cancel-icon.png'),
+                    $('<div></div>').addClass('title').text('取消刪除')
+                ])
+
+
+                var cartNumber = $('<div></div>').addClass('cart-number').append([addIcon, number, minusIcon, subtotal]);
+
+                var cartProducts = $('<div></div>').addClass('cart-products').append([title, pidSpan, priceSpan, productImgUrlSpan, cartNumber,
+                    $('<div></div>').addClass('cart-delete').append([confirmDelete, cancelDelete])
+                ]);
+
+                arry.push(cartProducts);
+            })
+            $('.cart-content .section-header').after(arry);
+            cartCustomEffect();
+        }
+
+        // 購物車特效與品項數量增減功能
+        function cartCustomEffect() {
+            $('.cart-products .title .img-fluid').hover(
+                function() {
+                    $(this).attr('src', 'images/cart-red-close.png');
+                },
+                function() {
+                    $(this).attr('src', 'images/cart-green-close.png');
+                }
+            )
+            $('.cart-products .cart-number .img-fluid:nth-child(1)').hover(
+                function() {
+                    $(this).attr('src', 'images/cart-content-add-hover.png');
+                },
+                function() {
+                    $(this).attr('src', 'images/cart-content-add.png');
+                }
+            );
+            $('.cart-products .cart-number .img-fluid:nth-child(3)').hover(
+                function() {
+                    $(this).attr('src', 'images/cart-content-minus-hover.png');
+                },
+                function() {
+                    $(this).attr('src', 'images/cart-content-minus.png');
+                }
+            );
+            $('.cart-products .cart-number .img-fluid:nth-child(1)').click(
+                function() {
+                    var num = parseInt($(this).parent('.cart-number').children('.number').text()) + 1;
+                    $(this).parent('.cart-number').children('.number').text(num);
+                    var price = parseInt($(this).parents('.cart-products').children('.cart-price').text());
+                    $(this).parent('.cart-number').children('.subtotal').text(
+                        function() {
+                            return '$' + num * price;
+                        }()
+                    )
+                    countCartSubtotal();
+                }
+            );
+            $('.cart-products .cart-number .img-fluid:nth-child(3)').click(
+                function() {
+                    var num = parseInt($(this).parent('.cart-number').children('.number').text()) - 1;
+                    if (num == 0) {
+                        num = 1;
+                    }
+                    $(this).parent('.cart-number').children('.number').text(num);
+                    var price = parseInt($(this).parents('.cart-products').children('.cart-price').text());
+                    $(this).parent('.cart-number').children('.subtotal').text(
+                        function() {
+                            return '$' + num * price;
+                        }()
+                    )
+                    countCartSubtotal();
+                }
+            );
+            //刪除單一品項相關特效
+            $('.confirm-delete').hover(
+                function() {
+                    $(this).children('.img-fluid').attr('src', 'images/cart-delete-icon-hover.png');
+                },
+                function() {
+                    $(this).children('.img-fluid').attr('src', 'images/cart-delete-icon.png');
+                }
+            );
+            $('.cancel-delete').hover(
+                function() {
+                    $(this).children('.img-fluid').attr('src', 'images/cart-cancel-icon-hover.png');
+                },
+                function() {
+                    $(this).children('.img-fluid').attr('src', 'images/cart-cancel-icon.png');
+                }
+            );
+
+            $('.cart-cancel-icon').click(
+                function() {
+                    $(this).parents('.cart-products').children('.cart-delete').animate({
+                        'left': 0
+                    }, 500)
+                }
+            );
+
+            $('.cart-delete .cancel-delete').click(
+                function() {
+                    $(this).parent('.cart-delete').animate({
+                        'left': "-120%"
+                    }, 500)
+                }
+            );
+
+            // 確定刪除單一商品品項
+            $('.cart-delete .confirm-delete').click(
+                function() {
+                    $(this).parents('.cart-products').remove();
+                    countCartSubtotal();
+                    countCartNumber();
+                    checkSelected();
+                }
+            );
+            // 購物車結帳按鈕
+            $('.cart-button .cart-submit').click(
+                function() {
+                    if (parseInt($('.cart-bottom .cart-subtotal span').text().substring(1)) == 0) {
+                        console.log('請先選擇商品與數量');
+                        return false;
+                    } else {
+                        setCartCookie();
+                        console.log('前往結帳的訂單頁面');
+                        location.href = "orderCheck.html";
+                    }
+                }
+            )
+        };
+
+        // 計算購物車商品品項
+        function countCartNumber() {
+            $('.cart span, .cart-content .section-header span').text(
+                function() {
+                    if ($('.cart-products').length == 0) {
+                        return 0;
+                    } else {
+                        return $('.cart-products').length;
+                    }
+                }()
+            );
+        };
+
+        // 計算購物車內商品的總計金額
+        function countCartSubtotal() {
+            if ($('.cart-products').length == 0) {
+                $('.cart-bottom .cart-subtotal span').text('$' + 0);
+            } else {
+                var total = 0;
+                $('.cart-products').each(
+                    function() {
+                        total = total + parseInt($(this).find('.subtotal').text().substring(1));
+                    }
+                )
+                $('.cart-bottom .cart-subtotal span').text('$' + total);
+            }
+        }
+
+        // 確認是否已加入購物車
+        function checkSelected() {
+            // 購物車為空且沒有購物車Cookie
+            if (typeof Cookies.get('cart') === 'undefined') {
+                console.log('no cookies');
+                $('#product-addCart-btn').prop('disabled', false).css('cursor', 'pointer').find('.img-fluid').attr('src', 'images/product-addCart.png')
+                return false;
+            }
+            // 購物車為空且有購物車Cookie或購物車不為空
+            var flag = false;
+            $.each(JSON.parse(Cookies.get('cart')),
+                function(i, v) {
+                    if (v.ProductID.toString() === productDetail.ProductID.toString()) {
+                        flag = true;
+                        return false;
+                    } else {
+                        return false;
+                    }
+                }
+            )
+            if (flag) {
+                console.log('has product');
+                $('#product-addCart-btn').prop('disabled', true).css('cursor', 'not-allowed').find('.img-fluid').attr('src', 'images/product-addCart-selected.png');
+            } else {
+                console.log('no product');
+                $('#product-addCart-btn').prop('disabled', false).css('cursor', 'pointer').find('.img-fluid').attr('src', 'images/product-addCart.png');
+            }
+        }
+    </script>
+
+
+    <div class="pusher">
+        <!-- 購物車 -->
+        <div class="cart">
+            <div class="position-relative">
+                <img src='images/productCart.png' class='img-fluid' alt='' />
+                <span></span>
+            </div>
+        </div>
+        <script>
+            $('.cart,#cartIcon').click(function() {
+                $('.cart-content').sidebar('setting', {
+                    onHide: function() {
+                        setCartCookie();
+                        checkSelected();
+                    }
+                }).sidebar('toggle');
+                $('.cart-delete').css('left', '-120%');
+            });
+
+            function setCartCookie() {
+                if ($('.cart-products').length == 0) {
+                    Cookies.remove("cart");
+                } else {
+                    var CookieArry = [];
+                    $('.cart-products').each(
+                        function() {
+                            var jsonTemp = {
+                                'ProductID': $(this).find('.product-id').text(),
+                                'ImgUrl': $(this).find('.cart-product-img').text(),
+                                'Name': $(this).children('.title').text(),
+                                'Price': $(this).find('.cart-price').text(),
+                                'Qty': $(this).find('.number').text()
+                            }
+                            CookieArry.push(jsonTemp);
+                        }
+                    )
+                    Cookies.set('cart', CookieArry);
+                    // console.log(Cookies.get('cart'));
+                }
+            };
+
+            $('.section-header .img-fluid').click(
+                function() {
+                    $('.cart-content').sidebar('setting', {
+                        onHide: function() {
+                            setCartCookie();
+                            checkSelected();
+                        }
+                    }).sidebar('toggle');
+                }
+            );
+
+            $('.cart').click(
+                function() {
+                    $('.cart-content .section-header span').text(
+                        function() {
+                            if ($('.cart-products').length == 0) {
+                                return 0;
+                            } else {
+                                return $('.cart-products').length;
+                            }
+                        }()
+                    );
+                }
+            );
+        </script>
+        <header>
+            <nav class="nav  product-detail product-common-menu">
+                <a href="news.html" id="news-link" class="nav-link">
+                    <h2 class="wonderfulType">最新消息</h2>
+                    <h6 class="wonderfulType">News</h6>
+                </a>
+                <a href="productIndex.html" id="product-link" class="nav-link">
+                    <h2 class="wonderfulType">商品專區</h2>
+                    <h6 class="wonderfulType">Products</h6>
+                </a>
+                <a href="#" id="photo-link" class="nav-link">
+                    <h2 class="wonderfulType">相片底家</h2>
+                    <h6 class="wonderfulType">Photos</h6>
+                </a>
+                <a href="index.html" class="product-site-logo">
+                    <img src="images/webLogo-common.png" class="img-fluid" alt="" />
+                </a>
+                <a href="story.html" id="story-link" class="nav-link">
+                    <h2 class="wonderfulType">美好故事</h2>
+                    <h6 class="wonderfulType">About&nbsp;Us</h6>
+                </a>
+                <a href="#" class="nav-link">
+                    <h2 class="wonderfulType">美好問答</h2>
+                    <h6 class="wonderfulType">Q&A</h6>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <h2 class="wonderfulType">找尋美好</h2>
+                    <h6 class="wonderfulType">Find&nbsp;Us</h6>
+                </a>
+                <a id="loginIcon" class="icon-link">
+                    <img src="images/loginIcon.png" class="img-fluid" alt="" />
+                </a>
+                <a id='cartIcon' class="icon-link">
+                    <img src="images/cartIcon.png" class="img-fluid" alt="" />
+                </a>
+            </nav>
+        </header>
+
+        <div class="product-common product-detail">
+            <div class=container>
+                <div class="section-header">
+                    <a href="productIndex.html" class="product-common-link">
+                        <h1 class="title">美好的商品</h1>
+                    </a>
+                    <a>
+                        <h1 class="title">&#62;</h1>
+                    </a>
+                    <a href="" class="product-common-link">
+                        <h1 class="title"></h1>
+                    </a>
+                    <a>
+                        <h1 class="title">&#62;</h1>
+                    </a>
+                    <a href="" class="product-common-link">
+                        <h1 class="title"></h1>
+                    </a>
+                </div>
+                <div class="product-detail-hr"></div>
+
+                <!-- 商品資訊與購買按鈕 -->
+                <div class="product-center">
+                    <img src='images/product-center-bg.png' class="img-fluid" alt="" />
+                    <div class="product-detail-images">
+                        <div class="product-big-photo">
+                            <img src='' data-zoom-image='' id='product-big-photo' class="img-fluid" alt="" />
+                            <img src='images/product-Image-Icon.png' class="img-fluid" alt="" />
+                        </div>
+                        <div id='gallery_01' class="product-small-photo">
+                            <img src='' data-zoom-image='' class="img-fluid col-sm-3" alt="" />
+                            <img src='' data-zoom-image='' class="img-fluid col-sm-3" alt="" />
+                            <img src='' data-zoom-image='' class="img-fluid col-sm-3" alt="" />
+                            <img src='' data-zoom-image='' class="img-fluid col-sm-3" alt="" />
+                        </div>
+                    </div>
+
+                    <div id="product-detail-show-full-img" class="ui modal">
+                        <div class="">
+                            <h1 class='title'>X</h1>
+                            <img src='' class='img-fluid' alt='' />
+                        </div>
+                    </div>
+
+                    <script>
+                        // 啟動放大鏡
+                        $('.product-small-photo .img-fluid').click(
+                            function() {
+                                $('.zoomContainer').remove();
+                                $('#product-big-photo').removeData('elevateZoom');
+
+                                $('#product-big-photo').attr('src', $(this).attr('src'));
+                                $('#product-big-photo').data('data-zoom-image', $(this).attr('src')).elevateZoom({
+                                    cursor: 'pointer',
+                                    zoomType: "lens",
+                                    lensShape: "round",
+                                    lensSize: 200,
+                                    borderSize: 0,
+                                    gallery: 'gallery_01',
+                                    galleryActiveClass: 'active'
+                                });
+                                $('#product-detail-show-full-img .img-fluid').attr('src', $(this).attr('src'));
+                            }
+                        );
+
+                        $('#product-big-photo').click(
+                            function() {
+                                $('#product-detail-show-full-img').modal('show', {
+                                    transition: 'scale',
+                                    duration: 50
+                                });
+                            }
+                        )
+
+                        $('#product-detail-show-full-img .title').click(function() {
+                            $('#product-detail-show-full-img').modal('hide');
+                        })
+                    </script>
+                    <div class="product-detail-info col-sm-7">
+                        <div class="title"></div>
+                        <div class="title gray-black"></div>
+                        <h1 class="title gray-black">產地：<span class="origin"></span></h1>
+                        <h1 class="title gray-black">規格：<span class="spec"></span></h1>
+                        <h1 class="title gray-black">售價：$<span class="price"></span></h1>
+                        <h1 class="title gray-black">數量：<input type="number" class="number-select" min="" max="" value="" /></h1>
+                        <button id='product-direct-buy-btn' type="none" class="direct-buy product-buy-button">
+                                <img src="images/product-direct-buy.png" class="img-fluid" alt=""/>
+                            </button>
+                        <button id='product-addCart-btn' type="none" class="direct-buy product-buy-button">
+                                <img src="images/product-addCart.png" class="img-fluid" alt=""/>
+                            </button>
+                        <h2 class="title">付款完成後，隔天快速出貨(物流到貨需1-3個工作天)。</h2>
+                    </div>
+                </div>
+                <script>
+                    $('#product-direct-buy-btn').hover(
+                        function() {
+                            $(this).find('.img-fluid').attr('src', 'images/product-direct-buy-hover.png');
+                        },
+                        function() {
+                            $(this).find('.img-fluid').attr('src', 'images/product-direct-buy.png');
+                        }
+                    );
+                    $('#product-addCart-btn').hover(
+                        function() {
+                            $(this).find('.img-fluid').attr('src', 'images/product-addCart-hover.png');
+                        },
+                        function() {
+                            $(this).find('.img-fluid').attr('src', 'images/product-addCart.png');
+                        }
+                    );
+
+                    $('#product-addCart-btn').click(
+                        function() {
+                            console.log('add');
+                            var title = $('<div></div>').addClass('title').text(productDetail.Name).append($('<img/>').addClass('img-fluid cart-cancel-icon').attr('src', 'images/cart-green-close.png'));
+                            var pidSpan = $('<h6></h6>').addClass('product-id').text(productDetail.ProductID);
+                            var priceSpan = $('<h6></h6>').addClass('cart-price').text(productDetail.Price);
+
+                            var addIcon = $('<img/>').addClass('img-fluid').attr('src', 'images/cart-content-add.png');
+                            var minusIcon = $('<img/>').addClass('img-fluid').attr('src', 'images/cart-content-minus.png');
+
+                            var number = $('<div></div>').addClass('number').text($('.product-detail-info .number-select').val());
+                            var subtotal = $('<div></div>').addClass('subtotal').text(
+                                function() {
+                                    if ($('.product-detail-info .number-select').val() == 0) {
+                                        return "$" + 0;
+                                    } else {
+                                        return "$" + parseInt(productDetail.Price) * $('.product-detail-info .number-select').val();
+                                    }
+                                }());
+
+                            var confirmDelete = $('<div></div>').addClass('confirm-delete').append([
+                                $('<img/>').addClass('img-fluid').attr('src', 'images/cart-delete-icon.png'),
+                                $('<div></div>').addClass('title').text('確認刪除')
+                            ]);
+
+                            var cancelDelete = $('<div></div>').addClass('cancel-delete').append([
+                                $('<img/>').addClass('img-fluid').attr('src', 'images/cart-cancel-icon.png'),
+                                $('<div></div>').addClass('title').text('取消刪除')
+                            ])
+
+
+                            var cartNumber = $('<div></div>').addClass('cart-number').append([addIcon, number, minusIcon, subtotal]);
+
+                            var cartProducts = $('<div></div>').addClass('cart-products').append([title, pidSpan, priceSpan, cartNumber,
+                                $('<div></div>').addClass('cart-delete').append([confirmDelete, cancelDelete])
+                            ]);
+
+                            $('.cart-content .section-header').after(cartProducts);
+
+                            cartCustomEffect();
+                            countCartSubtotal();
+                            countCartNumber();
+                            setCartCookie();
+                            checkSelected();
+                        }
+                    )
+                </script>
+
+                <!-- 商品描述區塊 -->
+                <div class="product-description">
+                    <button type="none" class="description-button toggle-button">
+                            <h2 class="title">商品介紹+</h2>
+                        </button>
+                    <div class="fully-text"></div>
+                </div>
+
+                <!-- 商品評論區塊 -->
+                <div class="product-comment">
+                    <button type="none" class="comment-button toggle-button">
+                            <h2 class="title">商品評論+</h2>
+                        </button>
+                    <div class="comment-group">
+                        <form class="comment">
+                            <h3 class="comment-name">
+                                <img class="img-fluid member-head" src='images/mem-default.png' alt='' />
+                            </h3>
+                            <div class="content">
+                                <textarea name="Text" class="text" cols='30' rows='3' maxlength="150" placeholder="留下你的評論..."></textarea>
+                                <div class="file-upload">
+                                    <img src="images/product-commnet-upload.png" class="img-fluid" alt="" />
+                                    <input type='file' hidden id='product-commnet-img-upload' name='ImgUrl' multiple/>
+                                    <label class="title"></label>
+                                </div>
+                            </div>
+                            <button type='none' class="comment-submit">
+                                    <h2 class="title">送出評論</h3>
+                                </button>
+                        </form>
+                        <div class="product-next-comment">
+                            <img src="images/product-next-comment.png" class="img-fluid" alt='' /> &nbsp;
+                            <img src="images/product-next-comment.png" class="img-fluid" alt='' />
+                        </div>
+                    </div>
+                    <script>
+                        // 載入商品資訊Function
+                        function lodaProduct() {
+                            checkSelected();
+                            $('.product-detail-info>.title:nth-child(1)').text(productDetail.Title);
+                            $('.product-detail-info>.title:nth-child(2)').text(productDetail.SubTitle);
+                            $('.product-detail-info>.title:nth-child(3) .origin').text(productDetail.Origin);
+                            $('.product-detail-info>.title:nth-child(4) .spec').text(productDetail.Spec);
+                            $('.product-detail-info>.title:nth-child(5) .price').text(productDetail.Price);
+                            $('.product-detail-info>.title:nth-child(6) .number-select').attr({
+                                'min': function() {
+                                    if (productDetail.Stock != 0) {
+                                        return 1;
+                                    }
+                                },
+                                'max': function() {
+                                    if (productDetail.Stock >= 10) {
+                                        return 10;
+                                    } else {
+                                        return productDetail.Stock;
+                                    }
+                                },
+                                'value': function() {
+                                    if (productDetail.Stock != 0) {
+                                        return 1;
+                                    }
+                                }
+                            });
+                        }
+
+
+
+                        $('form > .content .text').focus(
+                            function() {
+                                if (member.Mail.length == 0) {
+                                    console.log('請先登入！');
+                                    $('#loginModal').modal('show', {
+                                        transition: 'scale',
+                                        duration: 100,
+                                    });
+                                    $('form > .content textarea').blur();
+                                } else {
+                                    $('.product-comment form.comment .content').animate({
+                                        'height': '100%'
+                                    }, 800)
+                                }
+                            }
+                        );
+
+                        $('.product-comment form.comment .file-upload .img-fluid').click(
+                            function() {
+                                $('.file-upload').find('label').text('');
+                                $('#product-commnet-img-upload').click();
+                            }
+                        );
+
+                        $('#product-commnet-img-upload').change(function() {
+                            var filesOfUpload = $('#product-commnet-img-upload')[0].files;
+                            console.log(filesOfUpload);
+                            if (filesOfUpload.length > 0) {
+                                var filenames = '';
+                                for (var i = 0; i < filesOfUpload.length; i++) {
+                                    filenames = filenames + filesOfUpload[i].name + "\t。";
+                                };
+                                $('.file-upload').find('label').text('即將上傳：' + filenames);
+                            } else {
+                                $('.file-upload').find('label').text('未選擇任何檔案');
+                            }
+                        });
+
+                        //載入評論Function，初始index為0
+                        var productCommentIndex = 0;
+
+                        function loadProductComment(dataIn, dataStartIndex, dataLenth) {
+                            if (dataStartIndex === 0) {
+                                $('.product-next-comment .img-fluid:nth-child(2)').attr('disabled', true);
+                            } else {
+                                $('.product-next-comment .img-fluid:nth-child(2)').attr('disabled', false);
+                            }
+
+                            if (dataStartIndex < (dataIn.length - dataLenth + 1)) {
+                                if (!$('.product-next-comment').parent('.comment').find('.comment:nth-child(2)').length) {
+                                    $('.comment:nth-child(1)').nextUntil('.product-next-comment').remove();
+                                }
+                                var commentsArray = [];
+                                for (var index = dataStartIndex; index < dataStartIndex + dataLenth; index++) {
+                                    //若dataIn[index]為Json物件時
+                                    if ($.type(dataIn[index]) === 'object') {
+                                        var productCommentImgs = [];
+                                        if (dataIn[index].ImgUrl.length > 0) {
+                                            $.each(dataIn[index].ImgUrl, function(i, imgurl) {
+                                                productCommentImgs.push($('<img/>').attr('src', imgurl).addClass('img-fluid comment-photo'));
+                                            })
+                                        }
+                                        var commentText = $('<h2></h2>').addClass('text').text(dataIn[index].Text);
+                                        if (dataIn[index].ImgUrl.length == 1) {
+                                            commentText.css('max-width', '80%');
+                                        } else if (dataIn[index].ImgUrl.length == 2) {
+                                            commentText.css('max-width', '75%');
+                                        }
+                                        var commentTime = $('<h4></h4>').addClass('comment-time').text(dataIn[index].Time);
+                                        // 留言含照片與留言時間
+                                        var photoTextTime = $.merge(productCommentImgs, [commentText, commentTime]);
+                                        var content = $('<div></div>').addClass('content').append(photoTextTime);
+                                        // 頭像與姓名
+                                        var memberImg = $('<img/>').attr('src', dataIn[index].MemberImgUrl).addClass('img-fluid member-head');
+                                        var commentName = $('<h3></h3>').addClass('comment-name').append([memberImg,
+                                            //判斷是否已經給姓名，沒有的話取Mail的帳號
+                                            function() {
+                                                if (dataIn[index].hasOwnProperty('Name')) {
+                                                    return dataIn[index].Name;
+                                                } else {
+                                                    return dataIn[index].Mail.substring(0, dataIn[index].Mail.indexOf('@')).substr(0, 10);
+                                                }
+                                            }()
+                                        ]);
+                                        //單一完整評論區塊組合
+                                        var singleComment = $('<div></div>').addClass('comment').append([commentName, content]);
+                                        // 將個別評論組合成全部的評論區塊
+                                        commentsArray.push(singleComment);
+                                    } else {
+                                        //不是Json物件就終止
+                                        console.log('end');
+                                    }
+                                }
+                                $('.product-next-comment').before(commentsArray);
+                                productCommentIndex = productCommentIndex + 1;
+                                $('.product-next-comment .img-fluid:nth-child(1)').attr('disabled', false);
+                            } else {
+                                console.log('whole end');
+                                $('.product-next-comment .img-fluid:nth-child(1)').attr('disabled', true);
+                            }
+                        };
+
+                        // 下則評論
+                        $('.product-next-comment .img-fluid:nth-child(1)').click(
+                            function() {
+                                loadProductComment(productComment, productCommentIndex, 3);
+                            }
+                        );
+                        // 上則評論
+                        $('.product-next-comment .img-fluid:nth-child(2)').click(
+                            function() {
+                                productCommentIndex = productCommentIndex - 3 + 1;
+                                if (productCommentIndex >= 0) {
+                                    loadProductComment(productComment, productCommentIndex, 3);
+                                } else {
+                                    $('.product-next-comment .img-fluid:nth-child(2)').attr('disabled', true);
+                                }
+                                if (productCommentIndex < 0) {
+                                    productCommentIndex = 1;
+                                }
+                            }
+                        );
+                    </script>
+                </div>
+
+                <!-- 購買資訊區塊 -->
+                <h2 class="produtct-buy-info-title title">購買資訊</h2>
+                <div class="product-buy-info">
+                    <div class="info">
+                        <h2 class="title">
+                            <img src="images/product-buy-info-leaf.png" class="img-fluid" alt="" /> 付款方式
+                            <div class='press-slide'>
+                                <img src="images/green-down.png" class="img-fluid" alt "" />
+                            </div>
+                        </h2>
+                        <ul class="slide-down-list">
+                            <li><span>&#183;</span>ATM轉帳。</li>
+                            <li><span>&#183;</span>帳號：</li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <h2 class="title">
+                            <img src="images/product-buy-info-leaf.png" class="img-fluid" alt="" /> 保存條件
+                            <div class='press-slide'>
+                                <img src="images/green-down.png" class="img-fluid" alt "" />
+                            </div>
+                        </h2>
+                        <ul class="slide-down-list">
+                            <li><span>&#183;</span>收到後請立即打開包裝箱，並將文旦置於陰涼乾燥處，避免陽光直接照射。</li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <h2 class="title">
+                            <img src="images/product-buy-info-leaf.png" class="img-fluid" alt="" /> 運送方式
+                            <div class='press-slide'>
+                                <img src="images/green-down.png" class="img-fluid" alt "" />
+                            </div>
+                        </h2>
+                        <ul class="slide-down-list">
+                            <li><span>&#183;</span>產地直送，常溫宅配，配送範圍僅限台灣本島。</li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <h2 class="title">
+                            <img src="images/product-buy-info-leaf.png" class="img-fluid" alt="" /> 安心退換貨保證
+                            <div class='press-slide'>
+                                <img src="images/green-down.png" class="img-fluid" alt "" />
+                            </div>
+                        </h2>
+                        <ul class="slide-down-list">
+                            <li><span>&#183;</span>商品屬於食品，除瑕疵情形外，一經拆封食用後，將不提供退換貨。</li>
+                            <li><span>&#183;</span>簽收後若開箱檢查發現有腐爛的情形，請於<span>24小時內</span>拍照並與我們聯繫，逾時恕不辦理退換貨。</li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <h2 class="title">
+                            <img src="images/product-buy-info-leaf.png" class="img-fluid" alt="" /> 貼心提醒
+                            <div class='press-slide'>
+                                <img src="images/green-down.png" class="img-fluid" alt "" />
+                            </div>
+                        </h2>
+                        <ul class="slide-down-list">
+                            <li><span>&#183;</span>此商品為水果類， 脆弱快熟， 請務必在收貨後立即開箱， 確認商品是否有問題。</li>
+                            <li><span>&#183;</span>商品圖檔顏色因電腦螢幕設定差異會略有不同， 以實際商品顏色為準。</li>
+                        </ul>
+                    </div>
+                </div>
+                <script>
+                    $('.product-buy-info .press-slide').click(
+                        function() {
+                            if ($(this).find('.img-fluid').attr('src') == 'images/green-down.png') {
+                                $(this).find('.img-fluid').attr('src', 'images/green-up.png');
+                                $(this).parents('.info').children('.slide-down-list').slideDown(500);
+                            } else {
+                                $(this).find('.img-fluid').attr('src', 'images/green-down.png');
+                                $(this).parents('.info').children('.slide-down-list').slideUp(500);
+                            }
+                        }
+                    )
+                </script>
+
+
+                <script>
+                    var descClick = 1;
+
+                    $('.description-button').click(function() {
+                        if (descClick % 2 == 1) {
+                            $('.product-description .fully-text').slideDown(3000);
+                            $(this).find('.title').html('隱藏介紹&times;');
+                        } else {
+                            $('.product-description .fully-text').slideUp(3000);
+                            $(this).find('.title').text('商品介紹+');
+                        }
+                        descClick++;
+                    });
+
+                    var commentClicks = 1;
+
+                    $('.comment-button').click(function() {
+                        if (commentClicks % 2 == 1) {
+                            $('.product-comment .comment-group').slideDown(3000);
+                            $(this).find('.title').html('隱藏評論&times;');
+                        } else {
+                            $('.product-comment .comment-group').slideUp(3000);
+                            $(this).find('.title').text('商品評論+');
+                        }
+                        commentClicks++;
+                    });
+                </script>
+                <footer class="product-common-footer">
+                    <img src="" class="img-fluid" />
+                    <div class="product-common-footer-link">
+                        <a><img src="images/productIndex-footer-fb.png " class="img-fluid" /></a>
+                        <a><img src="images/productIndex-footer-ig.png " class="img-fluid" /></a>
+                        <a><img src="images/productIndex-footer-utube.png " class="img-fluid" /></a>
+                    </div>
+                </footer>
+                <div class="product-common-backTop">
+                    <img src="images/product-backTop.png" class="img-fluid" alt="" />
+                </div>
+
+                <script>
+                    $(window).on('scroll', function(e) {
+                        if ($(this).scrollTop() > ($(window).height() * 0.8)) {
+                            $('.product-common-backTop').fadeIn(2000);
+                        } else {
+                            $('.product-common-backTop').fadeOut(500);
+                        }
+                    });
+
+                    $('.product-common-backTop').click(
+                        function() {
+                            $('html').animate({
+                                scrollTop: 0
+                            }, 1000);
+                        }
+                    );
+                </script>
+
+                <!--會員登入Modal-->
+                <div id="loginModal" class="ui modal">
+                    <div class="">
+                        <form class="indexModal-form" method="post" action="#">
+                            <div class="indexModal-input">
+                                <div class="card">
+                                    <h2 class="title">
+                                        <div class="section-title">帳&nbsp;&nbsp;&nbsp;號</div>
+                                        <div class="title-sub wonderfulType">Username</div>
+                                    </h2>
+                                    <input name="mail" type="text" class="userinput" />
+                                </div>
+                            </div>
+                            <div class="indexModal-input">
+                                <div class="card">
+                                    <h2 class="title">
+                                        <div class="section-title">密&nbsp;&nbsp;&nbsp;&nbsp;碼</div>
+                                        <div class="title-sub wonderfulType">Passsword</div>
+                                    </h2>
+                                    <input name="password" type="password" class="passwordinput" />
+                                </div>
+                            </div>
+                            <div class="rememberBox">
+                                <input type="checkbox" name="remberme" value="yes" class="" />
+                                <span class="customBox"></span> 記住我
+                            </div>
+                            <div class="indexModal-button">
+                                <button type="button" class="dark-bg loginSubmit">
+                                                        <h2 class="title">登入</h2>
+                                                    </button>
+                                <button type="button" class="dark-bg forgetPWD">
+                                                        <h2 class="title">忘記密碼</h2>
+                                                    </button>
+                            </div>
+                            <div class="indexModal-button">
+                                <button type="button" class="fullwidth dark-bg addMember">&nbsp;加入美好會員</button>
+                            </div>
+                            <div class="register-modal-button">
+                                <img class="img-fluid" src="images/regModalIcon-EN.png" />
+                                <img class="img-fluid" src="images/regModalIcon-CHN.png" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!--會員註冊Modal-->
+                <div id="regModal" class="ui modal">
+                    <div class="">
+                        <form class="indexModal-form" method="post" action="#">
+                            <div class="indexModal-input">
+                                <div class="card">
+                                    <h2 class="title">
+                                        <div class="section-title">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號</div>
+                                        <div class="title-sub wonderfulType" style="letter-spacing: 3px;">Username</div>
+                                    </h2>
+                                    <input name="mail" type="text" class="userinput" />
+                                </div>
+                            </div>
+                            <div class="indexModal-input">
+                                <div class="card">
+                                    <h2 class="title">
+                                        <div class="section-title">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼</div>
+                                        <div class="title-sub wonderfulType" style="letter-spacing: 2px;">Passsword</div>
+                                    </h2>
+                                    <input name="password" type="password" class="passwordinput" />
+                                </div>
+                            </div>
+                            <div class="indexModal-input">
+                                <div class="card">
+                                    <h2 class="title">
+                                        <div class="section-title" style="letter-spacing: 1px;">確認密碼</div>
+                                        <div class="title-sub wonderfulType" style="font-size: 0.5px;">Confirm&nbsp;Again</div>
+                                    </h2>
+                                    <input name="confirmPassword" type="password" class="passwordinput" />
+                                </div>
+                            </div>
+                            <div class="indexModal-input">
+                                <div class="card">
+                                    <h2 class="title">
+                                        <div class="section-title" style="font-size: 18px; letter-spacing: 2px; border: 3px solid #11191b; border-radius: 5px; text-align: center;">RolaE</div>
+                                        <div class="title-sub" style="font-size: 12px; text-align: center; text-decoration: underline; letter-spacing: 2px; cursor: pointer;">重新產生</div>
+                                    </h2>
+                                    <input name="verification" type="text" class="passwordinput" />
+                                </div>
+                            </div>
+                            <div class="indexModal-button">
+                                <button type="button" class="dark-bg regButton addMember">
+                                                        <h2 class="title title2">&nbsp;完成註冊</h2>
+                                                    </button>
+                            </div>
+                            <div class="login-modal-button">
+                                <img class="img-fluid" src="images/loginModalIcon-EN.png" />
+                                <img class="img-fluid" src="images/loginModalIcon-CHN.png" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--忘記密碼Modal-->
+                <div id="resetPwdModal" class="ui modal">
+                    <div class="">
+                        <div class="leafDrop">
+                            <img id="leafDrop1" src="images/leaf1.png" class="img-fluid" />
+                            <img id="leafDrop2" src="images/leaf2.png" class="img-fluid" />
+                            <img id="leafDrop3" src="images/leaf3.png" class="img-fluid" />
+                            <img id="leafDrop4" src="images/leaf4.png" class="img-fluid" />
+                            <img id="leafDrop5" src="images/leaf5.png" class="img-fluid" />
+                            <img id="leafDrop6" src="images/leaf6.png" class="img-fluid" />
+                            <img id="leafDrop7" src="images/leaf7.png" class="img-fluid" />
+                            <img id="leafDrop8" src="images/leaf8.png" class="img-fluid" />
+                        </div>
+                        <form class="indexModal-form" method="post" action="#">
+                            <div class="indexModal-input">
+                                <div class="card">
+                                    <input name="mail" type="text" class="userinput" />
+                                </div>
+                            </div>
+                            <div class="indexModal-button">
+                                <button type="button" class="fullwidth dark-bg resetPwd">&nbsp;重設密碼</button>
+                            </div>
+                            <div class="indexModal-button button-center">
+                                <button type="button" class="dark-bg backLoginModal">
+                                                        <h2 class="title">回上頁</h2>
+                                                    </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <script>
+                    $('#loginIcon, #side-loginIcon').click(
+                        function() {
+                            $('#loginModal').modal('show', {
+                                transition: 'scale',
+                                duration: 100
+                            });
+                        });
+
+                    $('.indexModal-form .register-modal-button .img-fluid').click(
+                        function() {
+                            $('#regModal').modal('show', {
+                                transition: 'scale',
+                                duration: 1
+                            });
+                            $('#loginModal').modal('hide', {
+                                transition: 'scale',
+                                duration: 0
+                            });
+                        });
+
+                    $('.forgetPWD').click(
+                        function() {
+                            $('#resetPwdModal').modal('show', {
+                                transition: 'scale',
+                                duration: 1
+                            });
+                            $('#loginModal').modal('hide', {
+                                transition: 'scale',
+                                duration: 0
+                            });
+                        });
+
+                    $('.fullwidth.addMember').click(
+                        function() {
+                            $('#regModal').modal('show', {
+                                transition: 'scale',
+                                duration: 1
+                            });
+                            $('#loginModal').modal('hide', {
+                                transition: 'scale',
+                                duration: 0
+                            });
+                        });
+
+                    $('.indexModal-form .login-modal-button .img-fluid ').click(
+                        function() {
+                            $('#loginModal').modal('show', {
+                                transition: 'scale',
+                                duration: 1
+                            });
+                            $('#regModal').modal('hide', {
+                                transition: 'scale',
+                                duration: 0
+                            });
+                        });
+
+                    $('.backLoginModal').click(
+                        function() {
+                            $('#loginModal').modal('show', {
+                                transition: 'scale',
+                                duration: 1
+                            });
+                            $('#resetPwdModal').modal('hide', {
+                                transition: 'scale',
+                                duration: 0
+                            });
+                        });
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

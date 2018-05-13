@@ -1,0 +1,629 @@
+.order-check-pusher {
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.order-check-menu {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0.5% 0;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+#orderCheckSidebar {
+    background: url('../images/orderCheckSidebar-bg.png') left top repeat;
+}
+
+#orderCheckSidebar .nav-link {
+    color: rgba(114, 114, 114, 0.75)!important;
+}
+
+#orderCheckSidebar .nav-link .title {
+    margin: 4px auto 0 auto;
+    font-size: 0.8rem;
+    line-height: 1.0rem;
+    padding-top: 0.5rem;
+    opacity: 0.0;
+}
+
+#orderCheckSidebar .nav-link:hover {
+    color: rgba(114, 114, 114, 1.0)!important;
+}
+
+#orderCheckSidebar .nav-link:hover .title {
+    margin: 0 auto;
+    opacity: 1.0;
+    border-top: 4px solid rgba(114, 114, 114, 1.0);
+}
+
+#orderCheckSidebar .icon-link {
+    display: inline-block;
+    cursor: pointer;
+    width: 25%;
+    border-radius: 50%;
+    opacity: 0.75;
+    margin-left: 1%;
+    margin-bottom: 1%;
+}
+
+#orderCheckSidebar .icon-link:hover {
+    border: 2px solid #727272;
+    opacity: 1.0;
+}
+
+#orderCheckSidebar .side-bar-footer {
+    width: 50%;
+    position: absolute;
+    bottom: 1.7%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.order-check-menu .hamburger {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    font-size: 350%;
+    font-weight: 600;
+    transform: translate(0, -50%);
+    color: rgba(17, 25, 27, 0.8);
+    width: 5%;
+    cursor: pointer;
+}
+
+.order-check-menu .hamburger:hover {
+    color: #afd1a5;
+}
+
+.order-check-menu .order-check-site-logo {
+    width: 4.5%;
+    display: inline-block;
+    margin: 0 auto;
+    cursor: pointer;
+    opacity: 1.0;
+}
+
+.order-check-menu>.img-fluid:first-child {
+    position: absolute;
+    width: 0.8%;
+    bottom: 10%;
+    left: 49.2%;
+    z-index: 5;
+}
+
+.order-check-menu>.img-fluid:last-child {
+    position: absolute;
+    width: 1%;
+    bottom: 12%;
+    left: 51.3%;
+    z-index: 5;
+}
+
+.rotate360 {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transition: -webkit-transform .5s ease-in-out;
+    -ms-transition: -ms-transform .5s ease-in-out;
+    -o-transition: -o-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
+}
+
+.order-check {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.locker.active {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(246, 246, 246, 0.6);
+    z-index: 99;
+}
+
+.order-check .order-check-steps {
+    position: relative;
+    overflow-Y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    /* background-color: rgba(114, 114, 114, 0.1); */
+    border-right: 1px solid #b2b2b2;
+}
+
+.order-check-steps .section-header {
+    width: 100%;
+    border-bottom: 1px solid #b2b2b2;
+    color: #727272;
+    line-height: 0;
+    z-index: 0;
+    position: relative;
+}
+
+.order-check-steps .section-header .img-fluid {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.order-check-steps .section-header .img-fluid:nth-child(1) {
+    margin-left: 13%;
+    width: 7%;
+}
+
+.order-check-steps .section-header .img-fluid:nth-child(2),
+.order-check-steps .section-header .img-fluid:last-child {
+    margin-left: 2%;
+    width: 15%;
+}
+
+.order-check-steps .section-header .title {
+    margin-left: 8%;
+    display: inline-block;
+    font-size: 1.5vw;
+    font-weight: 700;
+    letter-spacing: 1.0rem;
+    vertical-align: middle;
+}
+
+.order-check-steps .gray-bg {
+    background-color: #b2b2b2;
+    color: #fff;
+}
+
+.order-check-steps .order-check-products {
+    position: relative;
+    width: 90%;
+    padding: 5.2% 0;
+    margin: 0 5%;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+.order-check-steps .order-check-products .left {
+    display: inline-block;
+    vertical-align: middle;
+    width: 25%;
+}
+
+.order-check-steps .order-check-products .left .img-fluid {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.order-check-steps .order-check-products .right {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 72%;
+    margin-left: 2%;
+}
+
+.order-check-steps .order-check-products .right .title {
+    font-size: 1.3vw;
+    margin-bottom: 5%;
+    color: #727272;
+    letter-spacing: 0.5rem;
+    font-weight: 700;
+}
+
+.order-check-steps .order-check-products .right .img-fluid {
+    display: inline-block;
+    margin-right: 5%;
+    width: 5.5%;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.order-check-steps .order-check-products .right .img-fluid:first-child {
+    margin-left: 0%;
+}
+
+.order-check-steps .order-check-products .right .img-fluid:last-child {
+    position: absolute;
+    right: 2%;
+    bottom: 10%;
+}
+
+.order-check-steps .order-check-products .right .number,
+.order-check-steps .order-check-products .right .subtotal {
+    display: inline-block;
+    font-size: 140%;
+    vertical-align: middle;
+    color: #727272;
+}
+
+.order-check-steps .order-check-products .right .number {
+    margin-right: 5%;
+}
+
+.order-check-steps .order-check-products .right .subtotal {
+    margin-left: 5%;
+    letter-spacing: 0.1rem;
+}
+
+.order-check-delete {
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    margin-bottom: 4.5%;
+    height: 100%;
+    left: -120%;
+    top: 0;
+    z-index: 999;
+}
+
+.order-check-delete .confirm-delete,
+.order-check-delete .cancel-delete {
+    width: 47%;
+    display: inline-block;
+    padding: 0 2%;
+    height: 95%;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.order-check-delete .confirm-delete {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.order-check-delete .confirm-delete .img-fluid,
+.order-check-delete .cancel-delete .img-fluid {
+    padding-top: 10%;
+    width: 15%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.order-check-delete .title {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 160%;
+    padding-top: 30%;
+    padding-bottom: 15%;
+    letter-spacing: 0.1rem;
+    margin-left: 2%;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.order-check-delete .confirm-delete:hover .title {
+    color: #c1272d;
+}
+
+.order-check-delete .cancel-delete:hover .title {
+    color: #afd1a5;
+}
+
+.order-check-steps .next-step {
+    position: relative;
+    border: none;
+    border-radius: 5pt;
+    background-color: #afd1a5;
+    color: #fff;
+    font-size: 1.2vw;
+    font-weight: 600;
+    letter-spacing: 0.5rem;
+    padding: 1.5% 5%;
+    text-align: center;
+    display: block;
+    margin: 10% auto 10% auto;
+    cursor: pointer;
+}
+
+.order-check-steps .next-step:hover {
+    background-color: #a1bf98;
+}
+
+.order-check-steps:nth-child(3) {
+    position: relative;
+}
+
+.order-check-steps:nth-child(3)>.img-fluid:last-child {
+    position: fixed;
+    z-index: -1;
+    width: 12%;
+    bottom: 2%;
+    left: 53%;
+}
+
+.maxQty {
+    display: none;
+}
+
+.order-check-steps .orderer-info {
+    max-width: 60%;
+    margin: 5% auto 5% auto;
+}
+
+.order-check-steps .orderer-info .img-fluid {
+    width: 30%;
+    display: inline-block;
+    vertical-align: bottom;
+    border-bottom: 1px solid #cccaca;
+    margin-right: -1%
+}
+
+.order-check-steps .orderer-info .right {
+    width: 64%;
+    display: inline-block;
+    vertical-align: bottom;
+    padding-left: 3.5%;
+    border-bottom: 1px solid #cccaca;
+}
+
+.order-check-steps .orderer-info .right label {
+    font-size: 0.9vw;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    display: inline-block;
+    width: 40%;
+    color: #727272;
+    margin-right: 1%;
+}
+
+.order-check-steps .orderer-info .right input {
+    display: inline-block;
+    box-shadow: none;
+    border: 2px solid #cccaca;
+    font-size: 0.9vw;
+    padding: 2%;
+    width: 59%;
+}
+
+.order-check-steps .orderer-info .right input:nth-child(2) {
+    margin-bottom: 5%;
+}
+
+.order-check-steps .orderer-info .right input:last-child {
+    border-bottom: 1px solid #cccaca;
+}
+
+.order-check-steps .delivery {
+    position: relative;
+    width: 90%;
+    margin: 0 auto 2% auto;
+}
+
+.order-check-steps .delivery .reciepts {
+    position: relative;
+    margin-bottom: 5%;
+}
+
+.order-check-steps .delivery .reciepts:first-child .delete-reciept {
+    cursor: initial;
+    opacity: 0;
+}
+
+.order-check-steps .delivery .reciepts .delete-reciept {
+    width: 4%;
+    float: right;
+    margin-top: 1.5%;
+    cursor: pointer;
+}
+
+.order-check-steps .delivery .reciepts .header {
+    text-align: center;
+}
+
+.order-check-steps .delivery .reciepts .header .img-fluid:first-child {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10%;
+}
+
+.order-check-steps .delivery .reciepts .header span {
+    display: inline-block;
+    font-size: 0.9vw;
+    margin-left: -4%;
+    color: #727272;
+    font-weight: 600;
+    vertical-align: 0.2rem;
+}
+
+.order-check-steps .delivery .reciepts .header .title {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4%;
+    font-size: 1.2vw;
+    letter-spacing: 0.2rem;
+    color: #727272;
+    font-weight: 600;
+}
+
+.order-check-steps .delivery .reciepts .header .img-fluid:last-child {
+    width: 5%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1%;
+    cursor: pointer;
+}
+
+.reciept-product {
+    display: none;
+}
+
+.reciepts .reciepts-info {
+    margin: 5% auto 5% auto;
+    padding: 0 0 0 15%;
+}
+
+.reciepts .reciepts-info label,
+.reciepts .reciepts-info input {
+    font-size: 1vw;
+    color: #727272;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 2%;
+}
+
+.reciepts .reciepts-info label {
+    font-weight: 600;
+    width: 17%;
+    margin-right: 3%;
+}
+
+.reciepts .reciepts-info input {
+    font-weight: 500;
+    line-height: 2rem;
+    width: 50%;
+    border: 2px solid #cccaca;
+    padding: 1%;
+}
+
+.twzipcode {
+    display: inline-block;
+    width: 70%;
+    margin-left: -0.8%;
+}
+
+.twzipcode div {
+    width: 35%;
+    display: inline-block;
+    vertical-align: top !important;
+    margin-right: 2%;
+}
+
+.twzipcode div:first-child {
+    width: 20%;
+}
+
+.zip,
+.country,
+.district {
+    padding: 5%;
+    width: 100% !important;
+    font-size: 1vw !important;
+    border: 2px solid #cccaca;
+    color: #727272;
+    margin-bottom: 10%;
+}
+
+.zip {
+    font-weight: 500 !important;
+    padding: 10% !important;
+    line-height: initial !important;
+    text-align: center;
+    cursor: not-allowed;
+}
+
+.reciepts .reciepts-info .addr {
+    margin-left: 19%;
+    width: 66%;
+}
+
+.reciepts .hr {
+    height: 0;
+    width: 100%;
+    margin: 0 auto 5% auto;
+    border-top: 1px solid #cccaca;
+}
+
+.reciepts .product-asign {
+    width: inherit;
+    margin: 0 auto;
+}
+
+.reciepts .product-asign .products {
+    width: 100%;
+    margin: 0 auto 3% auto;
+    text-align: center;
+}
+
+.reciepts .product-asign .products .title,
+.reciepts .product-asign .products .number-select,
+.reciepts .product-asign .products .number,
+.reciepts .product-asign .products .img-fluid {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1vw;
+    color: #727272;
+}
+
+.reciepts .product-asign .products .title {
+    margin-left: 5%;
+    margin-right: 5%;
+    letter-spacing: 0.2rem;
+}
+
+.reciepts .product-asign .products .img-fluid {
+    cursor: pointer;
+}
+
+.reciepts .product-asign .products .img-fluid,
+.reciepts .product-asign .products .number {
+    width: 15%;
+    margin-right: 5%;
+    text-align: center;
+}
+
+.reciepts .fee {
+    text-align: center;
+    font-size: 1vw;
+    letter-spacing: 0.5vw;
+    color: #c1272d;
+}
+
+.delivery .next-reciepts {
+    font-size: 1vw;
+    width: 45%;
+    padding: 2%;
+    border: 2px solid #afd1a5;
+    text-align: center;
+    color: #727272;
+    margin: 5% auto 0 auto;
+    cursor: pointer;
+}
+
+.delivery .next-reciepts:hover {
+    border: 2px solid #a1bf98;
+}
+
+.delivery .next-reciepts span {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5rem;
+}
+
+.delivery .next-reciepts .img-fluid {
+    width: 8%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 2%;
+}
+
+#deliveryNotice1,
+#deliveryNotice2 {
+    width: 25%;
+    padding: 2%;
+    text-align: center;
+    border: none;
+    border-radius: 10pt;
+    margin-left: -12.5%;
+}
+
+#deliveryNotice1 .title,
+#deliveryNotice2 .title {
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    color: #727272;
+    margin-bottom: 8%;
+    line-height: 2rem;
+}
+
+#deliveryNotice1 button,
+#deliveryNotice2 button {
+    padding: 2% 4%;
+    font-size: 1vw;
+    border: none;
+    border-radius: 5pt;
+    background-color: #afd1a5;
+    color: #fff;
+    cursor: pointer;
+}

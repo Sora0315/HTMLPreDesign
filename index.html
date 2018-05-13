@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- X-UA-Compatible設置IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--RWD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <meta name="author" content="萊茵巴赫科技" />
+    <meta name="copyright" content="萊茵巴赫科技" />
+    <!-- 結構化資料 SEO 與 meta 標籤 -->
+    <meta property="og:title" content="柚美。柚好" />
+    <meta property="og:url" content="">
+    <meta property="og:image" content="要顯示的縮圖網址" />
+    <meta property="og:description" content="網頁描述" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>柚美。柚好</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="js/semantic.js"></script>
+</head>
+
+<body>
+    <header class="index-site-header light-white-bg">
+        <div class="index-site-logo">
+            <img src="images/webLogo.png" class="img-fluid" alt="" />
+            <img src="images/webLogo-sub.png" class="img-fluid" alt="" />
+        </div>
+        <nav class="nav index-menu">
+            <a href="#" id="story-link" class="nav-link">
+                <h2 class="wonderfulType">美好故事</h2>
+                <h6 class="wonderfulType hide-block">About&nbsp;Us</h6>
+            </a>
+            <a href="#" id="news-link" class="nav-link">
+                <h2 class="wonderfulType">最新消息</h2>
+                <h6 class="wonderfulType hide-block">News</h6>
+            </a>
+            <a href="#" id="product-link" class="nav-link">
+                <h2 class="wonderfulType">商品專區</h2>
+                <h6 class="wonderfulType hide-block">Products</h6>
+            </a>
+            <a href="#" id="photo-link" class="nav-link">
+                <h2 class="wonderfulType">相片底家</h2>
+                <h6 class="wonderfulType hide-block">Photos</h6>
+            </a>
+            <a id="qa-link" href="#" class="nav-link">
+                <h2 class="wonderfulType">美好問答</h2>
+                <h6 class="wonderfulType hide-block">Q&A</h6>
+            </a>
+            <a id="contact-link" href="contact.html" class="nav-link">
+                <h2 class="wonderfulType">找尋美好</h2>
+                <h6 class="wonderfulType hide-block">Find&nbsp;Us</h6>
+            </a>
+
+            <a id="loginIcon" class="icon-link">
+                <img src="images/indexLoginIcon.png" class="img-fluid" alt="" />
+            </a>
+            <a id='cartIcon' class="icon-link">
+                <img src="images/indexCartIcon.png" class="img-fluid" alt="" />
+            </a>
+
+        </nav>
+    </header>
+    <script>
+        $(function() {
+
+            var headHeight = $('header').height(),
+                storyTop = ($('.story-banner').offset().top - headHeight),
+                newsTop = ($('.news-banner').offset().top - headHeight - 50),
+                productTop = ($('.product-banner').offset().top - headHeight - 50),
+                photoTop = ($('.photo-banner').offset().top - headHeight - 50),
+                feedbackTop = ($('.feedback-title').offset().top - headHeight - 50),
+                edgeTop = 0,
+                edgeBottom = storyTop;
+
+            $(window).resize(function() {
+                location.reload();
+            })
+
+            function scrollBlock(blockTop, nextBlockTop, blockId) {
+                var windowTop = $(this).scrollTop();
+                if (windowTop > blockTop && windowTop < nextBlockTop) {
+                    edgeTop = blockTop, edgeBottom = nextBlockTop;
+                    blockId.find('.wonderfulType').first().addClass('block-lock').children().fadeIn(200);
+                    blockId.find('.wonderfulType').last().addClass('show-block').removeClass('hide-block');
+                } else {
+                    blockId.find('.wonderfulType').first().removeClass('block-lock').children().hide();
+                    blockId.find('.wonderfulType').last().removeClass('show-block').addClass('hide-block');
+                }
+            }
+
+            // $('.index-menu .nav-link').hover(
+            //     function() {
+            //         console.log($(this).find('.wonderfulType').last().hasClass('show-block'));
+            //         if ($(this).find('.wonderfulType').last().hasClass('show-block') == false) {
+            //             console.log('here false');
+            //             $(this).find('.wonderfulType').last().addClass('show-block').removeClass('hide-block');
+            //         } else {
+            //             console.log('here true');
+            //         }
+            //     },
+            //     function() {
+            //         if ($(this).find('.wonderfulType').last().hasClass('show-block') == false) {
+            //             $(this).find('.wonderfulType').last().removeClass('show-block').addClass('hide-block');
+            //         } else {
+
+            //         }
+            //     }
+            // );
+
+            $(window).on('scroll load', function(e) {
+                if ($(this).scrollTop() < storyTop) {
+                    $('.index-site-logo .img-fluid:last-child').hide();
+                    $('#loginIcon .img-fluid').attr('src', 'images/indexLoginIcon.png');
+                    $('#cartIcon .img-fluid').attr('src', 'images/indexCartIcon.png');
+                    $('.index-site-header').removeClass('green-bg').addClass('light-white-bg');
+                } else {
+                    $('.index-site-header').removeClass('light-white-bg').addClass('green-bg');
+                    $('#loginIcon .img-fluid').attr('src', 'images/indexLoginIcon-green-bg.png');
+                    $('#cartIcon .img-fluid').attr('src', 'images/indexCartIcon-green-bg.png');
+                    $('.index-site-logo .img-fluid:last-child').show();
+                }
+                scrollBlock(storyTop, newsTop, $('#story-link'));
+                scrollBlock(newsTop, productTop, $('#news-link'));
+                scrollBlock(productTop, photoTop, $('#product-link'));
+                scrollBlock(photoTop, feedbackTop, $('#photo-link'));
+                return edgeTop, edgeBottom;
+            }, 100)
+
+            //Click Link To Block
+            function clickSmoothSlideToBlock(clickId, scrollTo, animateSpped) {
+                $(clickId).click(
+                    function() {
+                        $('html').animate({
+                            scrollTop: scrollTo
+                        }, animateSpped);
+                    });
+            }
+
+            clickBindJSON = [{
+                "clickId": "#story-link",
+                "scrollTo": (storyTop + 1),
+                "animateSpped": 500
+            }, {
+                "clickId": "#news-link",
+                "scrollTo": (newsTop + 26),
+                "animateSpped": 500
+            }, {
+                "clickId": "#product-link",
+                "scrollTo": (productTop + 1),
+                "animateSpped": 500
+            }, {
+                "clickId": "#photo-link",
+                "scrollTo": (photoTop + 1),
+                "animateSpped": 500
+            }, ];
+
+            $.each(clickBindJSON, function(i, value) {
+                clickSmoothSlideToBlock(value.clickId, value.scrollTo, value.animateSpped);
+            });
+
+            $('#contact-link, #qa-link').hover(
+                function() {
+                    $(this).find('.wonderfulType').last().addClass('show-block').removeClass('hide-block');
+                },
+                function() {
+                    $(this).find('.wonderfulType').last().removeClass('show-block').addClass('hide-block');
+                }
+            );
+
+        });
+
+        /*!
+         * jquery.unevent.js 0.2
+         * https://github.com/yckart/jquery.unevent.js
+         *
+         * Copyright (c) 2013 Yannick Albert (http://yckart.com)
+         * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php).
+         * 2013/07/26
+         **/
+
+        (function($) {
+            var on = $.fn.on,
+                timer;
+            $.fn.on = function() {
+                var args = Array.apply(null, arguments);
+                var last = args[args.length - 1];
+
+                if (isNaN(last) || (last === 1 && args.pop())) return on.apply(this, args);
+
+                var delay = args.pop();
+                var fn = args.pop();
+
+                args.push(function() {
+                    var self = this,
+                        params = arguments;
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        fn.apply(self, params);
+                    }, delay);
+                });
+
+                return on.apply(this, args);
+            };
+        }(this.jQuery || this.Zepto));
+    </script>
+
+    <!--半版大圖-->
+    <div class="index site-banner">
+        <!--大圖本體-->
+        <div class="initSlides slide-bg site-banner-bg"></div>
+        <div class="initSlides slide-bg site-banner-bg"></div>
+        <div class="initSlides slide-bg site-banner-bg"></div>
+        <div id="web-logo1" class="web-logo col-sm-1">
+            <img src="images/logo1.png" class="img-fluid" alt="" />
+        </div>
+        <div id="web-logo2" class="web-logo col-sm-1">
+            <img src="images/logo2.png" class="img-fluid" alt="" />
+        </div>
+        <div id="web-logo3" class="web-logo col-sm-1">
+            <img src="images/logo3.png" class="img-fluid" alt="" />
+        </div>
+        <div id="web-logo4" class="web-logo col-sm-1">
+            <img src="images/logo4.png" class="img-fluid" alt="" />
+        </div>
+        <div id="web-logo5" class="web-logo col-sm-1">
+            <img src="images/logo5.png" class="img-fluid" alt="" />
+        </div>
+        <div class="dots-gp"></div>
+    </div>
+    <script>
+        // Slider JS
+        var slideIndex = 1;
+        showSlides(slideIndex);
+        var slideInterval = setInterval(function() {
+            slideIndex++;
+            showSlides(slideIndex);
+        }, 2000);
+
+        var initImgNumber = 1;
+        var slideImgArry = ['images/slideShow1.jpg', 'images/slideShow2.jpg', 'images/slideShow3.jpg'];
+        var maxImgNumber = $('.slide-bg').length;
+
+        $('.slide-bg').each(function() {
+            if (initImgNumber <= maxImgNumber) {
+                var Imgurl = slideImgArry[getRandomFromRange(0, (slideImgArry.length - 1))];
+                slideImgArry.splice($.inArray(Imgurl, slideImgArry), 1);
+                $(this).css('background', 'url(' + Imgurl + ') center center no-repeat');
+                initImgNumber++;
+            } else {
+                initImgNumber = 1;
+            }
+        });
+        for (i = 0; i < maxImgNumber; i++) {
+            var count = i + 1;
+            dots = $('<psan><span>').addClass('dot').addClass('dot:hover').attr('onclick', 'currentSlide(' + count + ')');
+            $('.dots-gp').append(dots);
+        }
+
+        function getRandomFromRange(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = $(".initSlides");
+            var dots = $(".dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                $(slides[i]).css("display", "none");
+            }
+            for (i = 0; i < dots.length; i++) {
+                $(dots[i]).removeClass("dot-active");
+            }
+            $(slides[slideIndex - 1]).css("display", "block");
+            $(dots[slideIndex - 1]).addClass("dot-active");
+        }
+
+        function currentSlide(n) {
+            clearInterval(slideInterval);
+            showSlides(slideIndex = n);
+            slideInterval = setInterval(function() {
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 2000);
+        }
+    </script>
+
+
+    <!--主要內容-->
+    <div class="index-site-main white-bg">
+        <!--主要內容：美好故事-->
+        <div class="story-banner">
+            <img src="images/story-banner-bg.png" class="img-fluid" />
+            <div id="storyHtml" class="ui animated button">
+                <h2 class="section-title visible content">
+                    <img src="images/custom-arrow.png" class="img-fluid" /></h2>
+                <h2 class="section-title hidden content  wonderfulType">More</h2>
+            </div>
+            <script>
+                $('#storyHtml').click(function() {
+                    location.href = 'story.html';
+                });
+            </script>
+        </div>
+        <!--主要內容：最新消息-->
+        <div class="news-banner">
+            <img src="images/news-banner-bg.png" class="img-fluid" />
+            <div class="news-content">
+                <img id="news-flipUp" src="images/flipArrow.png" class="img-fluid flip-arrow" />
+                <img id="news-flipDown" src="images/flipArrow.png" class="img-fluid flip-arrow" />
+                <img id="news-flipLeft" src="images/flipArrow.png" class="img-fluid flip-arrow" />
+                <img id="news-flipRight" src="images/flipArrow.png" class="img-fluid flip-arrow" />
+                <div class="news-posistion">
+                    <div class="news-photo">
+                        <img class="img-fluid" src="" />
+                    </div>
+                    <div class="news-copy">
+                        <div class="news-inner-position">
+                            <div class="news-title">
+                                <h2 class="title"></h2>
+                            </div>
+                            <div class="news-text">
+                            </div>
+                            <div class="news-counter">
+                                <img class="img-fluid" src="images/watch-counter-Icon.png" />
+                                <h2 class="title"></h2>
+                            </div>
+                            <div class="news-date">
+                                <h2 class="title"></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="newsHtml" class="ui animated button">
+                <h2 class="section-title visible content">
+                    <img src="images/custom-arrow.png" class="img-fluid" /></h2>
+                <h2 class="section-title hidden content  wonderfulType">More</h2>
+            </div>
+            <script>
+                $(function() {
+                    initNews();
+                })
+
+                //Click to change News Content
+                var indexNewsObj = [{
+                    "Title": "麻豆柚花盛開",
+                    "SubTitle": "",
+                    "Text": "由台南市文化局、麻豆區公所結合在地麻豆商圈舉辦的麻豆柚花季登場囉",
+                    "PubTime": "2018/7/10 (二)",
+                    "Views": "23",
+                    "ImageUrl": "images/newsImgDemo.png"
+                }, {
+                    "Title": "預購開跑！早鳥95折",
+                    "SubTitle": "活動日期：2018/7/10(二)~2018/7/24(二)</br>",
+                    "Text": "還在煩惱中秋節要送什麼禮物嗎？<br/> 在這個代表團圓與感恩的節日，<br/> 象徵團圓之意的文旦讓您送禮送到心坎裡。</br><h2>活動詳情：</h2>於活動於活動期間下訂單， 整筆訂單（以結算金額） 即可享有95折優惠。<br/>數量有限，售完為止。隨箱贈送精美小禮喔！",
+                    "PubTime": "2018/7/07 (六)",
+                    "Views": "1003",
+                    "ImageUrl": "images/newsImgDemo2.png"
+                }, {
+                    "Title": "木棉花體驗行",
+                    "SubTitle": "",
+                    "Text": "",
+                    "PubTime": "2018/7/10 (二)",
+                    "Views": "29",
+                    "ImageUrl": "images/newsImgDemo3.png"
+                }, {
+                    "Title": "麻豆文旦節",
+                    "SubTitle": "",
+                    "Text": "日期：9/1(六)~9/2(日)<br/>時間：10:00~17:30<br/>地點：麻豆區公所前廣場",
+                    "PubTime": "2018/7/10 (二)",
+                    "Views": "27",
+                    "ImageUrl": "images/newsImgDemo4.png"
+                }, {
+                    "Title": "麻豆柚花盛開",
+                    "SubTitle": "",
+                    "Text": "由台南市文化局、麻豆區公所結合在地麻豆商圈舉辦的麻豆柚花季登場囉",
+                    "PubTime": "2018/7/10 (二)",
+                    "Views": "27",
+                    "ImageUrl": "images/newsImgDemo.png"
+                }, {
+                    "Title": "麻豆文旦節",
+                    "SubTitle": "",
+                    "Text": "日期：9/1(六)~9/2(日)<br/>時間：10:00~17:30<br/>地點：麻豆區公所前廣場",
+                    "PubTime": "2018/7/10 (二)",
+                    "Views": "27",
+                    "ImageUrl": "images/newsImgDemo4.png"
+                }]
+
+
+                function initNews() {
+                    $('.news-posistion .news-photo .img-fluid').attr('src', indexNewsObj[newsIndex].ImageUrl);
+                    $('.news-inner-position .news-title .title').html(indexNewsObj[newsIndex].Title);
+                    var newsText = indexNewsObj[newsIndex].Text.substr(0, 30) + "...";
+                    if (indexNewsObj[newsIndex].Text.substr(0, 30).length == 0) {
+                        newsText = "暫無內容。";
+                    }
+                    $('.news-inner-position .news-text').html(newsText);
+                    $('.news-counter .title').text(indexNewsObj[newsIndex].Views);
+                    $('.news-date .title').text(indexNewsObj[newsIndex].PubTime);
+                }
+
+                function flipPreviousNews() {
+                    if (newsIndex != 0) {
+                        newsIndex = newsIndex - 1;
+                        $('.news-posistion .news-photo .img-fluid').attr('src', indexNewsObj[newsIndex].ImageUrl);
+                        $('.news-inner-position .news-title .title').html(indexNewsObj[newsIndex].Title);
+                        var newsText = indexNewsObj[newsIndex].Text.substr(0, 30) + "...";
+                        if (indexNewsObj[newsIndex].Text.substr(0, 30).length == 0) {
+                            newsText = "暫無內容。";
+                        }
+                        $('.news-inner-position .news-text').html(newsText);
+                        $('.news-counter .title').text(indexNewsObj[newsIndex].Views);
+                        $('.news-date .title').text(indexNewsObj[newsIndex].PubTime);
+                    } else {
+                        console.log("End");
+                    }
+                }
+
+                function flipNextNews() {
+                    if (newsIndex != indexNewsObj.length - 1) {
+                        newsIndex = newsIndex + 1;
+                        $('.news-posistion .news-photo .img-fluid').attr('src', indexNewsObj[newsIndex].ImageUrl);
+                        $('.news-inner-position .news-title .title').html(indexNewsObj[newsIndex].Title);
+                        var newsText = indexNewsObj[newsIndex].Text.substr(0, 30) + "...";
+                        if (indexNewsObj[newsIndex].Text.substr(0, 30).length == 0) {
+                            newsText = "暫無內容。";
+                        }
+                        $('.news-inner-position .news-text').html(newsText);
+                        $('.news-counter .title').text(indexNewsObj[newsIndex].Views);
+                        $('.news-date .title').text(indexNewsObj[newsIndex].PubTime);
+                    } else {
+                        console.log("End");
+                    }
+                }
+
+                var newsIndex = 0;
+
+                $('#news-flipUp').click(function() {
+                    if (newsIndex != 0) {
+                        $('.news-posistion').css('opacity', '0');
+                        $('.news-copy').css('opacity', '0');
+                        flipPreviousNews();
+                        $('.news-content').animate({
+                            transform: "rotateY(180deg)",
+                            "transform-style": "preserve-3d",
+                            transition: "all .5s linear"
+                        }, 200, function() {
+                            $('.news-posistion').css('opacity', '1.0');
+                            $('.news-copy').css('opacity', '1.0');
+                        })
+                    }
+
+                });
+                $('#news-flipRight').click(function() {
+                    if (newsIndex != indexNewsObj.length - 1) {
+                        $('.news-posistion').css('opacity', '0');
+                        $('.news-copy').css('opacity', '0');
+                        flipNextNews();
+                        $('.news-content').animate({
+                            transform: "rotateY(180deg)",
+                            "transform-style": "preserve-3d",
+                            transition: "all .5s linear"
+                        }, 200, function() {
+                            $('.news-posistion').css('opacity', '1.0');
+                            $('.news-copy').css('opacity', '1.0');
+                        })
+                    }
+                });
+                $('#news-flipDown').click(function() {
+                    if (newsIndex != indexNewsObj.length - 1) {
+                        $('.news-posistion').css('opacity', '0');
+                        $('.news-copy').css('opacity', '0');
+                        flipNextNews();
+                        $('.news-content').animate({
+                            transform: "rotateY(180deg)",
+                            "transform-style": "preserve-3d",
+                            transition: "all .5s linear"
+                        }, 200, function() {
+                            $('.news-posistion').css('opacity', '1.0');
+                            $('.news-copy').css('opacity', '1.0');
+                        })
+                    }
+                });
+                $('#news-flipLeft').click(function() {
+                    if (newsIndex != 0) {
+                        $('.news-posistion').css('opacity', '0');
+                        $('.news-copy').css('opacity', '0');
+                        flipPreviousNews();
+                        $('.news-content').animate({
+                            transform: "rotateY(180deg)",
+                            "transform-style": "preserve-3d",
+                            transition: "all .5s linear"
+                        }, 200, function() {
+                            $('.news-posistion').css('opacity', '1.0');
+                            $('.news-copy').css('opacity', '1.0');
+                        })
+                    }
+                });
+
+                //click arrow button and refer to another page.
+                $('#newsHtml').click(function() {
+                    location.href = 'news.html';
+                })
+            </script>
+
+        </div>
+        <script>
+            if ($('.news-banner .news-copy .news-title .title').text().length <= 10) {
+                $('.news-banner .news-copy .news-text').css('margin-top', '10px');
+            } else {
+                $('.news-banner .news-copy .news-text').css('margin-top', '70px');
+            }
+        </script>
+        <!--主要內容：商品專區-->
+        <div class="product-banner">
+            <img src="images/product-banner-bg.png" class="img-fluid" />
+            <div class="product-arrow">
+                <img src="images/product-arrow.png" class="img-fluid" />
+                <img src="images/product-arrow.png" class="img-fluid" />
+            </div>
+            <div class="product-list">
+                <div class="row row-sub">
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <img src="" class="img-fluid" />
+                            <spn class="index-product-id"></spn>
+                            <div class="hover-banner">
+                                <div class="banner-content">
+                                    <img src="images/view1.png" class="img-fluid" alt="" />
+                                    <img src="images/view2.png" class="img-fluid selected" alt="" />
+                                </div>
+                                <div class="banner-content">
+                                    <img src="images/addCart1.png" class="img-fluid" alt="" />
+                                    <img src="images/addCart2.png" class="img-fluid selected" alt="" />
+                                </div>
+                                <div class="banner-content">
+                                    <img src="images/addFavorirate1.png" class="img-fluid" alt="" />
+                                    <img src="images/addFavorirate2.png" class="img-fluid selected" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <img src="" class="img-fluid" />
+                            <spn class="index-product-id"></spn>
+                            <div class="hover-banner">
+                                <div class="banner-content">
+                                    <img src="images/view1.png" class="img-fluid" alt="" />
+                                    <img src="images/view2.png" class="img-fluid selected" alt="" />
+                                </div>
+                                <div class="banner-content">
+                                    <img src="images/addCart1.png" class="img-fluid" alt="" />
+                                    <img src="images/addCart2.png" class="img-fluid selected" alt="" />
+                                </div>
+                                <div class="banner-content">
+                                    <img src="images/addFavorirate1.png" class="img-fluid" alt="" />
+                                    <img src="images/addFavorirate2.png" class="img-fluid selected" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <img src="" class="img-fluid" />
+                            <spn class="index-product-id"></spn>
+                            <div class="hover-banner">
+                                <div class="banner-content">
+                                    <img src="images/view1.png" class="img-fluid" alt="" />
+                                    <img src="images/view2.png" class="img-fluid selected" alt="" />
+                                </div>
+                                <div class="banner-content">
+                                    <img src="images/addCart1.png" class="img-fluid" alt="" />
+                                    <img src="images/addCart2.png" class="img-fluid selected" alt="" />
+                                </div>
+                                <div class="banner-content">
+                                    <img src="images/addFavorirate1.png" class="img-fluid" alt="" />
+                                    <img src="images/addFavorirate2.png" class="img-fluid selected" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <img src="" class="img-fluid" />
+                            <spn class="index-product-id"></spn>
+                            <div class="hover-banner">
+                                <div class="banner-content">
+                                    <img src="images/view1.png" class="img-fluid" alt="" />
+                                    <img src="images/view2.png" class="img-fluid selected" alt="" />
+                                </div>
+                                <div class="banner-content">
+                                    <img src="images/addCart1.png" class="img-fluid" alt="" />
+                                    <img src="images/addCart2.png" class="img-fluid selected" alt="" />
+                                </div>
+                                <div class="banner-content">
+                                    <img src="images/addFavorirate1.png" class="img-fluid" alt="" />
+                                    <img src="images/addFavorirate2.png" class="img-fluid selected" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        var productObj = [{
+                            "productId": "P000000001",
+                            "productImgUrl": "images/pomelo-1.png"
+                        }, {
+                            "productId": "P000000002",
+                            "productImgUrl": "images/pomelo-2.png"
+                        }, {
+                            "productId": "P000000003",
+                            "productImgUrl": "images/pomelo-3.png"
+                        }, {
+                            "productId": "P000000004",
+                            "productImgUrl": "images/pomelo-4.png"
+                        }, {
+                            "productId": "P000000005",
+                            "productImgUrl": "images/pomelo-5.png"
+                        }, {
+                            "productId": "P000000006",
+                            "productImgUrl": "images/pomelo-6.png"
+                        }, {
+                            "productId": "P000000007",
+                            "productImgUrl": "images/pomelo-1.png"
+                        }, {
+                            "productId": "P000000008",
+                            "productImgUrl": "images/pomelo-2.png"
+                        }];
+
+                        var productIndex = 0;
+
+                        function initProductLoad() {
+                            for (i = 0; i < 4; i++) {
+                                var porductSelector = ".row.row-sub .col-sm-3:nth-child(" + (i + 1) + ")";
+                                $(porductSelector).find('.card .img-fluid').first().attr('src', productObj[i].productImgUrl);
+                                $(porductSelector).find(".index-product-id").text(productObj[i].productId);
+                            }
+                        };
+
+                        function nextProduct() {
+                            $('.row.row-sub .col-sm-3').animate({
+                                opacity: 0.0,
+                                display: "none"
+                            }, 100);
+                            productIndex = productIndex + 1;
+                            if (productIndex == productObj.length) {
+                                productIndex = 0;
+                            }
+                            var startProductIndex = productIndex;
+                            for (i = 0; i < 4; i++) {
+                                var porductSelector = ".row.row-sub .col-sm-3:nth-child(" + (i + 1) + ")";
+                                $(porductSelector).find('.card .img-fluid').first().attr('src', productObj[startProductIndex].productImgUrl);
+                                $(porductSelector).find(".index-product-id").text(productObj[startProductIndex].productId);
+                                $(porductSelector).animate({
+                                    opacity: 1.0,
+                                    display: "block"
+                                }, 1000);
+                                startProductIndex = startProductIndex + 1;
+                                if (startProductIndex == productObj.length) {
+                                    startProductIndex = 0;
+                                }
+                            }
+                        }
+
+                        function prveviousProduct() {
+                            $('.row.row-sub .col-sm-3').animate({
+                                opacity: 0.0,
+                                display: "none"
+                            }, 100);
+                            productIndex = productIndex - 1;
+                            if (productIndex < 0) {
+                                productIndex = productIndex + productObj.length;
+                            }
+                            var startProductIndex = productIndex;
+                            for (i = 0; i < 4; i++) {
+                                if (startProductIndex == productObj.length) {
+                                    startProductIndex = 0;
+                                }
+                                var porductSelector = ".row.row-sub .col-sm-3:nth-child(" + (i + 1) + ")";
+                                $(porductSelector).find('.card .img-fluid').first().attr('src', productObj[startProductIndex].productImgUrl);
+                                $(porductSelector).find(".index-product-id").text(productObj[startProductIndex].productId);
+                                $(porductSelector).animate({
+                                    opacity: 1.0,
+                                    display: "block"
+                                }, 1000);
+                                startProductIndex = startProductIndex + 1;
+                            }
+                        }
+
+                        $('.product-arrow').find('.img-fluid').first().click(function() {
+                            nextProduct();
+                        });
+
+                        $('.product-arrow').find('.img-fluid').last().click(function() {
+                            prveviousProduct();
+                        });
+
+                        $(function() {
+                            initProductLoad();
+                        })
+                    </script>
+                </div>
+            </div>
+            <div id="productHtml" class="ui animated button">
+                <h2 class="section-title visible content">
+                    <img src="images/custom-arrow.png" class="img-fluid" /></h2>
+                <h2 class="section-title hidden content  wonderfulType">More</h2>
+            </div>
+            <script>
+                $('#productHtml').click(function() {
+                    location.href = 'productIndex.html';
+                })
+            </script>
+        </div>
+        <!--主要內容：相片底家-->
+        <div class="photo-banner">
+            <img src="images/photo-banner-bg.png" class="img-fluid" />
+            <div class="photo-gallery">
+                <div class="column-1">
+                    <div class="ui shape">
+                        <div class="sides">
+                            <img src="images/slideShow3.jpg" class="img-fluid ui side" />
+                            <div class="colorBlock img-fluid active ui side">
+                                <img src="images/colocBlockIcon.png" class="colorBlock-Icon" />
+                                <div class="header">
+                                    柚美柚好的沉睡期。<br /> 讓我們期待下一次的收成吧！
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui shape">
+                        <div class="sides">
+                            <img src="images/slideShow3.jpg" class="img-fluid active ui side" />
+                            <div class="colorBlock img-fluid ui side">
+                                <img src="images/colocBlockIcon.png" class="colorBlock-Icon" />
+                                <div class="header">
+                                    柚美柚好的沉睡期。<br /> 讓我們期待下一次的收成吧！
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column-2">
+                    <div class="row-1">
+                        <div class="ui shape">
+                            <div class="sides">
+                                <img src="images/slideShow3.jpg" class="img-fluid active ui side" />
+                                <div class="colorBlock img-fluid ui side">
+                                    <img src="images/colocBlockIcon.png" class="colorBlock-Icon" />
+                                    <div class="header">
+                                        柚美柚好的沉睡期。<br /> 讓我們期待下一次的收成吧！
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-2">
+                        <div class="ui shape">
+                            <div class="sides">
+                                <img src="images/slideShow3.jpg" class="img-fluid ui side active" />
+                                <div class="colorBlock img-fluid ui side">
+                                    <img src="images/colocBlockIcon.png" class="colorBlock-Icon" />
+                                    <div class="header">
+                                        柚美柚好的沉睡期。<br /> 讓我們期待下一次的收成吧！
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui shape">
+                            <div class="sides">
+                                <img src="images/slideShow3.jpg" class="img-fluid ui side active" />
+                                <div class="colorBlock img-fluid ui side">
+                                    <img src="images/colocBlockIcon.png" class="colorBlock-Icon" />
+                                    <div class="header">
+                                        柚美柚好的沉睡期。<br /> 讓我們期待下一次的收成吧！
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="photosHtml" class="ui animated button">
+                <h2 class="section-title visible content">
+                    <img src="images/custom-arrow.png" class="img-fluid" /></h2>
+                <h2 class="section-title hidden content  wonderfulType">More</h2>
+            </div>
+            <script>
+                $('#photosHtml').click(function() {
+                    location.href = 'photos.html';
+                })
+            </script>
+        </div>
+
+        <script>
+            $('.column-1 .ui.shape:first-child').hover(
+                function() {
+                    $(this).first().shape('flip down');
+                },
+                function() {
+                    $(this).last().shape('flip left');
+                });
+
+            $('.column-1 .ui.shape:last-child').hover(
+                function() {
+                    $(this).first().shape('flip left');
+                },
+                function() {
+                    $(this).last().shape('flip up');
+                });
+            $('.column-2 .row-1 .ui.shape').hover(
+                function() {
+                    $(this).first().shape('flip right');
+                },
+                function() {
+                    $(this).last().shape('flip up');
+                });
+            $('.column-2 .row-2 .ui.shape:first-child').hover(
+                function() {
+                    $(this).first().shape('flip right');
+                },
+                function() {
+                    $(this).last().shape('flip down');
+                });
+            $('.column-2 .row-2 .ui.shape:last-child').hover(
+                function() {
+                    $(this).first().shape('flip left');
+                },
+                function() {
+                    $(this).last().shape('flip down');
+                });
+        </script>
+
+        <div class="blank-color-block"></div>
+
+        <!--主要內容：美好顧客說-->
+        <div class="feedback-title">
+            <img src="images/feedback-title.png" class="img-fluid" />
+        </div>
+        <div class="feedback-banner">
+            <div class="feedback-content">
+                <div class="feedback-msg">
+                    <div class="feedback-eval">
+                        <img src="images/evalGood.png" class="img-fluid" />
+                    </div>
+                    <div class="feedback-member">
+                        <img src="images/msg-male.png" class="img-fluid member-gender" />
+                        <div class="member-name wonderfulType">Martin</div>
+                    </div>
+                    <div class="feedback-text">
+                        <div>第一次訂購柚美柚好的柚子分送給親朋好友，大家都讚不絕口！柚子果肉又甜又飽滿，明年一定會繼續回購。Highlyrecommend. : )</div>
+                        <div class="feedback-time">1小時前</div>
+                        <img src="images/feedback-quote.png" class="img-fluid feedback-quote" />
+                    </div>
+                </div>
+                <div class="feedback-msg">
+                    <div class="feedback-eval">
+                        <img src="images/evalGood.png" class="img-fluid" />
+                    </div>
+                    <div class="feedback-member">
+                        <img src="images/msg-female.png" class="img-fluid member-gender" />
+                        <div class="member-name wonderfulType">Anna</div>
+                    </div>
+                    <div class="feedback-text">
+                        <div>每一箱柚子裡都有美好專屬的貼心小紙條，真的能夠感受到他們的用心。柚子的美味程度更不用多說，我已經吃他們家的柚子很多年了，真的很推薦給大家喔！</div>
+                        <div class="feedback-time">14小時前</div>
+                        <img src="images/feedback-quote.png" class="img-fluid feedback-quote" />
+                    </div>
+                </div>
+                <div class="feedback-msg">
+                    <div class="feedback-eval">
+                        <img src="images/evalAvg.png" class="img-fluid" />
+                    </div>
+                    <div class="feedback-member">
+                        <img src="images/msg-male.png" class="img-fluid member-gender" />
+                        <div class="member-name wonderfulType">小龍</div>
+                    </div>
+                    <div class="feedback-text">
+                        <div>對於只是想嚐個味道的小資族來說，非常推薦他的小包裝組合，沒有像在市場買拿到的一般塑膠袋，而是非常有質感的帆布束口袋。送給朋友們也是非常上的了檯面的！不過若能在公斤數更彈性一點， 可能會更好。</div>
+                        <div class="feedback-time">1天前</div>
+                        <img src="images/feedback-quote.png" class="img-fluid feedback-quote" />
+                    </div>
+                </div>
+            </div>
+            <div class="feedback-next">
+                <img src="images/feedbackDown.png" class="img-fluid" />
+            </div>
+        </div>
+
+        <script>
+            $('.feedback-msg .feedback-text div:first-child').each(function() {
+                //console.log($(this).text().trim().length);
+                if ($(this).text().trim().length >= 69 && $(this).text().trim().length < 80) {
+                    $(this).parent().css('font-size', '180%').css('letter-spacing', '0.2rem');
+                } else if ($(this).text().trim().length >= 80) {
+                    $(this).parent().css('font-size', '150%').css('letter-spacing', '0.2rem');
+                }
+            });
+        </script>
+        <!--主要內容：地圖-->
+        <div class="map-banner">
+            <div class="map-container">
+                <!-- <iframe class="map" src="https://www.google.com/maps/d/embed?mid=1r0Z3mF-vJVrmVWzvfc9-DhNH8PqjPSRO" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+                <div id="map" class="map"></div>
+                <!-- <img src="images/mapMarker.png" class="mapMarker img-fluid"> -->
+            </div>
+        </div>
+
+        <script>
+            var directionsDisplay;
+            var directionsService;
+            var map;
+            var clicks = 1;
+
+            function initMap() {
+                directionsDisplay = new google.maps.DirectionsRenderer();
+
+                var LatLng = {
+                    lat: 23.15801,
+                    lng: 120.24322
+                };
+                map = new google.maps.Map(
+                    document.getElementById('map'), {
+                        center: LatLng,
+                        zoom: 18
+                    }
+                );
+                var iconImg = 'images/mapMarker.png';
+                var marker = new google.maps.Marker({
+                    position: LatLng,
+                    map: map,
+                    title: "柚好柚美，在這裡唷~",
+                    icon: iconImg,
+                    animation: google.maps.Animation.BOUNCE
+                });
+
+                marker.addListener('click', function() {
+                    console.log(clicks);
+                    var target = $('.map-banner .map-container');
+                    if (clicks % 2 == 1) {
+                        target.css('height', '85vh');
+                    } else {
+                        target.css('height', '25vh');
+                    };
+                    clicks++;
+                });
+                marker.setMap(map);
+                directionsDisplay.setMap(map);
+            }
+
+            function calcRoute() {
+                directionsService = new google.maps.DirectionsService();
+                var request = {
+                    origin: {
+                        lat: 23.187719,
+                        lng: 120.236068
+                    },
+                    destination: LatLng,
+                    travelMode: 'DRIVING',
+                    drivingOptions: {
+                        departureTime: new Date(Date.now()),
+                        trafficModel: 'optimistic'
+                    },
+                    unitSystem: google.maps.UnitSystem.METRIC,
+                    optimizeWaypoints: true,
+                    provideRouteAlternatives: true
+                };
+                directionsService.route(request, function(result, status) {
+                    if (status == 'OK') {
+                        directionsDisplay.setDirections(result);
+                    }
+                });
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh0vGEfgQpObFsT_ZpaoFfnzmCQIbhdGI&callback=initMap">
+        </script>
+
+        <!--主要內容：聯絡美好-->
+        <div class="contact-title">
+            <img src="images/contact-title.png" class="img-fluid" />
+        </div>
+        <div class="contact-banner">
+            <div class="contact-form col-md-9">
+                <div class="card">
+                    <form class="msg-form " action="# " method="post ">
+                        <div class="msg-input ">
+                            <div class="card ">
+                                <h2 class="title ">
+                                    <div class="section-title ">姓名：</div>
+                                    <div class="title-sub wonderfulType ">Name</div>
+                                </h2>
+                            </div>
+                            <input name="name " type="text " style="width: 90% " class=" " />
+                        </div>
+                        <div class="msg-input ">
+                            <div class="card ">
+                                <h2 class="title ">
+                                    <div class="section-title ">電子信箱：</div>
+                                    <div class="title-sub wonderfulType " style="letter-spacing: 10px ">E-mail</div>
+                                </h2>
+                            </div>
+                            <input name="email " type="text " style="width: 85% " class=" " />
+                        </div>
+                        <div class="msg-input msgarea ">
+                            <div class="card ">
+                                <h2 class="title ">
+                                    <div class="section-title ">留言區：</div>
+                                    <div class="title-sub wonderfulType ">Message</div>
+                                </h2>
+                            </div>
+                            <textarea name="msgarea " class=" " maxlength="150 "></textarea>
+                        </div>
+                        <div class="msg-btn ">
+                            <button type="submit " class=" ">
+                                    <div class="chn-submit ">
+                                        送&nbsp;出
+                                       <div class="wonderfulType ">submit</div>
+                                    </div>
+                                </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $('.contact-banner .contact-form .msg-input input, .contact-banner .contact-form .msg-input textarea').each(
+                function() {
+                    $(this).focus(
+                        function() {
+                            console.log('focus')
+                            $(this).parent('.msg-input').addClass('border-effect');
+                        }).focusout(
+                        function() {
+                            $(this).parent('.msg-input').removeClass('border-effect');
+                        })
+                })
+        </script>
+    </div>
+
+    <footer class="index site-footer">
+        <img src="images/index-footer-bg.png " class="img-fluid " />
+        <div class="footer-logo ">
+            <img src="images/index-footer-logo.png " class="img-fluid " />
+        </div>
+        <div class="footer-link ">
+            <a class="icon-link ">
+                <img src="images/icon-fb.png " class="img-fluid " /></a>
+            <a class="icon-link ">
+                <img src="images/icon-ig.png " class="img-fluid " /></a>
+            <a class="icon-link ">
+                <img src="images/icon-utube.png " class="img-fluid " /></a>
+        </div>
+
+        <div class="footer-info ">
+            <div class="info-block ">
+                <div class="icon ">
+                    <img src="images/icon-location.png " class="img-fluid " />
+                </div>
+                <div class="text ">台南市麻豆區安業12345號</div>
+            </div>
+            <div class="info-block ">
+                <div class="icon ">
+                    <img src="images/icon-cell.png " class="img-fluid " />
+                </div>
+                <div class="text ">
+                    李山龍 0912-345678<br /> 李明達 0987-654321
+                </div>
+            </div>
+            <div class="info-block ">
+                <div class="icon ">
+                    <img src="images/icon-email.png " class="img-fluid " />
+                </div>
+                <div class="text ">wonderfulmeihow@gmail.com</div>
+            </div>
+        </div>
+
+        <div class="index-footer-flip ">
+            <div class="flip-blocks " ontouchstart="this.classList.toggle( 'hover'); ">
+                <div class="filp-container ">
+                    <div class="flipper ">
+                        <div class="front ">
+                            <img src="images/spin-topLeft-bg.png " class="img-fluid " />
+                        </div>
+                        <div class="back ">
+                            <img src="images/spin-topLeft-txt.png " class="img-fluid " />
+                        </div>
+                    </div>
+                    <div class="flipper ">
+                        <div class="front ">
+                            <img src="images/spin-bottomLeft-bg.png " class="img-fluid " />
+                        </div>
+                        <div class="back ">
+                            <img src="images/spin-bottomLeft-txt.png " class="img-fluid " />
+                        </div>
+                    </div>
+                    <div class="flipper ">
+                        <div class="front ">
+                            <img src="images/spin-topRight-bg.png " class="img-fluid " />
+                        </div>
+                        <div class="back ">
+                            <img src="images/spin-topRight-txt.png " class="img-fluid " />
+                        </div>
+                    </div>
+                    <div class="flipper ">
+                        <div class="front ">
+                            <img src="images/spin-bottomRight-bg.png " class="img-fluid " />
+                        </div>
+                        <div class="back ">
+                            <img src="images/spin-bottomRight-txt.png " class="img-fluid " />
+                        </div>
+                    </div>
+                    <div class="flipper ">
+                        <div class="front ">
+                            <img src="images/spin-center-bg.png " class="img-fluid " />
+                        </div>
+                        <div class="back ">
+                            <img src="images/spin-center-txt.png " class="img-fluid " />
+                        </div>
+                    </div>
+                </div>
+                <img src="images/index-footer-spin-bg.png " class="img-fluid " />
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+    <!--會員登入Modal-->
+    <div id="loginModal" class="ui modal">
+        <div class="">
+            <form class="indexModal-form" method="post" action="#">
+                <div class="indexModal-input">
+                    <div class="card">
+                        <h2 class="title">
+                            <div class="section-title">帳&nbsp;&nbsp;&nbsp;號</div>
+                            <div class="title-sub wonderfulType">Username</div>
+                        </h2>
+                        <input name="mail" type="text" class="userinput" />
+                    </div>
+                </div>
+                <div class="indexModal-input">
+                    <div class="card">
+                        <h2 class="title">
+                            <div class="section-title">密&nbsp;&nbsp;&nbsp;&nbsp;碼</div>
+                            <div class="title-sub wonderfulType">Passsword</div>
+                        </h2>
+                        <input name="password" type="password" class="passwordinput" />
+                    </div>
+                </div>
+                <div class="rememberBox">
+                    <input type="checkbox" name="remberme" value="yes" class="" />
+                    <span class="customBox"></span> 記住我
+                </div>
+                <div class="indexModal-button">
+                    <button type="button" class="dark-bg loginSubmit">
+                            <h2 class="title">登入</h2>
+                        </button>
+                    <button type="button" class="dark-bg forgetPWD">
+                            <h2 class="title">忘記密碼</h2>
+                        </button>
+                </div>
+                <div class="indexModal-button">
+                    <button type="button" class="fullwidth dark-bg addMember">&nbsp;加入美好會員</button>
+                </div>
+                <div class="register-modal-button">
+                    <img class="img-fluid" src="images/regModalIcon-EN.png" />
+                    <img class="img-fluid" src="images/regModalIcon-CHN.png" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--會員註冊Modal-->
+    <div id="regModal" class="ui modal">
+        <div class="">
+            <form class="indexModal-form" method="post" action="#">
+                <div class="indexModal-input">
+                    <div class="card">
+                        <h2 class="title">
+                            <div class="section-title">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號</div>
+                            <div class="title-sub wonderfulType" style="letter-spacing: 3px;">Username</div>
+                        </h2>
+                        <input name="mail" type="text" class="userinput" />
+                    </div>
+                </div>
+                <div class="indexModal-input">
+                    <div class="card">
+                        <h2 class="title">
+                            <div class="section-title">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼</div>
+                            <div class="title-sub wonderfulType" style="letter-spacing: 2px;">Passsword</div>
+                        </h2>
+                        <input name="password" type="password" class="passwordinput" />
+                    </div>
+                </div>
+                <div class="indexModal-input">
+                    <div class="card">
+                        <h2 class="title">
+                            <div class="section-title" style="letter-spacing: 1px;">確認密碼</div>
+                            <div class="title-sub wonderfulType" style="font-size: 0.5px;">Confirm&nbsp;Again</div>
+                        </h2>
+                        <input name="confirmPassword" type="password" class="passwordinput" />
+                    </div>
+                </div>
+                <div class="indexModal-input">
+                    <div class="card">
+                        <h2 class="title">
+                            <div class="section-title" style="font-size: 18px; letter-spacing: 2px; border: 3px solid #11191b; border-radius: 5px; text-align: center;">RolaE</div>
+                            <div class="title-sub" style="font-size: 12px; text-align: center; text-decoration: underline; letter-spacing: 2px; cursor: pointer;">重新產生</div>
+                        </h2>
+                        <input name="verification" type="text" class="passwordinput" />
+                    </div>
+                </div>
+                <div class="indexModal-button">
+                    <button type="button" class="dark-bg regButton addMember">
+                            <h2 class="title title2">&nbsp;完成註冊</h2>
+                        </button>
+                </div>
+                <div class="login-modal-button">
+                    <img class="img-fluid" src="images/loginModalIcon-EN.png" />
+                    <img class="img-fluid" src="images/loginModalIcon-CHN.png" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--忘記密碼Modal-->
+    <div id="resetPwdModal" class="ui modal">
+        <div class="">
+            <div class="leafDrop">
+                <img id="leafDrop1" src="images/leaf1.png" class="img-fluid" />
+                <img id="leafDrop2" src="images/leaf2.png" class="img-fluid" />
+                <img id="leafDrop3" src="images/leaf3.png" class="img-fluid" />
+                <img id="leafDrop4" src="images/leaf4.png" class="img-fluid" />
+                <img id="leafDrop5" src="images/leaf5.png" class="img-fluid" />
+                <img id="leafDrop6" src="images/leaf6.png" class="img-fluid" />
+                <img id="leafDrop7" src="images/leaf7.png" class="img-fluid" />
+                <img id="leafDrop8" src="images/leaf8.png" class="img-fluid" />
+            </div>
+            <form class="indexModal-form" method="post" action="#">
+                <div class="indexModal-input">
+                    <div class="card">
+                        <input name="mail" type="text" class="userinput" />
+                    </div>
+                </div>
+                <div class="indexModal-button">
+                    <button type="button" class="fullwidth dark-bg resetPwd">&nbsp;重設密碼</button>
+                </div>
+                <div class="indexModal-button button-center">
+                    <button type="button" class="dark-bg backLoginModal">
+                            <h2 class="title">回上頁</h2>
+                        </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $('#loginIcon').click(
+            function() {
+                $('#loginModal').modal('show', {
+                    transition: 'scale',
+                    duration: 100
+                });
+            });
+
+        $('.indexModal-form .register-modal-button .img-fluid').click(
+            function() {
+                $('#regModal').modal('show', {
+                    transition: 'scale',
+                    duration: 1
+                });
+                $('#loginModal').modal('hide', {
+                    transition: 'scale',
+                    duration: 0
+                });
+            });
+
+        $('.forgetPWD').click(
+            function() {
+                $('#resetPwdModal').modal('show', {
+                    transition: 'scale',
+                    duration: 1
+                });
+                $('#loginModal').modal('hide', {
+                    transition: 'scale',
+                    duration: 0
+                });
+            });
+
+        $('.fullwidth.addMember').click(
+            function() {
+                $('#regModal').modal('show', {
+                    transition: 'scale',
+                    duration: 1
+                });
+                $('#loginModal').modal('hide', {
+                    transition: 'scale',
+                    duration: 0
+                });
+            });
+
+        $('.indexModal-form .login-modal-button .img-fluid ').click(
+            function() {
+                $('#loginModal').modal('show', {
+                    transition: 'scale',
+                    duration: 1
+                });
+                $('#regModal').modal('hide', {
+                    transition: 'scale',
+                    duration: 0
+                });
+            });
+
+        $('.backLoginModal').click(
+            function() {
+                $('#loginModal').modal('show', {
+                    transition: 'scale',
+                    duration: 1
+                });
+                $('#resetPwdModal').modal('hide', {
+                    transition: 'scale',
+                    duration: 0
+                });
+            });
+    </script>
+</body>

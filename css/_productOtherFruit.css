@@ -1,0 +1,45 @@
+.other-fruit.product-common-menu {
+    background-color: #d4cb45;
+}
+
+.other-fruit.product-common-menu .nav-link:nth-child(2) {
+    color: rgb(78, 60, 55, 0.7);
+}
+
+.other-fruit.product-common-menu .nav-link:hover {
+    color: rgb(78, 60, 55, 0.7);
+}
+
+.other-fruit.product-common-menu .nav-link:nth-child(2) .wonderfulType:last-child {
+    opacity: 1.0;
+}
+
+.other-fruit-hr {
+    height: 1px;
+    border-top: 2px solid #bead1a;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.other-fruit .section-header {
+    margin: 5vh 0 0 0;
+    border-left: 6px solid #bead1a;
+    position: relative;
+}
+
+.other-fruit .content .card .product-quick-buy .title {
+    border-top: 4px solid #bead1a;
+    border-bottom: 4px solid #bead1a;
+}
+
+.other-fruit.product-common a:hover {
+    color: #bead1a;
+}
+
+.other-fruit .more-other-fruit {
+    background-color: #d4cb45;
+}
+
+.other-fruit .more-other-fruit:hover {
+    box-shadow: #bead1a 0 8px;
+}

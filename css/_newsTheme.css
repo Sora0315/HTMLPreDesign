@@ -1,0 +1,333 @@
+.common.news.hamburger {
+    color: #f6f5f1 !important;
+    background-color: rgba(102, 166, 79, 0.9);
+    margin-top: 5%;
+}
+
+#newsSidebar {
+    background: url('../images/newsSideBar-bg.png') left top repeat;
+}
+
+.common.news .nav-link:hover .wonderfulType:first-child {
+    border-bottom: 4px solid #66a64f;
+}
+
+.news-hr {
+    height: 1px;
+    border-top: 2px solid #66a64f;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.switch-view {
+    cursor: pointer;
+    position: absolute;
+    width: 3%;
+    right: 5.2%;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.news-content {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.news-content .grid-view .card {
+    position: relative;
+    cursor: pointer;
+}
+
+.news-content .grid-view .card:hover .img-fluid {
+    filter: brightness(30%);
+    transition: filter 1s;
+}
+
+.news-content .grid-view .card:hover .title {
+    bottom: 75%;
+    transition: bottom 0.5s;
+}
+
+.news-content .grid-view .card:hover .sub-title {
+    display: block;
+    animation: news-subtitle-display 1s forwards;
+}
+
+@keyframes news-subtitle-display {
+    0% {
+        opacity: 0.0;
+        top: 115%;
+    }
+    100% {
+        opacity: 1.0;
+        top: 30%;
+    }
+}
+
+.news-content .grid-view .card .img-fluid {
+    border-radius: 15pt;
+    filter: brightness(80%);
+    transition: filter 1s;
+}
+
+.news-content .grid-view .card .title {
+    position: absolute;
+    left: 50%;
+    bottom: 15%;
+    transform: translate(-50%, 0);
+    transition: bottom 0.5s;
+    color: #f6f5f1;
+    letter-spacing: 0.5rem;
+    text-align: center;
+    max-width: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.news-content .grid-view .card .sub-title {
+    position: absolute;
+    color: #f6f5f1;
+    width: 60%;
+    left: 50%;
+    opacity: 0.0;
+    display: none;
+    transform: translate(-50%, 0);
+}
+
+.news-content .grid-view .card .sub-title h3 {
+    font-size: 140%;
+    line-height: 4rem;
+    letter-spacing: 0.5rem;
+}
+
+.news-content .grid-view .info {
+    width: 100%;
+    display: inline-block;
+}
+
+.news-content .grid-view .info .views .img-fluid {
+    float: left;
+    width: 6%;
+    margin-right: 3%;
+    margin-top: 3%;
+}
+
+.news-content .grid-view .info .views .views-count {
+    float: left;
+}
+
+.news-content .grid-view .info h5 {
+    margin-top: 3%;
+}
+
+.news-content .grid-view .info .pub-time {
+    float: right;
+}
+
+
+/*list-view*/
+
+.news-content .list-view [class*="col-"] {
+    border: 2px solid rgba(102, 166, 79, 0.3);
+    position: relative;
+    cursor: pointer;
+}
+
+.news-content .list-view [class*="col-"]:hover {
+    border: 2px solid rgba(17, 25, 27, 0);
+    box-shadow: 5px 5px 20px rgba(17, 25, 27, 0.3);
+}
+
+.news-content .list-view .img-fluid {
+    width: 35%;
+    float: left;
+    height: 35%;
+}
+
+.news-content .list-view .card-horizontal .card-content {
+    height: auto;
+    right: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding: 3% 0 0 4%;
+    width: 65%;
+}
+
+.news-content .list-view .title {
+    width: 90%;
+    color: #66a64f;
+    letter-spacing: 0.5rem;
+}
+
+.news-content .list-view .text {
+    width: 90%;
+    line-height: 2.5rem;
+    letter-spacing: 0.2rem;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: rgba(17, 25, 27, 0.8);
+}
+
+.news-content .list-view .views {
+    width: 100%;
+    display: inline-block;
+}
+
+.news-content .list-view .views .img-fluid {
+    float: left;
+    width: 5%;
+    margin-top: 0.5%;
+}
+
+.news-content .list-view .views .views-count {
+    float: left;
+    margin-top: 0;
+    margin-left: 1.5%;
+    color: rgba(17, 25, 27, 0.8);
+}
+
+.news-content .list-view .pub-time {
+    position: absolute;
+    width: 50%;
+    right: 3%;
+    bottom: 4%;
+    margin-top: 0;
+    text-align: right;
+    color: rgba(17, 25, 27, 0.8);
+}
+
+
+/*Button for more*/
+
+.more-news {
+    display: block;
+    position: relative;
+    margin: 5% auto 10% auto;
+    background-color: #66a64f;
+    border-radius: 10pt;
+    width: 12%;
+    height: 5vh;
+    cursor: pointer;
+    text-align: center;
+}
+
+.more-news:hover {
+    box-shadow: #36563c 0 8px;
+}
+
+.more-news .title {
+    letter-spacing: 0.3rem;
+    line-height: 3.5rem;
+    color: #f6f5f1;
+}
+
+
+/*News Footer*/
+
+.news-footer {
+    position: relative;
+}
+
+.news-footer>.img-fluid {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.news-footer .news-footer-link {
+    position: absolute;
+    width: 15%;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+}
+
+.news-footer .news-footer-link a {
+    cursor: pointer;
+}
+
+.news-footer .news-footer-link .img-fluid {
+    width: 20%;
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+    opacity: 0.7;
+}
+
+.news-footer .news-footer-link .img-fluid:hover {
+    opacity: 1.0;
+}
+
+@media (min-width:992px) {
+    #showNewsModal {
+        position: relative;
+        width: 40%;
+        max-height: 200%;
+        background: #f6f5f1 center center no-repeat;
+        overflow: hidden;
+    }
+}
+
+#showNewsModal,
+#newsTitle,
+#newsText,
+#newsImg {
+    text-align: center;
+    margin: 1.5rem auto;
+}
+
+#newsSubtitle {
+    margin: 1.5em auto;
+}
+
+#showNewsModal .modalClose {
+    font-size: 250%;
+    color: black;
+    position: absolute;
+    width: 10%;
+    top: 1%;
+    right: 1%;
+    cursor: pointer;
+}
+
+#showNewsModal .bababa {
+    position: absolute;
+    width: 10%;
+    top: 5%;
+    left: 5%;
+    z-index: -5;
+}
+
+#showNewsModal .innerDiv {
+    margin: 1%;
+    border: 2px solid #66a64f;
+}
+
+#showNewsModal {
+    background: #fff url('../images/news-modal-bg.png') bottom center no-repeat;
+    left: 0;
+    background-size: cover;
+}
+
+#newsTitle {
+    color: #C1272d;
+    line-height: 4rem;
+    letter-spacing: 0.2rem;
+    font-size: 300%;
+}
+
+#newsSubtitle {
+    letter-spacing: 3px;
+    line-height: 3rem;
+}
+
+#newsText {
+    line-height: 3rem;
+    letter-spacing: 2px;
+}
+
+#newsImg {
+    margin-top: 5%;
+    max-width: 50%;
+    margin-bottom: 20%;
+}

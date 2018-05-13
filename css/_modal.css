@@ -1,0 +1,553 @@
+﻿.ui.dimmer {
+    /*修改背景黑色透明度*/
+    background-color: rgba(0,0,0,0.6) !important;
+}
+
+#loginModal, #regModal, #resetPwdModal {
+    overflow: hidden;
+}
+
+@media (min-width:992px) {
+    #loginModal {
+        position: relative;
+        max-width: 900px;
+        height: 768px;
+        background: url('../images/loginModal-bg.png') center center no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    #regModal {
+        position: relative;
+        max-width: 900px;
+        height: 768px;
+        background: url('../images/regModal-bg.png') center center no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    #resetPwdModal {
+        position: relative;
+        max-width: 768px;
+        height: 768px;
+        border-radius: 50%;
+        background: url('../images/resetPwdModal-bg.png') center center no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+        #resetPwdModal.ui.modal {
+            margin: 0em 0em 0em -400px;
+        }
+}
+
+.indexModal-form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+#resetPwdModal .indexModal-form {
+    width: 100%;
+}
+
+#loginModal .indexModal-form {
+    padding-top: 220px;
+}
+
+#regModal .indexModal-form {
+    padding-top: 230px;
+}
+
+#resetPwdModal .indexModal-form {
+    padding-top: 365px;
+}
+
+.indexModal-form .indexModal-input {
+    width: 100%;
+    margin: 10px 0;
+    padding-left: 160px;
+}
+
+#regModal .indexModal-form .indexModal-input {
+    padding-left: 150px;
+}
+
+
+#resetPwdModal .indexModal-form .indexModal-input {
+    padding-left: 192px;
+}
+
+.indexModal-input .card .section-title, .indexModal-form .indexModal-input input {
+    font-size: 22px;
+}
+
+.indexModal-input .card .title-sub {
+    font-size: 10px;
+}
+
+.indexModal-form .indexModal-input .title,
+.indexModal-form .indexModal-input input {
+    float: left;
+}
+
+.indexModal-form .indexModal-input .title {
+    width: 75px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+    .indexModal-form .indexModal-input .title .section-title {
+        white-space: pre;
+    }
+
+#regModal .indexModal-form .indexModal-input .title {
+    width: 100px;
+}
+
+.indexModal-form .indexModal-input:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.indexModal-input input {
+    line-height: 2.8em;
+    color: #11191B;
+    background-color: rgba(255,255,255,0);
+    border: 3px solid #11191B;
+    outline: none;
+    border-radius: 20px;
+    width: 350px;
+}
+
+#regModal .indexModal-input input {
+    padding-left: 10px;
+}
+
+#resetPwdModal .indexModal-input input {
+    width: 384px;
+}
+
+#loginModal .indexModal-input .userinput {
+    background: url(../images/userspan.png) no-repeat scroll 10px 12px;
+    background-size: 7%;
+    padding-left: 45px;
+}
+
+#loginModal .indexModal-input .passwordinput {
+    background: url(../images/passwordspan.png) no-repeat scroll 10px 10px;
+    background-size: 6%;
+    padding-left: 45px;
+}
+
+.rememberBox {
+    display: block;
+    position: relative;
+    padding-right: 220px;
+    padding-left: 460px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    letter-spacing: 5px;
+    text-align: right;
+    font-weight: 800;
+}
+
+    .rememberBox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        top: -3px;
+        right: 315px;
+        height: 30px;
+        width: 30px;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    .rememberBox .customBox {
+        z-index: 0;
+        position: absolute;
+        top: -3px;
+        right: 315px;
+        height: 30px;
+        width: 30px;
+        border: 3px solid #11191b;
+        background-color: #f6f5f1;
+    }
+
+/* On mouse-over, add a grey background color */
+.customBox:hover {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.rememberBox input:checked ~ .customBox {
+    background-color: #11191b;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.customBox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.rememberBox input:checked ~ .customBox:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.rememberBox .customBox:after {
+    left: 7px;
+    top: 2.5px;
+    width: 10px;
+    height: 15px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.indexModal-form .indexModal-button {
+    margin: 20px 0;
+    padding-left: 245px;
+    padding-right: 215px;
+}
+
+.indexModal-form .register-modal-button .img-fluid {
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    bottom: 100px;
+    width: 15%;
+}
+
+    .indexModal-form .register-modal-button .img-fluid:first-child {
+        z-index: 1;
+        transform: rotate(0deg);
+        transition: transform 1.25s linear;
+    }
+
+    .indexModal-form .register-modal-button .img-fluid:last-child {
+        z-index: 0;
+    }
+
+    .indexModal-form .register-modal-button .img-fluid:first-child:hover {
+        transform: rotate(360deg);
+        transition: transform 1.25s linear;
+    }
+
+.indexModal-form .login-modal-button .img-fluid {
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+    width: 20%;
+}
+
+    .indexModal-form .login-modal-button .img-fluid:first-child {
+        z-index: 1;
+        transform: rotate(0deg);
+        transition: transform 1.25s linear;
+    }
+
+    .indexModal-form .login-modal-button .img-fluid:last-child {
+        z-index: 0;
+    }
+
+    .indexModal-form .login-modal-button .img-fluid:first-child:hover {
+        transform: rotate(360deg);
+        transition: transform 1.25s linear;
+    }
+
+#regModal .indexModal-form .indexModal-button {
+    padding-left: 315px;
+}
+
+#resetPwdModal .indexModal-form .indexModal-button {
+    padding-left: 192px;
+}
+
+    #resetPwdModal .indexModal-form .indexModal-button.button-center {
+        padding-left: 288px;
+    }
+
+.indexModal-form .indexModal-button button {
+    cursor: pointer;
+    width: 160px;
+    box-shadow: none;
+    border: none;
+    border-radius: 15px;
+}
+
+#resetPwdModal .indexModal-form .indexModal-button button {
+    width: 192px;
+}
+
+.indexModal-form .indexModal-button .fullwidth {
+    width: 100%;
+    font-size: 22px;
+    line-height: 2.8em;
+    font-weight: 800;
+}
+
+#resetPwdModal .indexModal-form .indexModal-button .fullwidth {
+    width: 384px;
+}
+
+.indexModal-form .indexModal-button button .title {
+    font-size: 22px;
+    line-height: 2.8em;
+    font-weight: 800;
+    padding-left: 25px;
+}
+
+    .indexModal-form .indexModal-button button .title.title2 {
+        font-size: 20px;
+        line-height: 2.8em;
+        padding-left: 20px;
+    }
+
+.indexModal-form .indexModal-button .loginSubmit {
+    margin-right: 25px;
+    background: url('../images/loginSubmit.png') scroll no-repeat;
+    background-size: 10%;
+    background-position: 20% 50%;
+    background-color: #11191b;
+    letter-spacing: 10px;
+}
+
+.indexModal-form .indexModal-button .forgetPWD {
+    background: url('../images/forgetPWD.png') scroll no-repeat;
+    background-size: 10%;
+    background-position: 12% 50%;
+    background-color: #11191b;
+    letter-spacing: 3px;
+}
+
+.indexModal-form .indexModal-button .addMember {
+    background: url('../images/addMember.png') scroll no-repeat;
+    background-size: 7%;
+    background-position: 16% 50%;
+    background-color: #11191b;
+    letter-spacing: 8px;
+}
+
+.indexModal-form .indexModal-button .resetPwd {
+    background: url('../images/resetIcont.png') scroll no-repeat;
+    background-size: 10%;
+    background-position: 27% 50%;
+    background-color: #11191b;
+    letter-spacing: 3px;
+}
+
+.indexModal-form .indexModal-button .backLoginModal {
+    background: url('../images/prePageIcon.png') scroll no-repeat;
+    background-size: 12%;
+    background-position: 23% 50%;
+    background-color: #11191b;
+    letter-spacing: 3px;
+}
+
+.indexModal-form .indexModal-button .regButton.addMember {
+    background-size: 15%;
+    letter-spacing: 3px;
+    background-position: 12% 50%;
+}
+
+#resetPwdModal .indexModal-input .userinput {
+    background: url(../images/emailIcon.png) no-repeat scroll 10px 50%;
+    background-size: 10%;
+    padding-left: 55px;
+}
+
+#resetPwdModal .leafDrop .img-fluid {
+    position: absolute;
+}
+
+#leafDrop1 {
+    width: 5%;
+    animation: dropLeaf-01 4s ease-out infinite;
+}
+
+#leafDrop2 {
+    width: 4%;
+    animation: dropLeaf-01 4s ease-out infinite;
+    animation-delay: 3s;
+}
+
+#leafDrop3 {
+    width: 3%;
+    animation: dropLeaf-02 5s ease-out infinite;
+    animation-delay: 1s;
+}
+
+#leafDrop4 {
+    width: 3.5%;
+    animation: dropLeaf-03 5s ease-out infinite;
+    animation-delay: 2s;
+}
+
+#leafDrop5 {
+    width: 4%;
+    animation: dropLeaf-04 5s ease-out infinite;
+    animation-delay: 1.5s;
+}
+
+#leafDrop5 {
+    width: 4%;
+    animation: dropLeaf-05 4.5s ease-out infinite;
+}
+
+#leafDrop6 {
+    width: 3%;
+    animation: dropLeaf-05 4.5s ease-out infinite;
+    animation-delay: 2s;
+}
+
+#leafDrop7 {
+    width: 4%;
+    animation: dropLeaf-06 4.5s ease-out infinite;
+    animation-delay: 1.2s;
+}
+
+#leafDrop8 {
+    width: 3%;
+    animation: dropLeaf-07 6s ease-out infinite;
+}
+
+@keyframes dropLeaf-01 {
+    0% {
+        top: 192px;
+        left: 100px;
+    }
+
+    99% {
+        top: 576px;
+        left: 100px;
+    }
+
+    100% {
+        top: 576px;
+        left: 100px;
+        opacity: 0;
+    }
+}
+
+@keyframes dropLeaf-02 {
+    0% {
+        top: 81px;
+        left: 200px;
+    }
+
+    99% {
+        top: 668px;
+        left: 200px;
+    }
+
+    100% {
+        top: 668px;
+        left: 200px;
+        opacity: 0;
+    }
+}
+
+@keyframes dropLeaf-03 {
+    0% {
+        top: 81px;
+        left: 210px;
+    }
+
+    99% {
+        top: 668px;
+        left: 210px;
+    }
+
+    100% {
+        top: 668px;
+        left: 210px;
+        opacity: 0;
+    }
+}
+
+@keyframes dropLeaf-04 {
+    0% {
+        top: 81px;
+        right: 210px;
+    }
+
+    99% {
+        top: 668px;
+        right: 210px;
+    }
+
+    100% {
+        top: 668px;
+        right: 210px;
+        opacity: 0;
+    }
+}
+
+@keyframes dropLeaf-05 {
+    0% {
+        top: 86px;
+        right: 200px;
+    }
+
+    99% {
+        top: 663px;
+        right: 200px;
+    }
+
+    100% {
+        top: 663px;
+        right: 200px;
+        opacity: 0;
+    }
+}
+
+@keyframes dropLeaf-06 {
+    0% {
+        top: 182px;
+        right: 90px;
+    }
+
+    99% {
+        top: 566px;
+        right: 90px;
+    }
+
+    100% {
+        top: 566px;
+        right: 90px;
+        opacity: 0;
+    }
+}
+
+@keyframes dropLeaf-07 {
+    0% {
+        top: 92px;
+        left: 384px;
+    }
+
+    99% {
+        top: 668px;
+        left: 384px;
+    }
+
+    100% {
+        top: 668px;
+        left: 384px;
+        opacity: 0;
+    }
+}

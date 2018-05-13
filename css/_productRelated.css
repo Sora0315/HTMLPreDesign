@@ -1,0 +1,45 @@
+.related.product-common-menu {
+    background-color: #4c3e37;
+}
+
+.related.product-common-menu .nav-link:nth-child(2) {
+    color: rgba(231, 153, 43, 0.7);
+}
+
+.related.product-common-menu .nav-link:hover {
+    color: rgba(231, 153, 43, 0.7);
+}
+
+.related.product-common-menu .nav-link:nth-child(2) .wonderfulType:last-child {
+    opacity: 1.0;
+}
+
+.related-hr {
+    height: 1px;
+    border-top: 2px solid #e7992b;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.related .section-header {
+    margin: 5vh 0 0 0;
+    border-left: 6px solid #e7992b;
+    position: relative;
+}
+
+.related .content .card .product-quick-buy .title {
+    border-top: 4px solid #e7992b;
+    border-bottom: 4px solid #e7992b;
+}
+
+.related.product-common a:hover {
+    color: #e7992b;
+}
+
+.related .more-related {
+    background-color: #4c3e37;
+}
+
+.related .more-related:hover {
+    box-shadow: #3c2f2a 0 8px;
+}

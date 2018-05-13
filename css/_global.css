@@ -1,0 +1,123 @@
+﻿*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體';
+    font-size: 16px;
+    line-height: 1.5;
+    background: url('../images/indexBody-bg.png') top left repeat;
+    overflow: auto;
+}
+
+
+/* @media only screen and (max-width:1920px) {
+    html {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:1500px) {
+    html {
+        width: 120%;
+        overflow-x: scroll;
+    }
+}
+
+@media only screen and (max-width:1400px) {
+    html {
+        width: 125%;
+        overflow-x: scroll;
+    }
+}
+
+@media only screen and (max-width:1200px) {
+    html {
+        width: 140%;
+        overflow-x: scroll;
+    }
+}
+
+@media only screen and (max-width:1100px) {
+    html {
+        width: 160%;
+        overflow-x: scroll;
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    html {
+        width: 180%;
+        overflow-x: scroll;
+    }
+}
+
+@media only screen and (max-width:900px) {
+    html {
+        width: 200%;
+        overflow-x: scroll;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    html {
+        width: 225%;
+        overflow-x: scroll;
+    }
+}
+
+@media only screen and (max-width:700px) {
+    html {
+        width: 260%;
+        overflow-x: scroll;
+    }
+} */
+
+
+/* @media only screen and (max-width:1400px) {
+    body {
+        width: 85% !important;
+    }
+} */
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4ea1d3;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-round {
+    border-radius: 50%;
+}
+
+.gray-black {
+    color: rgba(17, 25, 27, 0.8);
+}
+
+button:focus,
+textarea:focus,
+input:focus,
+select,
+option {
+    outline: none;
+    outline-width: 0;
+}
+
+.disabled {
+    cursor: not-allowed;
+}
