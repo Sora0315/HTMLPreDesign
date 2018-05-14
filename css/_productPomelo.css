@@ -1,0 +1,45 @@
+.pomelo.product-common-menu {
+    background-color: #afd1a5;
+}
+
+.pomelo.product-common-menu .nav-link:nth-child(2) {
+    color: rgba(81, 140, 132, 0.7);
+}
+
+.pomelo.product-common-menu .nav-link:hover {
+    color: rgba(81, 140, 132, 0.7);
+}
+
+.pomelo.product-common-menu .nav-link:nth-child(2) .wonderfulType:last-child {
+    opacity: 1.0;
+}
+
+.pomelo-hr {
+    height: 1px;
+    border-top: 2px solid #518c84;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.pomelo .section-header {
+    margin: 5vh 0 0 0;
+    border-left: 6px solid #518c84;
+    position: relative;
+}
+
+.pomelo .content .card .product-quick-buy .title {
+    border-top: 4px solid #518c84;
+    border-bottom: 4px solid #518c84;
+}
+
+.pomelo.product-common a:hover {
+    color: #518c84;
+}
+
+.pomelo .more-pomelo {
+    background-color: #afd1a5;
+}
+
+.pomelo .more-pomelo:hover {
+    box-shadow: #518c84 0 8px;
+}

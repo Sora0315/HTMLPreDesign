@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- X-UA-Compatible設置IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--RWD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <meta name="author" content="萊茵巴赫科技" />
+    <meta name="copyright" content="萊茵巴赫科技" />
+    <!-- 結構化資料 SEO 與 meta 標籤 -->
+    <meta property="og:title" content="柚美。柚好" />
+    <meta property="og:url" content="">
+    <meta property="og:image" content="要顯示的縮圖網址" />
+    <meta property="og:description" content="網頁描述" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>柚美。柚好</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/semantic.js"></script>
+</head>
+
+<body>
+    <div id="productIndexSidebar" class="ui left vertical inverted sidebar menu common">
+        <div class="side-bar-header">
+            <img src="images/side-bar-logo.png" class="img-fluid" />
+        </div>
+        <a class="item wonderfulType nav-link" href="story.html">美好故事
+                    <h6 class="title">About&nbsp;Us</h6>
+                </a>
+        <a class="item wonderfulType nav-link" href="news.html">最新消息
+                    <h6 class="title">News</h6>
+                </a>
+        <a class="item wonderfulType nav-link" href="productIndex.html">商品專區
+                    <h6 class="title">Products</h6>
+                </a>
+        <a class="item wonderfulType nav-link">相片底家
+                    <h6 class="title">Photos</h6>
+                </a>
+        <a class="item wonderfulType nav-link">美好問答
+                    <h6 class="title">Q&A</h6>
+                </a>
+        <a class="item wonderfulType nav-link">找尋美好
+                    <h6 class="title">Find&nbsp;Us</h6>
+                </a>
+        <div class="side-bar-link">
+            <a id="side-loginIcon" class="icon-link">
+                <img src="images/loginIcon.png" class="img-fluid" alt="" />
+            </a>
+            <a class="icon-link">
+                <img src="images/cartIcon.png" class="img-fluid" alt="" />
+            </a>
+        </div>
+        <div class="side-bar-footer">
+            <img src="images/side-bar-footer.png" class="img-fluid" />
+        </div>
+    </div>
+
+    <div class="pusher">
+        <div class="common productIndex hamburger">&#9776;</div>
+        <header class="common productIndex site-header">
+            <a href='index.html' class="site-logo">
+                <img src="images/webLogo-common.png" class="img-fluid" alt="" />
+            </a>
+            <nav class="nav site-menu pull-right">
+                <a href="story.html" id="story-link" class="nav-link">
+                    <h2 class="wonderfulType">美好故事</h2>
+                    <h6 class="wonderfulType">About&nbsp;Us</h6>
+                </a>
+                <a href="news.html" id="news-link" class="nav-link">
+                    <h2 class="wonderfulType">最新消息</h2>
+                    <h6 class="wonderfulType">News</h6>
+                </a>
+                <a href="productIndex.html" id="product-link" class="nav-link">
+                    <h2 class="wonderfulType">商品專區</h2>
+                    <h6 class="wonderfulType">Products</h6>
+                </a>
+                <a href="#" id="photo-link" class="nav-link">
+                    <h2 class="wonderfulType">相片底家</h2>
+                    <h6 class="wonderfulType">Photos</h6>
+                </a>
+                <a href="#" class="nav-link">
+                    <h2 class="wonderfulType">美好問答</h2>
+                    <h6 class="wonderfulType">Q&A</h6>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <h2 class="wonderfulType">找尋美好</h2>
+                    <h6 class="wonderfulType">Find&nbsp;Us</h6>
+                </a>
+                <a id="loginIcon" class="icon-link">
+                    <img src="images/loginIcon.png" class="img-fluid" alt="" />
+                </a>
+                <a class="icon-link">
+                    <img src="images/cartIcon.png" class="img-fluid" alt="" />
+                </a>
+            </nav>
+        </header>
+        <!--半版大圖-->
+        <div class="site-banner">
+            <!--大圖本體-->
+            <div class="initSlides slide-bg site-banner-bg"></div>
+            <div class="initSlides slide-bg site-banner-bg"></div>
+            <div class="initSlides slide-bg site-banner-bg"></div>
+            <div class="dots-gp"></div>
+        </div>
+
+        <script>
+            $(function() {
+                var currentPath = window.location.pathname;
+                currentPath = currentPath.substr(currentPath.lastIndexOf('/') + 1);
+                console.log(currentPath);
+
+                var urlLink = $.parseJSON('{"news.html": "4px solid #66a64f", "story.html":"4px solid #ec925f", "contact.html":"4px solid #81c7d4", "productIndex.html":" 4px solid #518c84"}');
+
+                $('.nav.site-menu.pull-right').find('a[href="' + currentPath + '"]').find('.wonderfulType').first().css('border-bottom', urlLink[currentPath]).css('margin-bottom', '0px');
+
+                $('.nav.site-menu.pull-right').find('a[href="' + currentPath + '"]').css('opacity', '1.0');
+                $('.nav.site-menu.pull-right').find('a[href="' + currentPath + '"]').find('.wonderfulType').last().css('opacity', '1.0');
+
+                $('.common .nav-link .wonderfulType:first-child').hover(
+                    function() {
+                        $(this).next().css('opacity', '1.0');
+                    },
+                    function() {
+                        if ($(this).parent('.nav-link').attr('href') != currentPath) {
+                            $(this).next().css('opacity', '0.0');
+                        }
+                    }
+                );
+
+                var containerLine = $('.common.productIndex.site-main').offset().top - ($(window).height() * 0.05);
+                $(window).on('scroll', function(e) {
+                    if ($(this).scrollTop() >= containerLine) {
+                        $('.common.productIndex.hamburger').fadeIn();
+                    } else {
+                        $('.common.productIndex.hamburger').fadeOut();
+                    }
+                    if ($(this).scrollTop() + $(window).height() >= $('.productIndex .otherFruit-link').offset().top + 100) {
+                        $('.productIndex .otherFruit-link>.img-fluid:first-child').css('opacity', '1.0');
+                    } else {
+                        $('.productIndex .otherFruit-link>.img-fluid:first-child').css('opacity', '0.0');
+                    }
+                    if ($(this).scrollTop() + $(window).height() >= $('.productIndex .related-link').offset().top + 100) {
+                        $('.productIndex .related-link>.img-fluid:first-child').css('opacity', '1.0');
+                    } else {
+                        $('.productIndex .related-link>.img-fluid:first-child').css('opacity', '0.0');
+                    }
+                });
+
+                $('.common.productIndex.hamburger').click(function() {
+                    $('#productIndexSidebar').sidebar('toggle');
+                });
+            })
+
+            //Slide JS
+            var slideIndex = 1;
+            showSlides(slideIndex);
+            var slideInterval = setInterval(function() {
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 2000);
+
+            var initImgNumber = 1;
+            var slideImgArry = ['images/commonSlide1.png', 'images/commonSlide2.png', 'images/commonSlide3.png'];
+            var maxImgNumber = $('.slide-bg').length;
+
+            $('.slide-bg').each(function() {
+                if (initImgNumber <= maxImgNumber) {
+                    var Imgurl = slideImgArry[getRandomFromRange(0, (slideImgArry.length - 1))];
+                    slideImgArry.splice($.inArray(Imgurl, slideImgArry), 1);
+                    if (Imgurl.charAt(18) == 3) {
+                        $(this).css('background', 'url(' + Imgurl + ') left bottom no-repeat')
+
+                    } else {
+                        $(this).css('background', 'url(' + Imgurl + ') center center no-repeat')
+                    }
+                    initImgNumber++;
+                } else {
+                    initImgNumber = 1;
+                }
+            });
+            for (i = 0; i < maxImgNumber; i++) {
+                var count = i + 1;
+                dots = $('<psan><span>').addClass('dot').addClass('dot:hover').attr('onclick', 'currentSlide(' + count + ')');
+                $('.dots-gp').append(dots);
+            }
+
+            function getRandomFromRange(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+            function showSlides(n) {
+                var i;
+                var slides = $(".initSlides");
+                var dots = $(".dot");
+                if (n > slides.length) {
+                    slideIndex = 1
+                }
+                if (n < 1) {
+                    slideIndex = slides.length
+                }
+                for (i = 0; i < slides.length; i++) {
+                    $(slides[i]).css("display", "none");
+                }
+                for (i = 0; i < dots.length; i++) {
+                    $(dots[i]).removeClass("dot-active");
+                }
+                $(slides[slideIndex - 1]).css("display", "block");
+                $(dots[slideIndex - 1]).addClass("dot-active");
+
+            }
+
+            function currentSlide(n) {
+                clearInterval(slideInterval);
+                showSlides(slideIndex = n);
+                slideInterval = setInterval(function() {
+                    slideIndex++;
+                    showSlides(slideIndex);
+                }, 2000);
+            }
+        </script>
+
+        <div class="common productIndex site-main">
+            <div class=container>
+                <div class="pomelo-link flip-link">
+                    <img src="images/productIndex-link1.png" class="img-fluid" />
+                    <div class="text-center">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link1-1-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link1-1-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link1-2-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link1-2-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link1-3-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link1-3-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link1-4-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link1-4-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src='images/link1-en.png' class="img-fluid link-en" />
+                </div>
+                <div class="otherFruit-link flip-link">
+                    <img src="images/productIndex-link2.png" class="img-fluid" />
+                    <div class="text-center">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link2-1-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link2-1-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link2-2-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link2-2-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link2-3-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link2-3-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link2-4-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link2-4-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src='images/link2-en.png' class="img-fluid link-en" />
+                </div>
+                <div class="related-link flip-link">
+                    <img src="images/productIndex-link3.png" class="img-fluid" />
+                    <div class="text-center">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link3-1-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link3-1-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link3-2-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link3-2-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link3-3-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link3-3-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front wonderfulType">
+                                    <img src='images/link3-4-front.png' class="img-fluid" />
+                                </div>
+                                <div class="back wonderfulType">
+                                    <img src='images/link3-4-back.png' class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src='images/link3-en.png' class="img-fluid link-en" />
+                </div>
+                <script>
+                    $('.flip-link').hover(function() {
+                        $(this).find('.flip-container').toggleClass('hover');
+                    });
+                    $('.pomelo-link').click(function() {
+                        location.href = 'product-pomelo.html';
+                    });
+                    $('.otherFruit-link').click(function() {
+                        location.href = 'product-otherfruit.html';
+                    });
+                    $('.related-link').click(function() {
+                        location.href = 'product-related.html';
+                    });
+                </script>
+
+                <div class="productIndex-footer">
+                    <img src="images/productIndex-footer-bg.png " class="img-fluid" />
+                    <div class="productIndex-footer-link">
+                        <a><img src="images/productIndex-footer-fb.png " class="img-fluid" /></a>
+                        <a><img src="images/productIndex-footer-ig.png " class="img-fluid" /></a>
+                        <a><img src="images/productIndex-footer-utube.png " class="img-fluid" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--會員登入Modal-->
+        <div id="loginModal" class="ui modal ">
+            <div class=" ">
+                <form class="indexModal-form " method="post " action="# ">
+                    <div class="indexModal-input ">
+                        <div class="card ">
+                            <h2 class="title ">
+                                <div class="section-title ">帳&nbsp;&nbsp;&nbsp;號</div>
+                                <div class="title-sub wonderfulType ">Username</div>
+                            </h2>
+                            <input name="mail " type="text " class="userinput " />
+                        </div>
+                    </div>
+                    <div class="indexModal-input ">
+                        <div class="card ">
+                            <h2 class="title ">
+                                <div class="section-title ">密&nbsp;&nbsp;&nbsp;&nbsp;碼</div>
+                                <div class="title-sub wonderfulType ">Passsword</div>
+                            </h2>
+                            <input name="password " type="password " class="passwordinput " />
+                        </div>
+                    </div>
+                    <div class="rememberBox ">
+                        <input type="checkbox " name="remberme " value="yes " class=" " />
+                        <span class="customBox "></span> 記住我
+                    </div>
+                    <div class="indexModal-button ">
+                        <button type="button " class="dark-bg loginSubmit ">
+                                    <h2 class="title ">登入</h2>
+                                </button>
+                        <button type="button " class="dark-bg forgetPWD ">
+                                    <h2 class="title ">忘記密碼</h2>
+                                </button>
+                    </div>
+                    <div class="indexModal-button ">
+                        <button type="button " class="fullwidth dark-bg addMember ">&nbsp;加入美好會員</button>
+                    </div>
+                    <div class="register-modal-button ">
+                        <img class="img-fluid " src="images/regModalIcon-EN.png " />
+                        <img class="img-fluid " src="images/regModalIcon-CHN.png " />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--會員註冊Modal-->
+        <div id="regModal" class="ui modal ">
+            <div class=" ">
+                <form class="indexModal-form " method="post " action="# ">
+                    <div class="indexModal-input ">
+                        <div class="card ">
+                            <h2 class="title ">
+                                <div class="section-title ">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號</div>
+                                <div class="title-sub wonderfulType " style="letter-spacing: 3px; ">Username</div>
+                            </h2>
+                            <input name="mail " type="text " class="userinput " />
+                        </div>
+                    </div>
+                    <div class="indexModal-input ">
+                        <div class="card ">
+                            <h2 class="title ">
+                                <div class="section-title ">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼</div>
+                                <div class="title-sub wonderfulType " style="letter-spacing: 2px; ">Passsword</div>
+                            </h2>
+                            <input name="password " type="password " class="passwordinput " />
+                        </div>
+                    </div>
+                    <div class="indexModal-input ">
+                        <div class="card ">
+                            <h2 class="title ">
+                                <div class="section-title " style="letter-spacing: 1px; ">確認密碼</div>
+                                <div class="title-sub wonderfulType " style="font-size: 0.5px; ">Confirm&nbsp;Again</div>
+                            </h2>
+                            <input name="confirmPassword " type="password " class="passwordinput " />
+                        </div>
+                    </div>
+                    <div class="indexModal-input ">
+                        <div class="card ">
+                            <h2 class="title ">
+                                <div class="section-title " style="font-size: 18px; letter-spacing: 2px; border: 3px solid #11191b; border-radius: 5px; text-align: center; ">RolaE</div>
+                                <div class="title-sub " style="font-size: 12px; text-align: center; text-decoration: underline; letter-spacing: 2px; cursor: pointer; ">重新產生</div>
+                            </h2>
+                            <input name="verification " type="text " class="passwordinput " />
+                        </div>
+                    </div>
+                    <div class="indexModal-button ">
+                        <button type="button " class="dark-bg regButton addMember ">
+                                    <h2 class="title title2 ">&nbsp;完成註冊</h2>
+                                </button>
+                    </div>
+                    <div class="login-modal-button ">
+                        <img class="img-fluid " src="images/loginModalIcon-EN.png " />
+                        <img class="img-fluid " src="images/loginModalIcon-CHN.png " />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--忘記密碼Modal-->
+        <div id="resetPwdModal" class="ui modal ">
+            <div class=" ">
+                <div class="leafDrop ">
+                    <img id="leafDrop1 " src="images/leaf1.png " class="img-fluid " />
+                    <img id="leafDrop2 " src="images/leaf2.png " class="img-fluid " />
+                    <img id="leafDrop3 " src="images/leaf3.png " class="img-fluid " />
+                    <img id="leafDrop4 " src="images/leaf4.png " class="img-fluid " />
+                    <img id="leafDrop5 " src="images/leaf5.png " class="img-fluid " />
+                    <img id="leafDrop6 " src="images/leaf6.png " class="img-fluid " />
+                    <img id="leafDrop7 " src="images/leaf7.png " class="img-fluid " />
+                    <img id="leafDrop8 " src="images/leaf8.png " class="img-fluid " />
+                </div>
+                <form class="indexModal-form " method="post " action="# ">
+                    <div class="indexModal-input ">
+                        <div class="card ">
+                            <input name="mail " type="text " class="userinput " />
+                        </div>
+                    </div>
+                    <div class="indexModal-button ">
+                        <button type="button " class="fullwidth dark-bg resetPwd ">&nbsp;重設密碼</button>
+                    </div>
+                    <div class="indexModal-button button-center ">
+                        <button type="button " class="dark-bg backLoginModal ">
+                                    <h2 class="title ">回上頁</h2>
+                                </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            $('#loginIcon, #side-loginIcon').click(
+                function() {
+                    $('#loginModal').modal('show', {
+                        transition: 'scale',
+                        duration: 100
+                    });
+                });
+
+            $('.indexModal-form .register-modal-button .img-fluid').click(
+                function() {
+                    $('#regModal').modal('show', {
+                        transition: 'scale',
+                        duration: 1
+                    });
+                    $('#loginModal').modal('hide', {
+                        transition: 'scale',
+                        duration: 0
+                    });
+                });
+
+            $('.forgetPWD').click(
+                function() {
+                    $('#resetPwdModal').modal('show', {
+                        transition: 'scale',
+                        duration: 1
+                    });
+                    $('#loginModal').modal('hide', {
+                        transition: 'scale',
+                        duration: 0
+                    });
+                });
+
+            $('.fullwidth.addMember').click(
+                function() {
+                    $('#regModal').modal('show', {
+                        transition: 'scale',
+                        duration: 1
+                    });
+                    $('#loginModal').modal('hide', {
+                        transition: 'scale',
+                        duration: 0
+                    });
+                });
+
+            $('.indexModal-form .login-modal-button .img-fluid ').click(
+                function() {
+                    $('#loginModal').modal('show', {
+                        transition: 'scale',
+                        duration: 1
+                    });
+                    $('#regModal').modal('hide', {
+                        transition: 'scale',
+                        duration: 0
+                    });
+                });
+
+            $('.backLoginModal').click(
+                function() {
+                    $('#loginModal').modal('show', {
+                        transition: 'scale',
+                        duration: 1
+                    });
+                    $('#resetPwdModal').modal('hide', {
+                        transition: 'scale',
+                        duration: 0
+                    });
+                });
+        </script>
+
+    </div>
+</body>
+
+</html>

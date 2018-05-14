@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- X-UA-Compatible設置IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--RWD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <meta name="author" content="萊茵巴赫科技" />
+    <meta name="copyright" content="萊茵巴赫科技" />
+    <!-- 結構化資料 SEO 與 meta 標籤 -->
+    <meta property="og:title" content="柚美。柚好" />
+    <meta property="og:url" content="">
+    <meta property="og:image" content="要顯示的縮圖網址" />
+    <meta property="og:description" content="網頁描述" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>柚美。柚好</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/semantic.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="nav pomelo product-common-menu">
+            <a href="news.html" id="news-link" class="nav-link">
+                <h2 class="wonderfulType">最新消息</h2>
+                <h6 class="wonderfulType">News</h6>
+            </a>
+            <a href="productIndex.html" id="product-link" class="nav-link">
+                <h2 class="wonderfulType">商品專區</h2>
+                <h6 class="wonderfulType">Products</h6>
+            </a>
+            <a href="#" id="photo-link" class="nav-link">
+                <h2 class="wonderfulType">相片底家</h2>
+                <h6 class="wonderfulType">Photos</h6>
+            </a>
+            <a href="index.html" class="product-site-logo">
+                <img src="images/webLogo-common.png" class="img-fluid" alt="" />
+            </a>
+            <a href="story.html" id="story-link" class="nav-link">
+                <h2 class="wonderfulType">美好故事</h2>
+                <h6 class="wonderfulType">About&nbsp;Us</h6>
+            </a>
+            <a href="#" class="nav-link">
+                <h2 class="wonderfulType">美好問答</h2>
+                <h6 class="wonderfulType">Q&A</h6>
+            </a>
+            <a href="contact.html" class="nav-link">
+                <h2 class="wonderfulType">找尋美好</h2>
+                <h6 class="wonderfulType">Find&nbsp;Us</h6>
+            </a>
+            <a id="loginIcon" class="icon-link">
+                <img src="images/loginIcon.png" class="img-fluid" alt="" />
+            </a>
+            <a class="icon-link">
+                <img src="images/cartIcon.png" class="img-fluid" alt="" />
+            </a>
+        </nav>
+    </header>
+
+    <div class="pomelo product-common site-main">
+        <div class=container>
+            <div class="section-header">
+                <a href="productIndex.html" class="product-common-link">
+                    <h1 class="title">美好的商品</h1>
+                </a>
+                <a>
+                    <h1 class="title">&#62;</h1>
+                </a>
+                <a href="product-pomelo.html" class="product-common-link">
+                    <h1 class="title">文旦禮盒</h1>
+                </a>
+            </div>
+
+            <div class="pomelo-hr"></div>
+            <div class="content"></div>
+            <buton type="none" class="more-pomelo more-products">
+                <h3 class="title">更多商品</h3>
+            </buton>
+            <div class="product-common-backTop">
+                <img src="images/product-backTop.png" class="img-fluid" alt="" />
+            </div>
+            <script>
+                var products = [{
+                    'ProductID': 'P000000001',
+                    'Name': '十斤裝手提禮盒',
+                    'Title': '嚴選40年以上老欉文旦柚',
+                    'SubTitle': '手提文旦禮盒',
+                    'Description': '<h3>老園Ｘ老農Ｘ老欉。</h3><h4>近三百年的歲月沉澱，麻豆文旦濃縮了世代的精華，綻放最美好的樣貌。</br>柚美柚好用心呵護上百株樹齡超過40年的老欉文旦樹。</br>' +
+                        '六十餘載的日夜澆灌，阿嬤為果園付出了一輩子的心血，那佈滿皺紋的雙手、微駝的背，是驕傲，也是滿滿的成就感。</h4>' +
+                        '<h3>時間淬煉出甘甜與幸福。</h3><h4>三代傳承的柚美柚好，不僅是阿嬤的心頭寶，更是凝聚家族情感的大功臣。</br>每逢採柚季，大大小小回到果園，一邊採收，一邊聯繫彼此感情，</br>' +
+                        '我們有多愛阿嬤就有多愛這片果園，而在充滿愛意環境下成長茁壯的文旦樹，怎會不孕育出甘美香甜的果實呢！</h4>' +
+                        '<h3>耕耘美好時光，釀造柚人美味。</h3><h4>「薑是老的辣，文旦是老的甜。」老欉根系穩定，枝葉不過於茂盛，因此果實能完全吸收養分，這就是老欉柚口口甜蜜好滋味的小秘密。</br>' +
+                        '柚美柚好為您嚴選巴掌大小、皮薄汁多、柚米細緻的文旦，果皮細緻光滑、果形上尖底寬，狀似不倒翁、沉重手感是優質文旦的最佳保證。</h4>' +
+                        '<h3>柚美柚好，值得等待的美好滋味。</h3><h4>文旦不僅要老的好，辭水（消水）之後會更好。收到文旦先別急著品嚐，開箱置於陰涼通風處（建議放置7-10天），<br/>' +
+                        '待水份逐漸蒸散，表皮由亮綠變成土黃，此時果肉漸軟，甜度提升，正是大快朵頤的好時機。</h4>',
+                    'FxPrice': '750',
+                    'Spec': '10斤/箱，約12-18顆',
+                    'Origin': '麻豆',
+                    'ImgUrl': 'images/pomelo-2.png',
+                    'Rank': '',
+                    'Stock': 5
+                }, {
+                    'ProductID': 'P000000002',
+                    'Name': '八斤裝手提禮盒',
+                    'FxPrice': '600',
+                    'Spec': '一箱8斤，約8顆',
+                    'ImgUrl': 'images/pomelo-1.png',
+                    'Rank': '',
+                    'Stock': 150
+                }, {
+                    'ProductID': 'P000000003',
+                    'Name': '七斤裝手提禮盒',
+                    'FxPrice': '550',
+                    'Spec': '一箱10斤，約10顆',
+                    'ImgUrl': 'images/pomelo-3.png',
+                    'Rank': '',
+                    'Stock': 100
+                }, {
+                    'ProductID': 'P000000004',
+                    'Name': '手提禮袋+明信片',
+                    'FxPrice': '350',
+                    'Spec': '一箱2斤，約2顆',
+                    'ImgUrl': 'images/pomelo-4.png',
+                    'Rank': '',
+                    'Stock': 200
+                }, {
+                    'ProductID': 'P000000005',
+                    'Name': '五斤裝手提禮盒',
+                    'FxPrice': '400',
+                    'Spec': '一箱5斤，約5顆',
+                    'ImgUrl': 'images/pomelo-5.png',
+                    'Rank': '',
+                    'Stock': 200
+                }, {
+                    'ProductID': 'P000000006',
+                    'Name': '二斤裝手提禮盒',
+                    'FxPrice': '300',
+                    'Spec': '一箱2斤，約2顆',
+                    'ImgUrl': 'images/pomelo-6.png',
+                    'Rank': '',
+                    'Stock': 200
+                }];
+
+                $(function() {
+                    // $.post('.......', {
+                    //     'SortID': 'PS00000001'
+                    // }, function(data) {
+                    //     products = data;
+                    // })
+
+
+                    $('.pomelo .content').text('');
+                    loadMoreProducts(products);
+
+                    $('.more-pomelo').click(function() {
+                        if (products.length != 0) {
+                            loadMoreProducts(products);
+                        }
+                    })
+                })
+
+                function loadMoreProducts(dataIn) {
+                    var rows = [];
+                    var cols = [];
+                    $.each(dataIn, function(i, value) {
+                        var Img = $('<img/>').attr('src', value.ImgUrl).addClass('img-fluid');
+                        var pid = $('<span></span>').addClass('product-id').text(value.ProductID);
+                        var title = $('<h2></h2>').addClass('title').text(value.Name);
+                        var price = $('<h2></h2>').addClass('title sell-price').text('$' + value.FxPrice);
+
+                        var hoverTitle = $('<h1></h1>').addClass('title').text(value.Name);
+                        var hoverPrice = $('<h2></h2>').addClass('label').text('售價：').append($('<span></span>').addClass('sell-price').text('$' + value.FxPrice));
+                        var hoverQty = $('<h2></h2>').addClass('label').text('數量：').append($('<input/>').addClass('number-select').attr({
+                            'type': 'number',
+                            'min': function() {
+                                if (value.Stock != 0) {
+                                    return 1;
+                                }
+                            },
+                            'max': function() {
+                                if (value.Stock >= 10) {
+                                    return 10;
+                                } else {
+                                    return value.Stock;
+                                }
+                            },
+                            'value': function() {
+                                if (value.Stock != 0) {
+                                    return 1;
+                                }
+                            }
+                        }));
+                        var view = $('<div></div>').addClass('banner-content').append([$('<img/>').addClass('img-fluid').attr('src', 'images/view1.png'), $('<img/>').addClass('img-fluid selected').attr('src', 'images/view2.png')]);
+                        var cart = $('<div></div>').addClass('banner-content').append([$('<img/>').addClass('img-fluid').attr('src', 'images/addCart1.png'), $('<img/>').addClass('img-fluid selected').attr('src', 'images/addCart2.png')]);
+
+                        var hoverBanner = $('<div></div>').addClass('hover-banner').append([view, cart]);
+
+                        var productQuickBuy = $('<div></div>').addClass('product-quick-buy').append([hoverTitle, hoverPrice, hoverQty, hoverBanner]);
+
+                        var card = $('<div></div>').addClass('card').append([Img, pid, title, price, productQuickBuy]);
+
+                        var col = $('<div></div>').addClass('col-sm-3').append(card);
+                        cols.push(col);
+                        if ((i + 1) % 3 == 0) {
+                            var row = $('<div></div>').addClass('row').append(cols);
+                            cols.length = 0;
+                            rows.push(row);
+                        }
+                    })
+                    $('.pomelo .content').append(rows);
+                    $('.pomelo .content .col-sm-3').hover(
+                        function() {
+                            $(this).find('.card').addClass('light-green-bg');
+                            $(this).find('.card > .title').css('opacity', '0');
+                            $(this).find('.img-fluid').first().css('opacity', '0.2');
+                            $(this).find('.card .product-quick-buy').css({
+                                'opacity': '1.0',
+                            });
+                        },
+                        function() {
+                            $(this).find('.card').removeClass('light-green-bg');
+                            $(this).find('.card > .title').css('opacity', '1').css('transition', 'opacity 0.3s ease-in-out');
+                            $(this).find('.img-fluid').first().css('opacity', '1').css('transition', 'opacity 0.5s ease-in-out');
+                            $(this).find('.card .product-quick-buy').css({
+                                'opacity': '0.0',
+                            });
+                        }
+                    );
+
+                    $('.product-quick-buy .hover-banner .banner-content:nth-child(1)').click(
+                        function() {
+                            location.href = 'product-detail.html?productID=' + $(this).parents('.card').children('.product-id').text();
+                        }
+                    );
+
+                    $('.product-quick-buy .hover-banner .banner-content').hover(
+                        function() {
+                            $(this).find('.img-fluid').first().css('display', 'none');
+                            $(this).find('.img-fluid').last().css('display', 'block');
+                        },
+                        function() {
+                            $(this).find('.img-fluid').first().css('display', 'block');
+                            $(this).find('.img-fluid').last().css('display', 'none');
+                        }
+                    );
+                };
+
+                $(window).on('scroll', function(e) {
+                    if ($(this).scrollTop() > ($(window).height() * 0.8)) {
+                        $('.product-common-backTop').fadeIn(2000);
+                    } else {
+                        $('.product-common-backTop').fadeOut(500);
+                    }
+                });
+
+                $('.product-common-backTop').click(
+                    function() {
+                        $('html').animate({
+                            scrollTop: 0
+                        }, 1000);
+                    }
+                );
+
+                function productDetail() {
+
+                }
+            </script>
+
+
+            <footer class="product-common-footer">
+                <img src="images/pomelo-footer-bg.png " class="img-fluid" />
+                <div class="product-common-footer-link">
+                    <a><img src="images/productIndex-footer-fb.png " class="img-fluid" /></a>
+                    <a><img src="images/productIndex-footer-ig.png " class="img-fluid" /></a>
+                    <a><img src="images/productIndex-footer-utube.png " class="img-fluid" /></a>
+                </div>
+            </footer>
+
+            <!--會員登入Modal-->
+            <div id="loginModal" class="ui modal">
+                <div class="">
+                    <form class="indexModal-form" method="post" action="#">
+                        <div class="indexModal-input">
+                            <div class="card">
+                                <h2 class="title">
+                                    <div class="section-title">帳&nbsp;&nbsp;&nbsp;號</div>
+                                    <div class="title-sub wonderfulType">Username</div>
+                                </h2>
+                                <input name="mail" type="text" class="userinput" />
+                            </div>
+                        </div>
+                        <div class="indexModal-input">
+                            <div class="card">
+                                <h2 class="title">
+                                    <div class="section-title">密&nbsp;&nbsp;&nbsp;&nbsp;碼</div>
+                                    <div class="title-sub wonderfulType">Passsword</div>
+                                </h2>
+                                <input name="password" type="password" class="passwordinput" />
+                            </div>
+                        </div>
+                        <div class="rememberBox">
+                            <input type="checkbox" name="remberme" value="yes" class="" />
+                            <span class="customBox"></span> 記住我
+                        </div>
+                        <div class="indexModal-button">
+                            <button type="button" class="dark-bg loginSubmit">
+                                            <h2 class="title">登入</h2>
+                                        </button>
+                            <button type="button" class="dark-bg forgetPWD">
+                                            <h2 class="title">忘記密碼</h2>
+                                        </button>
+                        </div>
+                        <div class="indexModal-button">
+                            <button type="button" class="fullwidth dark-bg addMember">&nbsp;加入美好會員</button>
+                        </div>
+                        <div class="register-modal-button">
+                            <img class="img-fluid" src="images/regModalIcon-EN.png" />
+                            <img class="img-fluid" src="images/regModalIcon-CHN.png" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--會員註冊Modal-->
+            <div id="regModal" class="ui modal">
+                <div class="">
+                    <form class="indexModal-form" method="post" action="#">
+                        <div class="indexModal-input">
+                            <div class="card">
+                                <h2 class="title">
+                                    <div class="section-title">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號</div>
+                                    <div class="title-sub wonderfulType" style="letter-spacing: 3px;">Username</div>
+                                </h2>
+                                <input name="mail" type="text" class="userinput" />
+                            </div>
+                        </div>
+                        <div class="indexModal-input">
+                            <div class="card">
+                                <h2 class="title">
+                                    <div class="section-title">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼</div>
+                                    <div class="title-sub wonderfulType" style="letter-spacing: 2px;">Passsword</div>
+                                </h2>
+                                <input name="password" type="password" class="passwordinput" />
+                            </div>
+                        </div>
+                        <div class="indexModal-input">
+                            <div class="card">
+                                <h2 class="title">
+                                    <div class="section-title" style="letter-spacing: 1px;">確認密碼</div>
+                                    <div class="title-sub wonderfulType" style="font-size: 0.5px;">Confirm&nbsp;Again</div>
+                                </h2>
+                                <input name="confirmPassword" type="password" class="passwordinput" />
+                            </div>
+                        </div>
+                        <div class="indexModal-input">
+                            <div class="card">
+                                <h2 class="title">
+                                    <div class="section-title" style="font-size: 18px; letter-spacing: 2px; border: 3px solid #11191b; border-radius: 5px; text-align: center;">RolaE</div>
+                                    <div class="title-sub" style="font-size: 12px; text-align: center; text-decoration: underline; letter-spacing: 2px; cursor: pointer;">重新產生</div>
+                                </h2>
+                                <input name="verification" type="text" class="passwordinput" />
+                            </div>
+                        </div>
+                        <div class="indexModal-button">
+                            <button type="button" class="dark-bg regButton addMember">
+                                            <h2 class="title title2">&nbsp;完成註冊</h2>
+                                        </button>
+                        </div>
+                        <div class="login-modal-button">
+                            <img class="img-fluid" src="images/loginModalIcon-EN.png" />
+                            <img class="img-fluid" src="images/loginModalIcon-CHN.png" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--忘記密碼Modal-->
+            <div id="resetPwdModal" class="ui modal">
+                <div class="">
+                    <div class="leafDrop">
+                        <img id="leafDrop1" src="images/leaf1.png" class="img-fluid" />
+                        <img id="leafDrop2" src="images/leaf2.png" class="img-fluid" />
+                        <img id="leafDrop3" src="images/leaf3.png" class="img-fluid" />
+                        <img id="leafDrop4" src="images/leaf4.png" class="img-fluid" />
+                        <img id="leafDrop5" src="images/leaf5.png" class="img-fluid" />
+                        <img id="leafDrop6" src="images/leaf6.png" class="img-fluid" />
+                        <img id="leafDrop7" src="images/leaf7.png" class="img-fluid" />
+                        <img id="leafDrop8" src="images/leaf8.png" class="img-fluid" />
+                    </div>
+                    <form class="indexModal-form" method="post" action="#">
+                        <div class="indexModal-input">
+                            <div class="card">
+                                <input name="mail" type="text" class="userinput" />
+                            </div>
+                        </div>
+                        <div class="indexModal-button">
+                            <button type="button" class="fullwidth dark-bg resetPwd">&nbsp;重設密碼</button>
+                        </div>
+                        <div class="indexModal-button button-center">
+                            <button type="button" class="dark-bg backLoginModal">
+                                            <h2 class="title">回上頁</h2>
+                                        </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <script>
+                $('#loginIcon, #side-loginIcon').click(
+                    function() {
+                        $('#loginModal').modal('show', {
+                            transition: 'scale',
+                            duration: 100
+                        });
+                    });
+
+                $('.indexModal-form .register-modal-button .img-fluid').click(
+                    function() {
+                        $('#regModal').modal('show', {
+                            transition: 'scale',
+                            duration: 1
+                        });
+                        $('#loginModal').modal('hide', {
+                            transition: 'scale',
+                            duration: 0
+                        });
+                    });
+
+                $('.forgetPWD').click(
+                    function() {
+                        $('#resetPwdModal').modal('show', {
+                            transition: 'scale',
+                            duration: 1
+                        });
+                        $('#loginModal').modal('hide', {
+                            transition: 'scale',
+                            duration: 0
+                        });
+                    });
+
+                $('.fullwidth.addMember').click(
+                    function() {
+                        $('#regModal').modal('show', {
+                            transition: 'scale',
+                            duration: 1
+                        });
+                        $('#loginModal').modal('hide', {
+                            transition: 'scale',
+                            duration: 0
+                        });
+                    });
+
+                $('.indexModal-form .login-modal-button .img-fluid ').click(
+                    function() {
+                        $('#loginModal').modal('show', {
+                            transition: 'scale',
+                            duration: 1
+                        });
+                        $('#regModal').modal('hide', {
+                            transition: 'scale',
+                            duration: 0
+                        });
+                    });
+
+                $('.backLoginModal').click(
+                    function() {
+                        $('#loginModal').modal('show', {
+                            transition: 'scale',
+                            duration: 1
+                        });
+                        $('#resetPwdModal').modal('hide', {
+                            transition: 'scale',
+                            duration: 0
+                        });
+                    });
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>

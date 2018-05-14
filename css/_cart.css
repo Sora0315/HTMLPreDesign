@@ -1,0 +1,208 @@
+.cart {
+    width: 4%;
+    position: fixed;
+    right: 3%;
+    bottom: 5vh;
+    cursor: pointer;
+}
+
+.cart .position-relative {
+    position: relative;
+}
+
+.cart .position-relative span {
+    position: absolute;
+    width: 35%;
+    height: 25%;
+    bottom: 3%;
+    right: -5%;
+    background-color: #518c84;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 90%;
+    text-align: center;
+    font-weight: 600;
+    /* opacity: 0; */
+}
+
+.cart-content {
+    background-color: #fff !important;
+    width: 20%!important;
+}
+
+.cart-content .section-header {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    font-size: 220%;
+    letter-spacing: 0.8rem;
+    border: none;
+    background-color: #afd1a5;
+    color: #f6f5f1;
+    font-weight: 600;
+    padding: 10%;
+}
+
+.cart-content .section-header .img-fluid {
+    position: absolute;
+    width: 5%;
+    top: 50%;
+    right: 6%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+}
+
+.cart-content .cart-products {
+    position: relative;
+    margin: 4.5%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    font-size: 200%;
+    color: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+.cart-content .cart-products .title {
+    letter-spacing: 0.3rem;
+    position: relative;
+    /* margin: 2% 0 2% 5%; */
+}
+
+.cart-content .cart-products .title .img-fluid {
+    position: absolute;
+    width: 6%;
+    right: 10%;
+    top: 50%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+}
+
+.product-id,
+.cart-price,
+.cart-product-img {
+    display: none;
+}
+
+.cart-content .cart-products .cart-number {
+    /* font-size: 0; */
+    margin-top: 5%;
+    margin-bottom: 5%;
+    position: relative;
+}
+
+.cart-content .cart-products .cart-number .img-fluid {
+    display: inline-block;
+    width: 8%;
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+.cart-content .cart-products .cart-number .number {
+    display: inline-block;
+    margin-right: 5%;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.cart-content .cart-products .cart-number .subtotal {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translate(0, -50%);
+    font-size: 100%;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.cart-content .cart-delete {
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    margin-bottom: 4.5%;
+    height: 100%;
+    left: -120%;
+    top: 0;
+    z-index: 999;
+}
+
+.cart-content .cart-delete .confirm-delete,
+.cart-content .cart-delete .cancel-delete {
+    width: 47%;
+    display: inline-block;
+    padding: 0 2%;
+    height: 95%;
+    cursor: pointer;
+}
+
+.cart-content .cart-delete .confirm-delete {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.cart-content .cart-delete .confirm-delete .img-fluid,
+.cart-content .cart-delete .cancel-delete .img-fluid {
+    padding-top: 10%;
+    width: 15%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cart-content .cart-delete .title {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 85%;
+    padding-top: 25%;
+    padding-bottom: 15%;
+    letter-spacing: 0.1rem;
+    margin-left: 2%;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.cart-content .cart-delete .confirm-delete:hover .title {
+    color: #c1272d;
+}
+
+.cart-content .cart-delete .cancel-delete:hover .title {
+    color: #afd1a5;
+}
+
+.cart-content .cart-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.cart-content .cart-bottom .cart-subtotal {
+    font-size: 180%;
+    font-weight: 600;
+    color: rgba(17, 25, 27, 0.8);
+    letter-spacing: 0.1rem;
+    padding: 5% 2%;
+    text-align: center;
+    border-top: 3px solid #afd1a5;
+    background-color: rgba(114, 114, 114, 0.1);
+}
+
+.cart-content .cart-bottom .cart-subtotal span {
+    width: 40%;
+    margin-left: 25%;
+}
+
+.cart-content .cart-bottom .cart-button {
+    padding: 5% 0;
+    text-align: center;
+}
+
+.cart-content .cart-bottom .cart-button .cart-submit {
+    border: none;
+    border-radius: 5pt;
+    margin: 0 auto;
+    padding: 3% 10%;
+    background-color: #afd1a5;
+    color: #fff;
+    font-size: 180%;
+    font-weight: 600;
+    letter-spacing: 0.3rem;
+    cursor: pointer;
+}
+
+.cart-content .cart-bottom .cart-button .cart-submit:hover {
+    background-color: #a1bf98;
+}

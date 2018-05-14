@@ -1,0 +1,14 @@
+﻿.container,
+.container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 85%;
+}
+
+.container:after,
+.container-fluid:after {
+    content: '';
+    display: block;
+    clear: both;
+}

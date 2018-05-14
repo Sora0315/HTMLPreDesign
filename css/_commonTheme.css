@@ -1,0 +1,187 @@
+.site-header {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: relative;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.0);
+    height: 15vh;
+}
+
+.site-logo {
+    position: absolute;
+    width: 5%;
+    top: 10%;
+    left: 1%;
+    z-index: 11;
+    transition: width 1.5s
+}
+
+.site-logo:hover {
+    width: 8%;
+}
+
+.common nav {
+    position: relative;
+    top: 20%;
+    right: 1%;
+    width: 90%;
+    text-align: right;
+}
+
+.common .nav-link {
+    color: #f6f5f1;
+    text-align: center;
+    margin-left: 1%;
+    letter-spacing: 0.5rem;
+    opacity: 0.75;
+}
+
+.common .nav-link:hover {
+    opacity: 1.0;
+}
+
+.common .icon-link {
+    margin-bottom: 1%;
+    display: inline-block;
+    margin-left: 1.2%;
+    width: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+    opacity: 0.7;
+}
+
+.common .icon-link:hover {
+    border: 2px solid #f6f5f1;
+    opacity: 1.0;
+}
+
+.common .icon-link:last-child {
+    margin-right: 2%;
+}
+
+.common .nav-link .wonderfulType {
+    width: 110%;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.common .nav-link:hover .wonderfulType:first-child {
+    margin-bottom: 0px;
+}
+
+.common .nav-link .wonderfulType:nth-child(2) {
+    opacity: 0;
+}
+
+.common .nav-link:hover {
+    color: #f6f5f1;
+}
+
+.common.hamburger {
+    position: fixed;
+    width: 3%;
+    height: auto;
+    font-size: 2.5rem;
+    padding: 0.5rem;
+    border: none;
+    border-top-right-radius: 10pt;
+    border-bottom-right-radius: 10pt;
+    text-align: center;
+    cursor: pointer;
+    z-index: 99;
+    display: none;
+}
+
+.site-main {
+    position: relative;
+    z-index: 1;
+}
+
+.common .section-header {
+    margin: 5vh 0 0 0;
+    border-left: 6px solid #66a64f;
+    position: relative;
+}
+
+.common .section-header .title {
+    line-height: 5rem;
+    margin-left: 20px;
+    letter-spacing: 2px;
+}
+
+
+/* 
+.common .row {
+    margin: 0 -15px;
+} */
+
+.common [class*="col-"] {
+    margin: 3% 4%;
+    margin-bottom: 0;
+}
+
+
+/*Common Sidrbar*/
+
+.common.sidebar {
+    width: 12% !important;
+    background-size: cover !important;
+}
+
+.common.sidebar .side-bar-header {
+    width: 65%;
+    margin: 0.5rem auto;
+}
+
+.common.sidebar .side-bar-footer {
+    width: 50%;
+    position: absolute;
+    bottom: 1.7%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.common.sidebar .nav-link {
+    padding-top: 2rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+.common.sidebar .wonderfulType {
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.8rem;
+    color: rgba(246, 245, 241, 0.7);
+    line-height: 2rem;
+}
+
+.common.sidebar .wonderfulType .title {
+    margin: 4px auto 0 auto;
+    font-size: 0.8rem;
+    line-height: 1.0rem;
+    padding-top: 0.5rem;
+    opacity: 0.0;
+}
+
+.common.sidebar .wonderfulType:hover {
+    color: rgba(246, 245, 241, 1.0);
+}
+
+.common.sidebar .wonderfulType:hover .title {
+    margin: 0 auto;
+    opacity: 1.0;
+    border-top: 4px solid rgba(246, 245, 241, 1.0);
+}
+
+.common.sidebar .side-bar-link {
+    width: 80%;
+    margin: 40px auto 0 auto;
+    text-align: center;
+}
+
+.common.sidebar .side-bar-link .icon-link {
+    width: 22%;
+    margin: 0 5%;
+}
