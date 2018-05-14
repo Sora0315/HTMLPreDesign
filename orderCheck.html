@@ -320,8 +320,8 @@
             </script>
             <div class="col-md-4 order-check-steps">
                 <div class="locker"></div>
-                <div class="section-header">
-                    <img src="images/order-check-step2-num-lock.png" class="img-fluid" alt="" style="margin-left: 20%" />
+                <div class="section-header gray-bg">
+                    <img src="images/order-check-step2-num.png" class="img-fluid" alt="" style="margin-left: 20%" />
                     <img src="images/order-check-step1-head.png" class="img-fluid" alt="" style="opacity: 0; margin: 0" />
                     <div class="title" style="margin-left: -8%">我想寄到這</div>
                 </div>
@@ -450,14 +450,35 @@
                     };
 
                     //結帳前分配完全檢核
-                    function deliveryFullyAudit() {
-                        var flag = true;
+                    function deliveryFullyAudit(e) {
+                        var recieptMaxIndex = $('.reciepts').length;
+                        var productMaxIndex = $('.reciepts:nth-child(1) .product-asign .products').length;
                         var qtyArry = [];
-                        $('.delivery .reciepts').each(
-                            function(i, v) {
-                                console.log(parseInt($(this).find('.product-asign .products:nth-child(' + (i + 1) + ')  .number').text()));
+                        for (var y = 1; y <= productMaxIndex; y++) {
+                            var num = 0;
+                            for (var x = 1; x <= recieptMaxIndex; x++) {
+                                num = num + parseInt($('.reciepts:nth-child(' + x + ') .product-asign .products:nth-child(' + y + ') .number').text());
                             }
-                        )
+                            qtyArry.push(num);
+                        }
+                        console.log(qtyArry);
+                        var flag = false;
+                        $.each(JSON.parse(Cookies.get('cart')), function(i, v) {
+                            if (v.Qty != qtyArry[i]) {
+                                flag = true;
+                                return null;
+                            }
+                        });
+                        if (flag) {
+                            $('#deliveryNotice2').modal('show'), {
+                                transition: 'scale',
+                                duration: 1
+                            };
+                        } else {
+                            $(e).parents('.order-check-steps').find('.section-header').removeClass('gray-bg');
+                            $(e).parents('.order-check-steps').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step2-num-lock.png');
+                            $(e).parents('.order-check-steps').find('.locker').addClass('active');
+                        };
                     }
 
                     function orderCheckDeliveryEffect() {
@@ -612,7 +633,7 @@
                 </script>
 
 
-                <button type="none" class="next-step" onclick="deliveryFullyAudit()">下一步</button>
+                <button type="none" class="next-step" onclick="deliveryFullyAudit(this)">下一步</button>
                 <img src="images/order-check-step2-bg.png" class="img-fluid" />
             </div>
 
