@@ -127,6 +127,27 @@
     z-index: 99;
 }
 
+.locker.active.hover {
+    background-color: rgba(114, 114, 114, 0.8);
+    cursor: pointer;
+}
+
+.locker .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    color: #fff;
+    text-align: center;
+    font-size: 1.8vw;
+    letter-spacing: 0.3vw;
+    display: none;
+    padding: 2% 5%;
+    border: 2px solid #fff;
+    transform: translate(-50%, -50%);
+    z-index: 98;
+}
+
 .order-check .order-check-steps {
     position: relative;
     overflow-Y: auto;
@@ -311,7 +332,7 @@
     padding: 1.5% 5%;
     text-align: center;
     display: block;
-    margin: 10% auto 10% auto;
+    margin: 10% auto 5% auto;
     cursor: pointer;
 }
 
@@ -598,8 +619,90 @@
     margin-right: 2%;
 }
 
+.order-check-steps .step3-subtotal,
+.order-check-steps .pay-info {
+    position: relative;
+    margin: 5% auto;
+    width: 80%;
+}
+
+.order-check-steps .step3-subtotal .inline-block {
+    position: relative;
+    color: #727272;
+    margin: 3% 0;
+}
+
+.order-check-steps .step3-subtotal .inline-block:nth-child(4) {
+    border-top: 1px solid #cccaca;
+    padding-top: 3%;
+}
+
+.order-check-steps .step3-subtotal .inline-block div {
+    display: inline-block;
+    width: 48%;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    font-weight: 600;
+}
+
+.order-check-steps .step3-subtotal .inline-block div:nth-child(2) {
+    text-align: right;
+    letter-spacing: 0.3vw;
+}
+
+.order-check-steps .step3-subtotal .inline-block div .img-fluid {
+    display: inline-block;
+    width: 12%;
+    margin-left: 2%;
+}
+
+.order-check-steps .step3-subtotal .inline-block .total {
+    color: #c1272d;
+}
+
+.order-check-steps .pay-info .title {
+    color: #727272;
+    font-size: 1vw;
+    font-weight: 600;
+    letter-spacing: 0.4vw;
+    line-height: 2.5rem;
+    margin: 5% auto;
+}
+
+.order-check-steps .pay-info .title:nth-child(2) {
+    letter-spacing: 0.15vw;
+    color: #c1272d;
+}
+
+.order-check-steps .pay-info .title span {
+    background-color: rgba(237, 28, 36, 0.6);
+}
+
+.order-check-steps .pay-info .pay-account {
+    width: 70%;
+    border-left: 3px solid #b2b2b2;
+    margin: 5% auto 0 auto;
+}
+
+.order-check-steps .pay-info .pay-account>div {
+    color: #727272;
+    font-size: 1vw;
+    font-weight: 600;
+    letter-spacing: 0.2vw;
+    margin: 2.5% 0;
+    padding: 2% 0 2% 3%;
+}
+
+
+/* 結帳相關通知樣式 */
+
 #deliveryNotice1,
-#deliveryNotice2 {
+#deliveryNotice2,
+#deliveryNotice3,
+#deliveryNotice4,
+#deliveryNotice5,
+#completeOrder,
+#failOrder {
     width: 25%;
     padding: 2%;
     text-align: center;
@@ -609,7 +712,12 @@
 }
 
 #deliveryNotice1 .title,
-#deliveryNotice2 .title {
+#deliveryNotice2 .title,
+#deliveryNotice3 .title,
+#deliveryNotice4 .title,
+#deliveryNotice5 .title,
+#completeOrder .title,
+#failOrder .title {
     font-size: 1vw;
     letter-spacing: 0.2vw;
     color: #727272;
@@ -617,8 +725,18 @@
     line-height: 2rem;
 }
 
+#completeOrder .title {
+    padding-left: 10%;
+    text-align: left;
+}
+
 #deliveryNotice1 button,
-#deliveryNotice2 button {
+#deliveryNotice2 button,
+#deliveryNotice3 button,
+#deliveryNotice4 button,
+#deliveryNotice5 button,
+#completeOrder button,
+#failOrder button {
     padding: 2% 4%;
     font-size: 1vw;
     border: none;
@@ -626,4 +744,8 @@
     background-color: #afd1a5;
     color: #fff;
     cursor: pointer;
+}
+
+#completeOrder button {
+    margin-top: 5%;
 }

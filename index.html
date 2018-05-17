@@ -65,6 +65,19 @@
     <script>
         $(function() {
 
+            var referredUrl = location.href;
+            console.log(referredUrl);
+            var queryKey = referredUrl.substring(referredUrl.indexOf('?') + 1, referredUrl.indexOf('='));
+            console.log(queryKey);
+            var queryValue = referredUrl.substring(referredUrl.indexOf('=') + 1);
+            console.log(queryValue);
+            if (queryValue === "noback" && queryKey === "referred") {
+                window.onbeforeunload = function() {
+                    console.log('here');
+                    return "no back";
+                }
+            }
+
             var headHeight = $('header').height(),
                 storyTop = ($('.story-banner').offset().top - headHeight),
                 newsTop = ($('.news-banner').offset().top - headHeight - 50),

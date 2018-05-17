@@ -74,6 +74,16 @@
         </header>
 
         <script>
+            member = {
+                'MemberID': 'M0000000009',
+                'Name': '松島聰',
+                'Cell': '',
+                'Mail': 'matsushima@gmail.com',
+                'ImgUrl': 'images/m2.png',
+                'Bonus': 180,
+                'Funds': 2500
+            }
+
             cookiesData = [{
                 'ProductID': 'P000000001',
                 'ImgUrl': 'images/pomelo-2.png',
@@ -105,6 +115,14 @@
                     initLoadOrderCart(cookiesData);
                 }
 
+                // 測試用先建Cookie
+                // Cookies.set('member', JSON.stringify(member));
+                // if (typeof Cookies.get('member') === 'undefined') {
+                //     console.log('no cookie');
+                // } else {
+                //     member = JSON.parse(Cookies.get('member'));
+                // }
+
 
             })
 
@@ -132,14 +150,18 @@
 
         <div class="order-check">
             <div class="col-md-4 order-check-steps">
-                <div class="locker"></div>
+                <div class="locker">
+                    <div class="title">
+                        點此解鎖修改
+                    </div>
+                </div>
                 <div class="section-header gray-bg">
                     <img src="images/order-check-step1-num.png" class="img-fluid" alt="" />
                     <img src="images/order-check-step1-head.png" class="img-fluid" alt="" />
                     <div class="title">我想買這些</div>
                 </div>
 
-                <button type="none" class="next-step">下一步</button>
+                <button type="none" class="next-step" onclick="orderCheckStep1(this)">下一步</button>
             </div>
             <script>
                 function initLoadOrderCart(cookieDataIn) {
@@ -189,7 +211,7 @@
                     orderCartCustomEffect();
                 }
 
-
+                // 第一步購物車確認特效
                 function orderCartCustomEffect() {
                     $('.order-check-products .right .number-select .img-fluid:first-child').hover(
                         function() {
@@ -285,17 +307,113 @@
                     );
                 };
 
-                $('.order-check-steps .next-step').click(
-                    function() {
-                        orderCheckResetCookie();
-                        $(this).parents('.order-check-steps').find('.section-header').removeClass('gray-bg');
-                        $(this).parents('.order-check-steps').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step1-num-lock.png');
-                        $(this).parents('.order-check-steps').find('.section-header .img-fluid:nth-child(2)').attr('src', 'images/order-check-step1-head-lock.png');
-                        $(this).parents('.order-check-steps').find('.locker').addClass('active');
+                // Locker的解鎖控制
+                function orderUnlock(e) {
+                    var stepIndex = parseInt($(e).parents('.order-check-steps').index()) + 1;
+                    // console.log(stepIndex);
+                    switch (stepIndex) {
+                        case 1:
+                            if ($('.order-check-steps:nth-child(3)').find('.locker').hasClass('active')) {
+                                $('.order-check-steps:nth-child(1)').find('.locker .title').text('請先修改"我想寄到這"');
+                                return null;
+                            } else {
+                                $('.order-check-steps:nth-child(1)').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step1-num.png');
+                                $('.order-check-steps:nth-child(1)').find('.section-header .img-fluid:nth-child(2)').attr('src', 'images/order-check-step1-head.png');
+                                $('.order-check-steps:nth-child(1)').find('.section-header').addClass('gray-bg');
+                                $('.order-check-steps:nth-child(1)').find('.locker .title').text('');
+                                $('.order-check-steps:nth-child(3)').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step2-num-lock.png');
+                                $('.order-check-steps:nth-child(3)').find('.section-header').removeClass('gray-bg');
+                                $('.order-check-steps:nth-child(3) .locker').addClass('active').removeClass('hover').prop({
+                                    'onclick': null,
+                                    'onmouseover': null,
+                                    'onmouseout': null
+                                }).children('.title').css('display', 'none').text('');
+                                var height = $('.order-check-steps:nth-child(3)').prop('scrollHeight');
+                                $('.order-check-steps:nth-child(3)').find('.locker').addClass('active').css('height', height);
+                            }
+                            break;
+                        case 3:
+                            $(e).removeClass('hover').prop({
+                                'onclick': null,
+                                'onmouseover': null,
+                                'onmouseout': null
+                            }).children('.title').css('display', 'none').text('');
+                            $('.order-check-steps:nth-child(3)').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step2-num.png');
+                            $('.order-check-steps:nth-child(3)').find('.section-header').addClass('gray-bg');
+                            $('.order-check-steps:nth-child(1)').find('.locker .title').text('');
+                            $('.order-check-steps:nth-child(5)').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step3-num-lock.png');
+                            $('.order-check-steps:nth-child(5)').find('.section-header .img-fluid:last-child').attr('src', 'images/order-check-step3-head-lock.png')
+                            $('.order-check-steps:nth-child(5)').find('.section-header').removeClass('gray-bg');
+                            $('.order-check-steps:nth-child(5)').find('.locker').addClass('active')
+                            break;
                     }
-                )
+                    $(e).removeClass('active').css('height', '');
+                };
 
+                //滑鼠HoverOn Locker區塊時
+                function lockerOverEffect(e) {
+                    $(e).addClass('hover');
+                    $(e).children('.title').css('display', 'block').text('請點此解鎖修改');
+                };
 
+                //滑鼠HoverOff Locker區塊時
+                function lockerOutEffect(e) {
+                    $(e).removeClass('hover');
+                    $(e).children('.title').css('display', 'none').text('');
+                }
+
+                // 第一步切換至第二步檢核與效果
+                function orderCheckStep1(e) {
+                    orderCheckResetCookie();
+
+                    // 重新調整可分配的最大數量同時調整第一個收件人的預設分配量
+                    var cart = JSON.parse(Cookies.get('cart'));
+                    $('.order-check-steps:nth-child(3) .reciepts').each(
+                        function(i, v) {
+                            $(v).find('.products').each(
+                                function(k, l) {
+                                    if (i == 0) {
+                                        $(l).find('.number').text(cart[k].Qty);
+                                    }
+                                    $(l).find('.maxQty').text(cart[k].Qty);
+                                }
+                            )
+                        }
+                    );
+
+                    $(e).parents('.order-check-steps').find('.locker').attr({
+                        'onclick': 'orderUnlock(this)',
+                        'onmouseover': 'lockerOverEffect(this)',
+                        'onmouseout': 'lockerOutEffect(this)'
+                    });
+                    $(e).parents('.order-check-steps').find('.section-header').removeClass('gray-bg');
+                    $(e).parents('.order-check-steps').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step1-num-lock.png');
+                    $(e).parents('.order-check-steps').find('.section-header .img-fluid:nth-child(2)').attr('src', 'images/order-check-step1-head-lock.png');
+                    var height = $(e).parents('.order-check-steps').prop('scrollHeight');
+                    $(e).parents('.order-check-steps').find('.locker').addClass('active').css('height', height);
+                    $('.order-check-steps:nth-child(3)').find('.section-header').addClass('gray-bg');
+                    $('.order-check-steps:nth-child(3)').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step2-num.png');
+                    $('.order-check-steps:nth-child(3)').find('.locker').removeClass('active').css('height', '');
+                    $('.order-check-steps:nth-child(3)').find('input[name="name"]').val(member.Name);
+                    $('.order-check-steps:nth-child(3)').find('input[name="cell"]').val(member.Cell);
+                }
+
+                // 第二步切換至第三步檢核與效果
+                function orderCheckStep2(e) {
+                    $(e).parents('.order-check-steps').find('.locker').attr({
+                        'onclick': 'orderUnlock(this)',
+                        'onmouseover': 'lockerOverEffect(this)',
+                        'onmouseout': 'lockerOutEffect(this)'
+                    })
+                    $(e).parents('.order-check-steps').find('.locker').attr('onclick', 'orderUnlock(this)');
+                    $(e).parents('.order-check-steps').find('.section-header').removeClass('gray-bg');
+                    $(e).parents('.order-check-steps').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step2-num-lock.png');
+                    var height = $(e).parents('.order-check-steps').prop('scrollHeight');
+                    $(e).parents('.order-check-steps').find('.locker').addClass('active').css('height', height);
+                    deliverySetCookie();
+                }
+
+                // 將購買商品與數量設置給Cookie:cart
                 function orderCheckResetCookie() {
                     if ($('.order-check-products').length == 0) {
                         Cookies.remove("cart");
@@ -314,348 +432,646 @@
                             }
                         )
                         Cookies.set('cart', CookieArry);
-                        // console.log(Cookies.get('cart'));
+                        Cookies.set('cart-subtotal', function() {
+                                var totalTrial = 0;
+                                $('.order-check-steps .order-check-products .right .subtotal').each(function() {
+                                    totalTrial = totalTrial + parseInt($(this).text().substring(1));
+                                })
+                                return totalTrial;
+                            }())
+                            // console.log(Cookies.get('cart'));
                     }
+                };
+
+                // 將收件資訊設置給Cookie
+                function deliverySetCookie() {
+                    var deliveryArry = [];
+                    $('.reciepts').each(function(i, v) {
+                        var recieptName = $(this).find('.reciept-product input[name="recieptName"]').val();
+                        var recieptCell = $(this).find('.reciept-product input[name="recieptCell"]').val();
+                        var recieptAddr = '';
+                        $.each(
+                            $(this).find('.reciept-product .twzipcode').twzipcode('get', ['zipcode', 'county', 'district']),
+                            function(i, v) {
+                                recieptAddr = recieptAddr + v;
+                            }
+                        );
+                        recieptAddr = recieptAddr + $(this).find('.reciept-product input[name="addr"]').val();
+
+                        var cartJson = JSON.parse(Cookies.get('cart'));
+                        var productAndQtyArry = [];
+                        $(this).find('.product-asign .products').each(function(i, v) {
+                            var productQty = {};
+                            if (parseInt($(v).find('.number').text()) != 0) {
+                                productQty[cartJson[i].ProductID] = parseInt($(v).find('.number').text());
+                                productAndQtyArry.push(productQty);
+                            }
+                        });
+                        var fee = parseInt($(this).find('.fee span').text());
+
+                        var deliveryArryObj = {};
+
+                        deliveryArryObj["name"] = recieptName;
+                        deliveryArryObj["cell"] = recieptCell;
+                        deliveryArryObj["addr"] = recieptAddr;
+                        deliveryArryObj["productAndQty"] = productAndQtyArry;
+                        deliveryArryObj["fee"] = fee;
+
+                        // console.log(JSON.stringify(deliveryArryObj));
+
+                        deliveryArry.push(deliveryArryObj);
+
+                    });
+                    Cookies.set("delivery", deliveryArry);
+                    return deliveryArry;
                 }
             </script>
             <div class="col-md-4 order-check-steps">
-                <div class="locker"></div>
-                <<<<<<< HEAD <div class="section-header">
-                    <img src="images/order-check-step2-num-lock.png" class="img-fluid" alt="" style="margin-left: 20%" /> =======
-                    <div class="section-header gray-bg">
-                        <img src="images/order-check-step2-num.png" class="img-fluid" alt="" style="margin-left: 20%" /> >>>>>>> c0ba1b667b6446960fda5f677155127316fb6b37
-                        <img src="images/order-check-step1-head.png" class="img-fluid" alt="" style="opacity: 0; margin: 0" />
-                        <div class="title" style="margin-left: -8%">我想寄到這</div>
+                <div class="locker active">
+                    <div class="title">
                     </div>
-                    <div class="orderer-info">
-                        <img src="images/orderer-info.png" class="img-fluid" alt="" />
-                        <div class="right">
-                            <label>訂購人</label><input name="name" type="text" /><br/>
-                            <label>連絡電話</label><input name="cell" type="text" />
-                        </div>
+                </div>
+                <div class="section-header">
+                    <img src="images/order-check-step2-num-lock.png" class="img-fluid" alt="" style="margin-left: 20%" />
+                    <img src="images/order-check-step1-head.png" class="img-fluid" alt="" style="opacity: 0; margin: 0" />
+                    <div class="title" style="margin-left: -8%">我想寄到這</div>
+                </div>
+                <div class="orderer-info">
+                    <img src="images/orderer-info.png" class="img-fluid" alt="" />
+                    <div class="right">
+                        <label>訂購人</label><input name="name" type="text" placeholder="輸入姓名" /><br/>
+                        <label>連絡電話</label><input name="cell" type="text" placeholder="輸入手機" />
                     </div>
+                </div>
 
-                    <div class="delivery">
-                        <div class="next-reciepts">
-                            <img src="images/green-add-icon.png" class="img-fluid" alt="" />
-                            <span>新增收件人</span>
-                        </div>
+                <div class="delivery">
+                    <div class="next-reciepts">
+                        <img src="images/green-add-icon.png" class="img-fluid" alt="" />
+                        <span>新增收件人</span>
                     </div>
+                </div>
+                <button type="none" class="next-step" onclick="deliveryFullyAudit(this)">下一步</button>
+                <img src="images/order-check-step2-bg.png" class="img-fluid" />
+            </div>
+            <script>
+                $(function() {
+                    var maxQtys = [];
+                    $.each(cookiesData, function(i, v) {
+                        maxQtys.push($('<span>/span>').text(v.Qty));
+                    })
 
-                    <script>
-                        $(function() {
-                            var maxQtys = [];
-                            $.each(cookiesData, function(i, v) {
-                                maxQtys.push($('<span>/span>').text(v.Qty));
+                    $('.maxQty').append(maxQtys);
+                })
+
+                function orderCheckDeliveryEffect() {
+                    $('.twzipcode').twzipcode();
+
+                    $('.reciepts .number-select .img-fluid:first-child').hover(
+                        function() {
+                            $(this).attr('src', 'images/cart-content-add-hover.png');
+                        },
+                        function() {
+                            $(this).attr('src', 'images/cart-content-add.png');
+                        }
+                    );
+
+                    $('.reciepts .number-select .img-fluid:last-child').hover(
+                        function() {
+                            $(this).attr('src', 'images/cart-content-minus-hover.png');
+                        },
+                        function() {
+                            $(this).attr('src', 'images/cart-content-minus.png');
+                        }
+                    );
+
+                    $('.order-check-steps .delivery .reciepts .delete-reciept').hover(
+                        function() {
+                            $(this).children('.img-fluid').attr('src', 'images/cart-red-close.png');
+                        },
+                        function() {
+                            $(this).children('.img-fluid').attr('src', 'images/cart-green-close.png');
+                        }
+                    )
+                };
+
+                // 增加收件人與商品配送資訊
+                function createReciepts(CookiesDataIn) {
+                    //Delete reciept button
+                    var deleteButton = $('<div></div>').attr('onclick', 'deleteReciept(this)').addClass('delete-reciept').append($('<img/>').attr('src', 'images/cart-green-close.png').addClass('img-fluid'));
+
+                    //Header
+                    var header = $('<div></div>').addClass('header').append(
+                        [
+                            $('<img/>').addClass('img-fluid').attr('src', 'images/reciept-icon.png'),
+                            $('<span></span>').text(
+                                function() {
+                                    return $('.delivery .reciepts').length + 1;
+                                }()
+                            ),
+                            $('<div></div>').addClass('title').text('收件人與配送商品'),
+                            $('<img/>').addClass('img-fluid press-slide').attr({
+                                'src': 'images/green-down.png',
+                                'onclick': 'deliverySlidedown(this)'
                             })
+                        ]
+                    );
 
-                            $('.maxQty').append(maxQtys);
+                    //reciept-product分區區塊1
+                    var recieptsInfo = $('<div></div>').addClass('reciepts-info').append([
+                        $('<label></label>').text('收件人'),
+                        $('<input/>').attr({
+                            'type': 'text',
+                            'name': 'recieptName'
+                        }),
+                        $('<br/>'),
+                        $('<label></label>').text('連絡電話'),
+                        $('<input/>').attr({
+                            'type': 'text',
+                            'name': 'recieptCell'
+                        }),
+                        $('<br/>'),
+                        $('<label></label>').text('收件地址').css('margin-bottom', '-12%'),
+                        $('<div></div>').addClass('twzipcode').append([
+                            $('<div><div>').attr({
+                                'data-role': 'zipcode',
+                                'data-readonly': '1',
+                                'data-style': 'zip'
+                            }),
+                            $('<div><div>').attr({
+                                'data-role': 'county',
+                                'data-name': '表單名稱',
+                                'data-style': 'country'
+                            }),
+                            $('<div><div>').attr({
+                                'data-role': 'district',
+                                'data-name': 'district[]',
+                                'data-style': 'district'
+                            })
+                        ]),
+                        $('<input/>').addClass('addr').attr({
+                            'name': 'addr',
+                            'type': 'text'
                         })
+                    ]);
 
-
-
-                        function deleteReciept(e) {
-                            if ($(e).parents('.reciepts').find(' .header span').text() == '1') {
-                                console.log('不可以刪除');
-                            } else {
-                                $(e).parents('.reciepts').remove();
-                                var max = $('.order-check-steps .delivery .reciepts').length;
-                                $('.order-check-steps .delivery .reciepts').each(
-                                    function(i, v) {
-                                        $(this).find('.header span').text(i + 1);
-                                    }
-                                )
-                            }
-                        }
-
-                        function deliverySlidedown(e) {
-                            if ($(e).attr('src') == 'images/green-down.png') {
-                                $(e).attr('src', 'images/green-up.png');
-                                $(e).parents('.reciepts').find('.reciept-product').slideDown(500);
-                            } else {
-                                $(e).attr('src', 'images/green-down.png');
-                                $(e).parents('.reciepts').find('.reciept-product').slideUp(500);
-                            }
-                        };
-
-                        // 商品分配數量：增加1
-                        function productAsignAdd(e) {
-                            var max = parseInt($(e).parents('.products').children('.maxQty').text());
-                            var num = parseInt($(e).parent('.number-select').children('.number').text()) + 1;
-                            // 單一分配人超過總量的控制
-                            if (num > max) {
-                                num = max;
-                                $('#deliveryNotice1').modal(
-                                    'show', {
-                                        transition: 'scale',
-                                        duration: 1
-                                    }
-                                )
-                            }
-                            $(e).parent('.number-select').children('.number').text(num);
-                            //多個分配人超過總量的控制
-                            var total = productAsignAudit(e);
-                            if (total > max) {
-                                $('#deliveryNotice1').modal(
-                                    'show', {
-                                        transition: 'scale',
-                                        duration: 1
-                                    }
-                                )
-                                $(e).parent('.number-select').children('.number').text(num - 1);
-                            }
-                            var fee = deliveryFeeAudit(e);
-                            $(e).parents('.reciepts').find('.fee span').text(fee);
-                        };
-
-                        // 商品分配數量：減少1
-                        function productAsignMinus(e) {
-                            var num = parseInt($(e).parent('.number-select').children('.number').text()) - 1;
-                            if (num < 0) {
-                                num = 0;
-                            }
-                            $(e).parent('.number-select').children('.number').text(num);
-                            var fee = deliveryFeeAudit(e);
-                            $(e).parents('.reciepts').find('.fee span').text(fee);
-                        };
-
-                        // 商品分配數量檢核
-                        function productAsignAudit(e) {
-                            var ElementIndex = $(e).parents('.products').index();
-                            var total = 0;
-                            $('.delivery .reciepts').each(
-                                function() {
-                                    total = total + parseInt($(this).find('.product-asign .products:nth-child(' + (ElementIndex + 1) + ')  .number').text());
-                                }
-                            )
-                            return total;
-                        };
-
-                        //運費檢核
-                        function deliveryFeeAudit(e) {
-                            var fee = 0;
-                            var subtotal = 0;
-                            $(e).parents('.product-asign').find('.products').each(
-                                function() {
-                                    var price = cookiesData[$(this).index()].Price;
-                                    subtotal = subtotal + (parseInt($(this).find('.number').text()) * price);
-                                }
-                            );
-                            console.log('sub:' + subtotal);
-                            // 免運金額與運費設置
-                            if (subtotal >= 1500) {
-                                fee = 0;
-                            } else {
-                                fee = 60;
-                            }
-                            return fee;
-                        };
-
-                        //結帳前分配完全檢核
-                        function deliveryFullyAudit(e) {
-                            var recieptMaxIndex = $('.reciepts').length;
-                            var productMaxIndex = $('.reciepts:nth-child(1) .product-asign .products').length;
-                            var qtyArry = [];
-                            for (var y = 1; y <= productMaxIndex; y++) {
-                                var num = 0;
-                                for (var x = 1; x <= recieptMaxIndex; x++) {
-                                    num = num + parseInt($('.reciepts:nth-child(' + x + ') .product-asign .products:nth-child(' + y + ') .number').text());
-                                }
-                                qtyArry.push(num);
-                            }
-                            console.log(qtyArry);
-                            var flag = false;
-                            $.each(JSON.parse(Cookies.get('cart')), function(i, v) {
-                                if (v.Qty != qtyArry[i]) {
-                                    flag = true;
-                                    return null;
-                                }
-                            });
-                            if (flag) {
-                                $('#deliveryNotice2').modal('show'), {
-                                    transition: 'scale',
-                                    duration: 1
-                                };
-                            } else {
-                                $(e).parents('.order-check-steps').find('.section-header').removeClass('gray-bg');
-                                $(e).parents('.order-check-steps').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step2-num-lock.png');
-                                $(e).parents('.order-check-steps').find('.locker').addClass('active');
-                            };
-                        }
-
-                        function orderCheckDeliveryEffect() {
-                            $('.twzipcode').twzipcode();
-
-                            $('.reciepts .number-select .img-fluid:first-child').hover(
-                                function() {
-                                    $(this).attr('src', 'images/cart-content-add-hover.png');
-                                },
-                                function() {
-                                    $(this).attr('src', 'images/cart-content-add.png');
-                                }
-                            );
-
-                            $('.reciepts .number-select .img-fluid:last-child').hover(
-                                function() {
-                                    $(this).attr('src', 'images/cart-content-minus-hover.png');
-                                },
-                                function() {
-                                    $(this).attr('src', 'images/cart-content-minus.png');
-                                }
-                            );
-
-                            $('.order-check-steps .delivery .reciepts .delete-reciept').hover(
-                                function() {
-                                    $(this).children('.img-fluid').attr('src', 'images/cart-red-close.png');
-                                },
-                                function() {
-                                    $(this).children('.img-fluid').attr('src', 'images/cart-green-close.png');
-                                }
-                            )
-                        };
-
-
-
-                        // 增加收件人與商品配送資訊
-                        function createReciepts(CookiesDataIn) {
-                            //Delete reciept button
-                            var deleteButton = $('<div></div>').attr('onclick', 'deleteReciept(this)').addClass('delete-reciept').append($('<img/>').attr('src', 'images/cart-green-close.png').addClass('img-fluid'));
-
-                            //Header
-                            var header = $('<div></div>').addClass('header').append(
-                                [
-                                    $('<img/>').addClass('img-fluid').attr('src', 'images/reciept-icon.png'),
-                                    $('<span></span>').text(
-                                        function() {
-                                            return $('.delivery .reciepts').length + 1;
-                                        }()
-                                    ),
-                                    $('<div></div>').addClass('title').text('收件人與配送商品'),
-                                    $('<img/>').addClass('img-fluid press-slide').attr({
-                                        'src': 'images/green-down.png',
-                                        'onclick': 'deliverySlidedown(this)'
-                                    })
-                                ]
-                            );
-
-                            //reciept-product分區區塊1
-                            var recieptsInfo = $('<div></div>').addClass('reciepts-info').append([
-                                $('<label></label>').text('收件人'),
-                                $('<input/>').attr({
-                                    'type': 'text',
-                                    'name': 'recieptName'
+                    //reciept-product分區區塊2
+                    var hr = $('<div></div>').addClass('hr');
+                    var products = [];
+                    $.each(CookiesDataIn, function(i, v) {
+                        var product = $('<div></div>').addClass('products').append([
+                            $('<div></div>').addClass('title').text(v.Name),
+                            $('<div></div>').addClass('maxQty').text(v.Qty),
+                            $('<div></div>').addClass('number-select').append([
+                                $('<img/>').addClass('img-fluid').attr({
+                                    'src': 'images/cart-content-add.png',
+                                    'onclick': 'productAsignAdd(this)'
                                 }),
-                                $('<br/>'),
-                                $('<label></label>').text('連絡電話'),
-                                $('<input/>').attr({
-                                    'type': 'text',
-                                    'name': 'recieptCell'
-                                }),
-                                $('<br/>'),
-                                $('<label></label>').text('收件地址').css('margin-bottom', '-12%'),
-                                $('<div></div>').addClass('twzipcode').append([
-                                    $('<div><div>').attr({
-                                        'data-role': 'zipcode',
-                                        'data-readonly': '1',
-                                        'data-style': 'zip'
-                                    }),
-                                    $('<div><div>').attr({
-                                        'data-role': 'county',
-                                        'data-name': '表單名稱',
-                                        'data-style': 'country'
-                                    }),
-                                    $('<div><div>').attr({
-                                        'data-role': 'district',
-                                        'data-name': 'district[]',
-                                        'data-style': 'district'
-                                    })
-                                ]),
-                                $('<input/>').addClass('addr').attr({
-                                    'name': 'addr',
-                                    'type': 'text'
+                                $('<div></div>').addClass('number').text(
+                                    function() {
+                                        if ($('.order-check-steps .delivery .reciepts').length == 0) {
+                                            return v.Qty;
+                                        } else {
+                                            return 0;
+                                        }
+                                    }()
+                                ),
+                                $('<img/>').addClass('img-fluid').attr({
+                                    'src': 'images/cart-content-minus.png',
+                                    'onclick': 'productAsignMinus(this)'
                                 })
-                            ]);
+                            ])
+                        ]);
+                        products.push(product);
+                    });
+                    //reciept-product分區區塊3
+                    var productAsign = $('<div></div>').addClass('product-asign').append(products);
 
-                            //reciept-product分區區塊2
-                            var hr = $('<div></div>').addClass('hr');
+                    //reciept-product分區區塊4
+                    var fee = $('<div></div>').addClass('fee').append([
+                        $('<label></label>').text('運費：$'),
+                        $('<span></span>').text(0)
+                    ]);
+                    //結合reciept-product
+                    var recieptProduct = $('<div></div>').addClass('reciept-product').append([recieptsInfo, hr, productAsign, $('<div></div>').addClass('hr'), fee]);
 
-                            var products = [];
-                            $.each(CookiesDataIn, function(i, v) {
-                                var product = $('<div></div>').addClass('products').append([
-                                    $('<div></div>').addClass('title').text(v.Name),
-                                    $('<div></div>').addClass('maxQty').text(v.Qty),
-                                    $('<div></div>').addClass('number-select').append([
-                                        $('<img/>').addClass('img-fluid').attr({
-                                            'src': 'images/cart-content-add.png',
-                                            'onclick': 'productAsignAdd(this)'
-                                        }),
-                                        $('<div></div>').addClass('number').text(
-                                            function() {
-                                                if ($('.order-check-steps .delivery .reciepts').length == 0) {
-                                                    return v.Qty;
-                                                } else {
-                                                    return 0;
-                                                }
-                                            }()
-                                        ),
-                                        $('<img/>').addClass('img-fluid').attr({
-                                            'src': 'images/cart-content-minus.png',
-                                            'onclick': 'productAsignMinus(this)'
-                                        })
-                                    ])
-                                ]);
-                                products.push(product);
-                            });
-                            //reciept-product分區區塊3
-                            var productAsign = $('<div></div>').addClass('product-asign').append(products);
+                    var reciepts = $('<div></div>').addClass('reciepts').append([deleteButton, header, recieptProduct]);
+                    $('.delivery .next-reciepts').before(reciepts);
+                    orderCheckDeliveryEffect();
+                };
 
-                            //reciept-product分區區塊4
-                            var fee = $('<div></div>').addClass('fee').append([
-                                $('<label></label>').text('運費：$'),
-                                $('<span></span>').text(0)
-                            ]);
-                            //結合reciept-product
-                            var recieptProduct = $('<div></div>').addClass('reciept-product').append([recieptsInfo, hr, productAsign, $('<div></div>').addClass('hr'), fee]);
-
-
-                            var reciepts = $('<div></div>').addClass('reciepts').append([deleteButton, header, recieptProduct]);
-                            $('.delivery .next-reciepts').before(reciepts);
-                            orderCheckDeliveryEffect();
-                        };
-
-                        $(function() {
-                            createReciepts(cookiesData);
-                        })
-
-                        $('.delivery .next-reciepts').click(
-                            function() {
-                                createReciepts(cookiesData);
+                // 刪除收件人區塊
+                function deleteReciept(e) {
+                    if ($(e).parents('.reciepts').find(' .header span').text() == '1') {
+                        $('#deliveryNotice3').modal({
+                            onShow: function() {
+                                $('.order-check-steps:nth-child(3)>.img-fluid:last-child').css('z-index', '-2')
+                            }
+                        }).modal('show', {
+                            transition: 'scale',
+                            duration: 1
+                        });
+                        console.log('不可以刪除');
+                    } else {
+                        $(e).parents('.reciepts').remove();
+                        var max = $('.order-check-steps .delivery .reciepts').length;
+                        $('.order-check-steps .delivery .reciepts').each(
+                            function(i, v) {
+                                $(this).find('.header span').text(i + 1);
                             }
                         )
-                    </script>
+                    }
+                }
 
+                // 收件人商品分配下拉選單
+                function deliverySlidedown(e) {
+                    if ($(e).attr('src') == 'images/green-down.png') {
+                        $(e).attr('src', 'images/green-up.png');
+                        $(e).parents('.reciepts').find('.reciept-product').slideDown(500);
+                    } else {
+                        $(e).attr('src', 'images/green-down.png');
+                        $(e).parents('.reciepts').find('.reciept-product').slideUp(500);
+                    }
+                };
 
-                    <<<<<<< HEAD <button type="none" class="next-step" onclick="deliveryFullyAudit()">下一步</button>
-                        =======
-                        <button type="none" class="next-step" onclick="deliveryFullyAudit(this)">下一步</button> >>>>>>> c0ba1b667b6446960fda5f677155127316fb6b37
-                        <img src="images/order-check-step2-bg.png" class="img-fluid" />
-            </div>
+                // 商品分配數量：增加1
+                function productAsignAdd(e) {
+                    var max = parseInt($(e).parents('.products').children('.maxQty').text());
+                    var num = parseInt($(e).parent('.number-select').children('.number').text()) + 1;
+                    // 單一分配人超過總量的控制
+                    if (num > max) {
+                        num = max;
+                        $('#deliveryNotice1').modal({
+                            onShow: function() {
+                                $('.order-check-steps:nth-child(3)>.img-fluid:last-child').css('z-index', '-2')
+                            }
+                        }).modal(
+                            'show', {
+                                transition: 'scale',
+                                duration: 1
+                            }
+                        )
+                    }
+                    $(e).parent('.number-select').children('.number').text(num);
+                    //多個分配人超過總量的控制
+                    var total = productAsignAudit(e);
+                    if (total > max) {
+                        $('#deliveryNotice1').modal({
+                            onShow: function() {
+                                $('.order-check-steps:nth-child(3)>.img-fluid:last-child').css('z-index', '-2')
+                            }
+                        }).modal(
+                            'show', {
+                                transition: 'scale',
+                                duration: 1
+                            }
+                        )
+                        $(e).parent('.number-select').children('.number').text(num - 1);
+                    }
+                    var fee = deliveryFeeAudit(e);
+                    $(e).parents('.reciepts').find('.fee span').text(fee);
+                };
+
+                // 商品分配數量：減少1
+                function productAsignMinus(e) {
+                    var num = parseInt($(e).parent('.number-select').children('.number').text()) - 1;
+                    if (num < 0) {
+                        num = 0;
+                    }
+                    $(e).parent('.number-select').children('.number').text(num);
+                    var fee = deliveryFeeAudit(e);
+                    $(e).parents('.reciepts').find('.fee span').text(fee);
+                };
+
+                // 商品分配數量檢核
+                function productAsignAudit(e) {
+                    var ElementIndex = $(e).parents('.products').index();
+                    var total = 0;
+                    $('.delivery .reciepts').each(
+                        function() {
+                            total = total + parseInt($(this).find('.product-asign .products:nth-child(' + (ElementIndex + 1) + ')  .number').text());
+                        }
+                    )
+                    return total;
+                };
+
+                //運費檢核
+                function deliveryFeeAudit(e) {
+                    var fee = 0;
+                    var subtotal = 0;
+                    $(e).parents('.product-asign').find('.products').each(
+                        function() {
+                            var price = cookiesData[$(this).index()].Price;
+                            subtotal = subtotal + (parseInt($(this).find('.number').text()) * price);
+                        }
+                    );
+                    // 免運金額與運費設置
+                    if (subtotal >= 1500) {
+                        fee = 0;
+                    } else {
+                        fee = 60;
+                    }
+                    return fee;
+                };
+
+                //結帳前分配是否完全的檢核，結帳資訊是否完全的檢核，樣式變更
+                function deliveryFullyAudit(e) {
+                    // 分配檢核
+                    var recieptMaxIndex = $('.reciepts').length;
+                    var productMaxIndex = $('.reciepts:nth-child(1) .product-asign .products').length;
+                    var qtyArry = [];
+                    for (var y = 1; y <= productMaxIndex; y++) {
+                        var num = 0;
+                        for (var x = 1; x <= recieptMaxIndex; x++) {
+                            num = num + parseInt($('.reciepts:nth-child(' + x + ') .product-asign .products:nth-child(' + y + ') .number').text());
+                        }
+                        qtyArry.push(num);
+                    }
+                    var flag = false;
+                    $.each(JSON.parse(Cookies.get('cart')), function(i, v) {
+                        if (v.Qty != qtyArry[i]) {
+                            flag = true;
+                            return null;
+                        }
+                    });
+
+                    // 判斷訂購人資訊是否完全
+                    if (
+                        $(e).parents('.order-check-steps').find('input[name="name"]').val().trim().length == 0 ||
+                        $(e).parents('.order-check-steps').find('input[name="cell"]').val().trim().length == 0
+                    ) {
+                        $('#deliveryNotice4').modal('show', {
+                            transition: 'scale',
+                            duration: 1
+                        });
+                        return null;
+                    };
+
+                    // 判斷收件人資訊是否完全
+                    if (
+                        function() {
+                            var inputFlag = false;
+                            $(e).parents('.order-check-steps').find('.reciepts input').each(
+                                function() {
+                                    if ($(this).val().trim().length == 0) {
+                                        inputFlag = true;
+                                        return null;
+                                    }
+                                }
+                            )
+                            return inputFlag;
+                        }()
+                    ) {
+                        $('#deliveryNotice5').modal('show', {
+                            transition: 'scale',
+                            duration: 1
+                        });
+                        return null;
+                    };
+
+                    // 樣式變更
+                    if (flag) {
+                        $('#deliveryNotice2').modal({
+                            onShow: function() {
+                                $('.order-check-steps:nth-child(3)>.img-fluid:last-child').css('z-index', '-2')
+                            }
+                        }).modal('show', {
+                            transition: 'scale',
+                            duration: 1
+                        });
+                    } else {
+                        $(e).parents('.order-check-steps').find('.section-header').removeClass('gray-bg');
+                        $(e).parents('.order-check-steps').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step2-num-lock.png');
+                        $(e).parents('.order-check-steps').find('.locker').addClass('active');
+                        $('.order-check-steps:nth-child(5)').find('.section-header').addClass('gray-bg');
+                        $('.order-check-steps:nth-child(5)').find('.section-header .img-fluid:first-child').attr('src', 'images/order-check-step3-num.png');
+                        $('.order-check-steps:nth-child(5)').find('.section-header .img-fluid:last-child').attr('src', 'images/order-check-step3-head.png');
+                        $('.order-check-steps:nth-child(5)').find('.locker').removeClass('active');
+                    };
+                    orderCheckStep2(e);
+                    loadDiscount(member);
+                }
+
+                //將會員紅利與購物金載入下一步的欄位中
+                function loadDiscount(memberDataIn) {
+                    // 試算金額(純購買金額)
+                    var trial = parseInt(Cookies.get('cart-subtotal'));
+                    //總運費
+                    var fee = function() {
+                        var feeCounter = 0;
+                        $('.reciepts').each(
+                            function(i, v) {
+                                feeCounter = feeCounter + parseInt($(this).find('.fee span').text());
+                            }
+                        )
+                        return parseInt(feeCounter);
+                    }();
+                    //試算金額(含運費加總)
+                    trial = trial + fee;
+                    $('.order-check-steps .step3-subtotal .trial').text('$' + trial);
+                    // 取得Memeber的Cookie資料
+                    // 紅利折抵
+                    var maxBonusDiscount = Math.floor((parseInt(trial - fee) * 0.12) / 5);
+                    var afterBonusDiscount = trial;
+                    var bonusDiscount = 0;
+                    if (memberDataIn.Bonus > maxBonusDiscount) {
+                        bonusDiscount = maxBonusDiscount * 5;
+                        $('.order-check-steps .step3-subtotal .bonus-discount').text('-$' + maxBonusDiscount * 5);
+                        afterBonusDiscount = afterBonusDiscount - (maxBonusDiscount * 5);
+                    } else {
+                        bonusDiscount = memberDataIn.Bonus * 5;
+                        $('.order-check-steps .step3-subtotal .bonus-discount').text('-$' + memberDataIn.Bonus * 5);
+                        afterBonusDiscount = afterBonusDiscount - (memberDataIn.Bonus * 5);
+                    }
+                    // 購物金折抵
+                    var maxFundsDiscount = afterBonusDiscount;
+                    var fundsDiscount = 0;
+                    if (memberDataIn.Funds > maxFundsDiscount) {
+                        fundsDiscount = maxFundsDiscount;
+                        $('.order-check-steps .step3-subtotal .funds-discount').text('-$' + maxFundsDiscount);
+                    } else {
+                        fundsDiscount = memberDataIn.Funds;
+                        $('.order-check-steps .step3-subtotal .funds-discount').text('-$' + memberDataIn.Funds)
+                    }
+                    // 總計金額
+                    var total = trial - bonusDiscount - fundsDiscount;
+                    $('.order-check-steps .step3-subtotal .inline-block .total').text('$' + total);
+                }
+
+                $(function() {
+                    createReciepts(cookiesData);
+                })
+
+                $('.delivery .next-reciepts').click(
+                    function() {
+                        createReciepts(JSON.parse(Cookies.get('cart')));
+                    }
+                )
+            </script>
 
             <div class="col-md-4 order-check-steps">
-                <div class="locker"></div>
+                <div class="locker active"></div>
                 <div class="section-header">
                     <img src="images/order-check-step3-num-lock.png" class="img-fluid" alt="" />
                     <div class="title">我要付錢了</div>
                     <img src="images/order-check-step3-head-lock.png" class="img-fluid" alt="" />
                 </div>
+                <div class="step3-subtotal">
+                    <div class="inline-block">
+                        <div class="title">小計</div>
+                        <div class="trial">$0</div>
+                    </div>
+                    <div class="inline-block">
+                        <div class="title">紅利回饋折抵<img src="images/bonus-discount.png" class="img-fluid" /></div>
+                        <div class="bonus-discount">$0</div>
+                    </div>
+                    <div class="inline-block">
+                        <div class="title">購物金折抵<img src="images/funds-discount.png" class="img-fluid" /></div>
+                        <div class="funds-discount">$0</div>
+                    </div>
+                    <div class="inline-block">
+                        <div class="title">總計：</div>
+                        <div class="total">$0</div>
+                    </div>
+                </div>
+                <div class="pay-info">
+                    <div class="title">
+                        我們現在只提供匯款、ATM轉帳的方式。請您於送出訂單後的<span>48小時</span>內完成付款，逾時則將取消您的訂單。
+                    </div>
+                    <div class="title">
+                        請注意：若您累積三次紀錄，將被停止訂購的功能。
+                    </div>
+                    <div class="pay-account">
+                        <div>銀行：004台灣銀行</div>
+                        <div>帳號：123456789034785930</div>
+                        <div>戶名：林美好</div>
+                    </div>
+                </div>
 
-                <button type="none" class="next-step">下一步</button>
+                <button id="complete-order" type="none" class="next-step">完成訂單</button>
             </div>
+
+            <script>
+                $('.order-check-steps .step3-subtotal .inline-block:nth-child(2) .img-fluid').hover(
+                    function() {
+                        $(this).attr('src', 'images/bonus-discount-hover.png');
+                    },
+                    function() {
+                        $(this).attr('src', 'images/bonus-discount.png');
+                    }
+                );
+                $('.order-check-steps .step3-subtotal .inline-block:nth-child(3) .img-fluid').hover(
+                    function() {
+                        $(this).attr('src', 'images/funds-discount-hover.png');
+                    },
+                    function() {
+                        $(this).attr('src', 'images/funds-discount.png');
+                    }
+                );
+
+                $('#complete-order').click(
+                    function() {
+                        var cartJson = JSON.parse(Cookies.get('cart'));
+
+                        var orderDetailArry = [];
+                        $.each(cartJson, function(i, v) {
+                            var pid = v.ProductID;
+                            var price = parseInt(v.Price);
+                            var qty = parseInt(v.Qty);
+                            var productObj = {};
+                            productObj[pid] = [{
+                                "price": price
+                            }, {
+                                "subtotal": price * qty
+                            }, {
+                                "qty": qty
+                            }];
+                            orderDetailArry.push(productObj);
+                        });
+                        var orderDetail = {};
+                        orderDetail["orderDetail"] = orderDetailArry;
+
+                        var delivery = {};
+                        var deliveryArry;
+                        if (typeof(Cookies.get("delivery") === "undefined")) {
+                            deliveryArry = deliverySetCookie();
+                        } else {
+                            deliveryArry = Cookies.get("delivery");
+                        }
+                        delivery["delivery"] = deliveryArry;
+
+                        var bounsDiscount = {};
+                        bounsDiscount["bounsDiscount"] = parseInt($('.step3-subtotal .bonus-discount').text().substring(2)) / 5;
+
+                        var fundsDiscount = {};
+                        fundsDiscount["fundsDiscount"] = parseInt($('.step3-subtotal .funds-discount').text().substring(2));
+
+
+                        var orderArry = [];
+                        orderArry.push(bounsDiscount);
+                        orderArry.push(fundsDiscount);
+                        orderArry.push(orderDetail);
+                        orderArry.push(delivery);
+
+                        var order = {};
+                        order["order"] = orderArry;
+                        console.log(JSON.stringify(order));
+
+                        $('#completeOrder .title:nth-child(1) span').text('O10547854542121');
+                        $('#completeOrder .title:nth-child(2) span').text('NT ' +
+                            function() {
+                                return parseInt(Cookies.get('cart-subtotal')) - parseInt($('.step3-subtotal .bonus-discount').text().substring(2)) - parseInt($('.step3-subtotal .funds-discount').text().substring(2));
+                            }()
+                        );
+
+                        // 送出訂購人資料(更新會員姓名與電話)
+                        // $.post('.......memberUpdateController', {
+                        //     "MemberID": member.MemberID,
+                        //     "Name": $('.orderer-info input[name="name"]').val(),
+                        //     "Cell": $('.orderer-info input[name="cell"]').val()
+                        // }, function() {
+                        //     console.log('member update complete');
+                        // });
+
+                        // 送出收件人與配送資訊
+                        $.ajax({
+                            url: '<c:url value="/user/checkOut/checkOut"/>',
+                            type: "POST",
+                            dataType: "json",
+                            data: JSON.stringify(order),
+                            success: function(data) {
+                                $('#completeOrder .title:nth-child(3) span').text(
+                                    function() {
+                                        var currentdate = new Date();
+                                        currentdate.setDate(currentdate.getDate() + 2);
+                                        var datetime = currentdate.getFullYear() + "-" +
+                                            (currentdate.getMonth() + 1) + "-" +
+                                            currentdate.getDate() + "\t" +
+                                            currentdate.getHours() + ":" +
+                                            currentdate.getMinutes();
+                                        return datetime;
+                                    }() + '前'
+                                );
+                                $('#completeOrder').moda({
+                                    onHidden: function() {
+                                        // location.href = '/index.html?referred=' + 'noback';
+                                        location.replace('/index.html?referred=' + 'noback');
+                                    }
+                                }).modal('show');
+                                console.log(data);
+                            },
+                            error: function() {
+                                $('#failOrder').modal('show');
+                                console.log('訂單失敗');
+                            }
+                        });
+                    }
+                );
+            </script>
 
 
         </div>
 
-        <!--提示分數量Modal-->
+        <!--提示分配數量Modal-->
         <div id="deliveryNotice1" class="ui modal">
             <div class="">
                 <div class="title">超過該商品訂購數量。</div>
@@ -669,10 +1085,10 @@
                 }
             )
         </script>
-        <!--分數不足Modal-->
+        <!--分配數不正確Modal-->
         <div id="deliveryNotice2" class="ui modal">
             <div class="">
-                <div class="title">尚有商品未分配。</div>
+                <div class="title">商品分配不正確。</div>
             </div>
             <button class="" type="none">確定</button>
         </div>
@@ -680,6 +1096,82 @@
             $('#deliveryNotice2 button').click(
                 function() {
                     $(this).parent('#deliveryNotice2').modal('hide');
+                }
+            )
+        </script>
+        <!--收件人至少一人Modal-->
+        <div id="deliveryNotice3" class="ui modal">
+            <div class="">
+                <div class="title">至少要有一個收件人。</div>
+            </div>
+            <button class="" type="none">確定</button>
+        </div>
+        <script>
+            $('#deliveryNotice3 button').click(
+                function() {
+                    $(this).parent('#deliveryNotice3').modal('hide');
+                }
+            )
+        </script>
+
+        <!--訂購人資訊不完全Modal-->
+        <div id="deliveryNotice4" class="ui modal">
+            <div class="">
+                <div class="title">請填寫訂購人姓名與連絡電話。</div>
+            </div>
+            <button class="" type="none">確定</button>
+        </div>
+        <script>
+            $('#deliveryNotice4 button').click(
+                function() {
+                    $(this).parent('#deliveryNotice4').modal('hide');
+                }
+            )
+        </script>
+
+        <!--收件人資訊不完全Modal-->
+        <div id="deliveryNotice5" class="ui modal">
+            <div class="">
+                <div class="title">請完整填寫收件人資訊。</div>
+            </div>
+            <button class="" type="none">確定</button>
+        </div>
+        <script>
+            $('#deliveryNotice5 button').click(
+                function() {
+                    $(this).parent('#deliveryNotice5').modal('hide');
+                }
+            )
+        </script>
+
+        <!--成功送出訂單Modal-->
+        <div id="completeOrder" class="ui modal">
+            <div class="">
+                <div class="title">訂單編號：<span></span></div>
+                <div class="title">應付總額：<span></span></div>
+                <div class="title">付款期限：<span></span></div>
+                <img src="images/order-complete-notice.png" class="img-fluid" alt="" />
+            </div>
+            <button class="" type="none">確定</button>
+        </div>
+        <script>
+            $('#completeOrder button').click(
+                function() {
+                    $(this).parent('#completeOrder').modal('hide');
+                }
+            )
+        </script>
+        <!--失敗無法送出訂單Modal-->
+        <div id="failOrder" class="ui modal">
+            <div class="">
+                <div class="title" style="color:red">無法送出訂單！</div>
+            </div>
+            <button class="" type="none">確定</button>
+        </div>
+        <script>
+            $('#failOrder button').click(
+                function() {
+                    $(this).parent('#failOrder').modal('hide');
                 }
             )
         </script>
