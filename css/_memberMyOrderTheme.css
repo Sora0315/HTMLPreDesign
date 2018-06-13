@@ -1,0 +1,231 @@
+.container.my-order-record {
+    position: relative;
+    width: 90%;
+}
+
+.container.my-order-record .title {
+    width: 50%;
+    margin: 2% auto 3%;
+    font-size: 1vw;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.2vw;
+    color: #11191b;
+}
+
+.container.my-order-record .index {
+    display: none;
+}
+
+.container.my-order-record .record-table {
+    width: 100%;
+    margin: 3% auto 0 auto;
+    text-align: center;
+    border: 1px solid #edeaea;
+    border-collapse: collapse;
+}
+
+.container.my-order-record .record-table tr:nth-child(2n+1) {
+    background-color: #f9f9f9;
+}
+
+.container.my-order-record .record-table tr:hover {
+    background-color: #ecd85f;
+}
+
+.container.my-order-record .record-table th {
+    color: #11191b;
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+    padding: 1%;
+    background-color: #edeaea;
+}
+
+.container.my-order-record .record-table td {
+    font-size: 0.9vw;
+    letter-spacing: 0.1vw;
+    color: #727272;
+    padding: 1.2% 1%;
+    font-weight: 700;
+    text-align: center;
+}
+
+.container.my-order-record .record-table tr td:first-child:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.container.my-order-record .record-table td .img-fluid {
+    width: 18%;
+    margin: 0 auto;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.container.my-order-record .record-table td .img-fluid:hover {
+    opacity: 1.0;
+}
+
+.container.my-order-record .paging {
+    width: 30%;
+    margin: 2% auto;
+    text-align: center;
+}
+
+.container.my-order-record .paging .img-fluid {
+    display: inline-block;
+    width: 5%;
+    vertical-align: middle;
+    margin: 0 2%;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.container.my-order-record .paging .img-fluid:hover {
+    opacity: 1;
+}
+
+
+/* 會員訂單管理：我的訂單Footer樣式 */
+
+.member-common-footer .member-myOrder {
+    position: relative;
+}
+
+.member-common-footer .member-myOrder.animation-1>.img-fluid:nth-child(1) {
+    position: absolute;
+    width: 10%;
+    left: 25.5%;
+    top: -92%;
+}
+
+.member-common-footer .member-myOrder.animation-1>.img-fluid:nth-child(2) {
+    position: absolute;
+    width: 4%;
+    left: 28.6%;
+    top: -35%;
+    animation: eye-moving2 2s infinite ease-in-out;
+}
+
+.member-myOrder .icon-link {
+    position: absolute;
+    width: 10%;
+    top: 15%;
+    right: 0.5%;
+    text-align: right;
+    z-index: 5;
+}
+
+.member-myOrder .icon-link a {
+    display: inline-block;
+    width: 18%;
+    margin: 0 5%;
+    vertical-align: middle;
+}
+
+.member-myOrder .footer-title {
+    width: 15%;
+    position: absolute;
+    bottom: 15%;
+    left: 23.5%;
+    text-align: center;
+}
+
+.member-myOrder .footer-title .title {
+    color: #1a2576;
+    font-weight: 800;
+}
+
+.member-myOrder .footer-title .title:first-child {
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+}
+
+.member-myOrder .footer-title .title:last-child {
+    font-size: 0.8vw;
+    letter-spacing: 0.1vw;
+}
+
+.member-myOrder .footer-link {
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+    text-align: center;
+}
+
+.member-myOrder .footer-link .nav-link {
+    vertical-align: middle;
+    color: #ecd85f;
+}
+
+.member-myOrder .footer-link .nav-link:hover {
+    color: #1a2576;
+}
+
+.member-myOrder .footer-link .nav-link .title:first-child {
+    font-size: 1vw;
+    letter-spacing: 0.5vw;
+}
+
+.member-myOrder .footer-link .nav-link .title:last-child {
+    font-size: 0.000001vw;
+    letter-spacing: 0.01vw;
+    opacity: 0;
+}
+
+
+/* 配送貨運行Modal的樣式 */
+
+#myOrderCargoUrl {
+    width: 25%;
+    padding: 0%;
+    text-align: center;
+    border: none;
+    border-radius: 10pt;
+    margin-left: -12.5%;
+}
+
+#myOrderCargoUrl .title {
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    color: #727272;
+    margin-bottom: 8%;
+    line-height: 2rem;
+    font-weight: 800;
+    margin: 5% 0;
+}
+
+#myOrderCargoUrl a:hover {
+    text-decoration: underline;
+}
+
+#myOrderCargoUrl>.title:nth-child(1) {
+    font-size: 1.2vw;
+    letter-spacing: 0.3vw;
+}
+
+#myOrderCargoUrl .service-number {
+    text-align: left;
+    padding-left: 25%;
+    margin-bottom: 5%;
+}
+
+#myOrderCargoUrl .service-number .title>span {
+    display: block;
+}
+
+#myOrderCargoUrl button {
+    padding: 1.5% 4%;
+    font-size: 1vw;
+    letter-spacing: 0.1vw;
+    border: none;
+    border-radius: 5pt;
+    background-color: #cccaca;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 5%;
+}
+
+#myOrderCargoUrl button:hover {
+    background-color: #ecd85f;
+}

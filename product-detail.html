@@ -29,13 +29,27 @@
         var productDetail, productImage, productComment, member;
         $(function() {
             var referrer = document.referrer;
-            console.log(location.search.substr(location.search.indexOf('=') + 1));
-            // $.getJSON('.......url', {
-            //     'ProductID': location.search.substr(location.search.indexOf('=') + 1)
+
+            // 取得查詢字串
+            var queryStringList = function() {
+                let query = location.search.substr(1);
+                return query.split('&');
+            }();
+
+            // 取出查詢字串Value
+            var queryValue = function() {
+                let arry = [];
+                $.each(queryStringList, function(i, v) {
+                    arry.push(v.substr(v.indexOf("=") + 1));
+                });
+                return arry;
+            }();
+
+            // $.post('', {
+            //     'ProductID': queryValue[0]
             // }, function(data) {
             //     productDetail = data;
-            //     console.log(productDetail);
-            // })
+            // });
 
             var page = document.referrer.replace(/^[^:]+:\/\/[^/]+/, '').replace(/#.*/, '');
 
@@ -58,11 +72,11 @@
                 'class': 'related',
                 'hr': 'related-hr',
                 'footer': 'images/related-footer-bg.png'
-            }]
+            }];
 
             //商品分類頁面的樣式，會因各類別不同而帶進商品資訊的頁面
             $.each(productDetailCss, function(i, v) {
-                if (v.path == page) {
+                if (v.path == page || v.pageName == decodeURIComponent(queryValue[1])) {
                     $('nav').addClass(v.class);
                     $('.product-detail .section-header a:nth-child(3)').attr('href', v.path);
                     $('.product-detail .section-header a:nth-child(3) .title').text(v.pageName);
@@ -70,7 +84,7 @@
                     $('.product-common.product-detail').addClass(v.class);
                     $('footer>.img-fluid').attr('src', v.footer);
                 }
-            })
+            });
 
             productDetail = {
                 'ProductID': 'P000000001',

@@ -212,7 +212,7 @@
         </script>
 
         <div class="common contactus site-main">
-            <div class=container>
+            <div class="container">
                 <div class="contact-info">
                     <div class="row">
                         <div class="card col-xs-4">
@@ -265,10 +265,10 @@
                                 <div class="contact-drop-triangle"></div>
                             </button> -->
                             <ul id="contact-drop-menu-select" tabindex="0" class="contact-drop-dwon">
-                                <li>我想要問關於訂單<span class="sort">CS000000001</span></li>
-                                <li>我想要問付款方式<span class="sort">CS000000002</span></li>
-                                <li>我想要問配送細節<span class="sort">CS000000003</span></li>
-                                <li>我想要問........<span class="sort">CS000000004</span></li>
+                                <li>我想要問關於訂單<span class="sort">CS00000001</span></li>
+                                <li>我想要問付款方式<span class="sort">CS00000002</span></li>
+                                <li>我想要問配送細節<span class="sort">CS00000003</span></li>
+                                <li>我想要問........<span class="sort">CS00000004</span></li>
                             </ul>
 
                             <script>
@@ -349,9 +349,9 @@
                                 $('#contact-drop-menu-select').contactDropSelect();
                             </script>
                             <h2 class="title">姓名<span class="wonderfulType">(Name)</span></h2>
-                            <input type="text" name="Name" class="contact-msg-input">
+                            <input type="text" name="name" class="contact-msg-input">
                             <h2 class="title">電子信箱<span class="wonderfulType">(E-mail)</span></h2>
-                            <input type="text" name="Mail" class="contact-msg-input">
+                            <input type="text" name="mail" class="contact-msg-input">
                             <button type="none" class="contact-msg-btn">
                             <img src="images/contact-msg-btn1.png " class="img-fluid "/>
                             <img src="images/contact-msg-btn2.png " class="img-fluid "/>
@@ -365,13 +365,13 @@
                     $('.contact-msg-btn').click(function() {
                         var contactText = $('.contact-msg textarea[name="contact-msg-area"]').val();
                         var contactSort = $('.contact-drop-dwon li.active .sort').text();
-                        var contactName = $('.contact-msg input[name="Name"]').val();
-                        var contactMail = $('.contact-msg input[name="Mail"]').val();
+                        var contactName = $('.contact-msg input[name="name"]').val();
+                        var contactMail = $('.contact-msg input[name="mail"]').val();
                         $.post('.........', {
-                                'Name': contactName,
-                                'Mail': contactMail,
-                                'Text': contactText,
-                                'SortID': contactSort
+                                'name': contactName,
+                                'mail': contactMail,
+                                'text': contactText,
+                                'sortID': contactSort
                             },
                             function(data) {
 

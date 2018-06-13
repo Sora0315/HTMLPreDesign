@@ -1,0 +1,381 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- X-UA-Compatible設置IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--RWD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <meta name="author" content="萊茵巴赫科技" />
+    <meta name="copyright" content="萊茵巴赫科技" />
+    <!-- 結構化資料 SEO 與 meta 標籤 -->
+    <meta property="og:title" content="柚美。柚好" />
+    <meta property="og:url" content="">
+    <meta property="og:image" content="要顯示的縮圖網址" />
+    <meta property="og:description" content="網頁描述" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>柚美。柚好</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/semantic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="js/reinbachCommon.js"></script>
+</head>
+
+<body style="background: none">
+    <div class="member-order-QA-Commnent-fadein">
+        <!--半共用樣式區，Header-->
+        <header class="member-common-header">
+            <a href="index.html" class="member-QA-Commnent-site-logo">
+                <img src="images/webLogo-order-check.png" class="img-fluid" alt="" />
+            </a>
+            <img src="images/order-bounce-logo1.png" class="img-fluid bounce-logo" alt="" />
+            <img src="images/order-bounce-logo2.png" class="img-fluid bounce-logo" alt="" />
+
+            <div class="member-order-QA-Comment">
+                <img src="images/member-myorder-header-bg.png " class="img-fluid " alt=" " />
+                <div class="icon-link ">
+                    <a href=" " class=" ">
+                        <img src="images/icon-fb.png " class="img-fluid " alt=" " />
+                    </a>
+                    <a href=" " class=" ">
+                        <img src="images/icon-ig.png " class="img-fluid " alt=" " />
+                    </a>
+                    <a href=" " class=" ">
+                        <img src="images/icon-utube.png " class="img-fluid " alt=" " />
+                    </a>
+                </div>
+                <div class="footer-title">
+                    <div class="title ">會員訂單管理</div>
+                    <div class="title ">我的訂單-訂單評論</div>
+                </div>
+                <div class="footer-link ">
+                    <a href="news.html " class="wonderfulType nav-link ">
+                        <div class="title ">最新消息</div>
+                        <div class="title ">News</div>
+                    </a>
+                    <a href="productIndex.html " class="wonderfulType nav-link ">
+                        <div class="title ">商品專區</div>
+                        <div class="title ">Products</div>
+                    </a>
+                    <a href=" " class="wonderfulType nav-link ">
+                        <div class="title ">相片底家</div>
+                        <div class="title ">Photos</div>
+                    </a>
+                    <a href="story.html " class="wonderfulType nav-link ">
+                        <div class="title ">美好故事</div>
+                        <div class="title ">About&nbsp;Us</div>
+                    </a>
+                    <a href=" " class="wonderfulType nav-link ">
+                        <div class="title ">美好問答</div>
+                        <div class="title ">Q&A</div>
+                    </a>
+                    <a href="contact.html " class="wonderfulType nav-link ">
+                        <div class="title ">找尋美好</div>
+                        <div class="title ">Find&nbsp;Us</div>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <script>
+            $('.member-order-QA-Comment .footer-link .nav-link').hover(
+                function() {
+                    $(this).children('.title:last-child').css('opacity', "1 ");
+                },
+                function() {
+                    $(this).children('.title:last-child').css('opacity', "0 ");
+                }
+            );
+            $('.member-common-header .member-QA-Commnent-site-logo').hover(
+                function() {
+                    $(this).parent('.member-common-header').children('.bounce-logo').toggleClass('rotate360');
+                },
+                function() {
+                    $(this).parent('.member-common-header').children('.bounce-logo').toggleClass('rotate360');
+                }
+            );
+        </script>
+
+        <img src="images/order-detail-previous-page.png" class="img-fluid previous-page member-QA" alt="" />
+        <script>
+            $('.member-order-QA-Commnent-fadein .previous-page').click(
+                function() {
+                    location.replace('/memberMyOrder.html');
+                }
+            );
+        </script>
+
+
+        <div class="container member-order-Comment">
+            <script>
+                var testMemberOrderComment = [{
+                    "Star": 3,
+                    "CommentText": "本來只是買來自己嚐鮮，吃了之後又訂了三箱給親朋好友，柚子真的很好吃，出貨速度也很快，極推推推！",
+                    "CommentTime": "2018.06.27 18:01",
+                    "ReplyText": "謝謝您給我們的肯定， 我們會繼續努力讓每一位柚美柚好的客人都能吃到最甜最多汁的文旦！",
+                    "ReplyTime": "2018.06.28 10:23",
+                    "Name": "松島聰",
+                    "ImgUrl": "images/m2.png"
+                }];
+            </script>
+
+            <div class="new-comment">
+                <div class="comment-rank-group">
+                    <span class="rank-selected"></span>
+                    <div class="rank" onclick="orderCommentRank(this)">
+                        <span>3</span>
+                        <img src="images/comment-rank-3.png" class="img-fluid" alt="" />
+                    </div>
+                    <div class="rank" onclick="orderCommentRank(this)">
+                        <span>2</span>
+                        <img src="images/comment-rank-2.png" class="img-fluid" alt="" />
+                    </div>
+                    <div class="rank" onclick="orderCommentRank(this)">
+                        <span>1</span>
+                        <img src="images/comment-rank-1.png" class="img-fluid" alt="" />
+                    </div>
+                    <img src="images/cursor-finger.png" class="img-fluid" alt="" />
+                </div>
+
+                <script>
+                    // 訂單評論Rank選擇與特效
+                    function orderCommentRank(e) {
+                        var num = $('.rank').index($(e));
+                        let imgUrlArry = ["images/comment-rank-3.png", "images/comment-rank-2.png", "images/comment-rank-1.png"];
+                        $('.rank').each(function(i, v) {
+                            if ($(this).hasClass('selected')) {
+                                $(this).removeClass('selected');
+                            };
+                            $(this).find('.img-fluid').attr('src', imgUrlArry[i]);
+                        });
+                        let imgUrlSelectedArry = ["images/comment-rank-3-selected.png", "images/comment-rank-2-selected.png", "images/comment-rank-1-selected.png"];
+                        $(e).addClass('selected');
+                        $(e).find('.img-fluid').attr('src', imgUrlSelectedArry[num]);
+                        $(e).parents('.comment-rank-group').find('.rank-selected').text($(e).find('span').text());
+                    };
+                </script>
+
+                <div class="left">
+                    <img src="images/m2.png" class="img-fluid" alt="" />
+                    <div class="title">松島聰</div>
+                </div>
+                <div class="right">
+                    <textarea name="member-order-comment" class="member-order-comment-area" maxlength="150" rows="10" placeholder="留下你的評論......"></textarea>
+                    <button class="submit" onclick="insertNewMemberOrderComment(this)" type="none">送出</button>
+                </div>
+                <script>
+                    function insertNewMemberOrderComment(e) {
+                        let commentRecord = {
+                            "orderID": location.search.substr(location.search.indexOf('=') + 1),
+                            "star": parseInt($('.container.member-order-Comment .new-comment .rank-selected').text()),
+                            "commentText": $('.container.member-order-Comment .new-comment .right .member-order-comment-area').val()
+                        };
+                        // $.post('<c:url value="/user/orderComment/updateOrderComment"/>', commentRecord, function(data) {
+                        //     if (typeof data.success === "undefined") {
+
+                        //     } else {
+                        //         location.reload();
+                        //     }
+                        // });
+                        console.log(commentRecord);
+                    };
+                </script>
+            </div>
+
+            <div class="comment-record">
+                <div class="left">
+                    <img src="" class="img-fluid" alt="" />
+                    <div class="title"></div>
+                </div>
+                <div class="right">
+                    <div class="comment">
+                        <div class="comment-rank-group">
+                            <span class="rank-selected"></span>
+                            <div class="rank">
+                                <span></span>
+                                <img src="" class="img-fluid" alt="" />
+                            </div>
+                        </div>
+                        <div class="title"></div>
+                        <div class="time">-留言於<span></span></div>
+                    </div>
+                    <div class="comment-reply">Re:親愛的<span></span>您好
+                        <div class="title"></div>
+                        <div class="time">-留言於<span></span></div>
+                    </div>
+                </div>
+                <div class="update">
+                    <button class="submit" type="none">我要修改</button>
+                </div>
+            </div>
+
+            <script>
+                var memberOrderComment = testMemberOrderComment;
+                $(function() {
+                    if (memberOrderComment != null) {
+                        loadMemberOrderComment(memberOrderComment);
+                    } else {
+                        $('.container.member-order-Comment .comment-record').css('display', 'none');
+                    }
+                });
+
+                function loadMemberOrderComment(jsonDataIn) {
+                    // 先刪除新增評論
+                    $('.container.member-order-Comment .new-comment').remove();
+                    // 如果有評論，將資料帶入
+                    $('.container.member-order-Comment .comment-record .left .img-fluid').attr('src', jsonDataIn[0].ImgUrl);
+                    $('.container.member-order-Comment .comment-record .left .title').text(jsonDataIn[0].Name);
+                    let rankArry = ['images/comment-rank-1-selected.png', 'images/comment-rank-2-selected.png', 'images/comment-rank-3-selected.png'];
+                    $('.container.member-order-Comment .comment-record .right .comment .rank-selected').text(jsonDataIn[0].Star);
+                    $('.container.member-order-Comment .comment-record .right .comment span').text(jsonDataIn[0].Star);
+                    $('.container.member-order-Comment .comment-record .right .comment .img-fluid').attr('src', rankArry[parseInt(jsonDataIn[0].Star) - 1]);
+                    $('.container.member-order-Comment .comment-record .right .comment .title').text(jsonDataIn[0].CommentText);
+                    $('.container.member-order-Comment .comment-record .right .comment .time>span').text(jsonDataIn[0].CommentTime);
+                    // 判斷賣家是否回復，如果有資料帶入，無的話將回復顯示區塊刪除
+                    if (typeof jsonDataIn[0].ReplyTime === "undefined" || (jsonDataIn[0].ReplyTime).length == 0) {
+                        $('.container.member-order-Comment .comment-record .right .comment-reply').remove();
+                    } else {
+                        $('.container.member-order-Comment .comment-record .right .comment-reply>span').text(jsonDataIn[0].Name);
+                        $('.container.member-order-Comment .comment-record .right .comment-reply .title').text(jsonDataIn[0].ReplyText);
+                        $('.container.member-order-Comment .comment-record .right .comment-reply .time>span').text(jsonDataIn[0].ReplyTime);
+                    };
+                };
+
+                $('.container.member-order-Comment .comment-record .update .submit').click(
+                    function() {
+                        $('#memberOrderCommentUpdate .comment .title').val($('.container.member-order-Comment .comment-record .right .comment .title').text());
+
+                        let star = $('.container.member-order-Comment .comment-record .right .comment .comment-rank-group .rank-selected').text();
+                        $('#memberOrderCommentUpdate .comment .rank-selected').text(star);
+                        $('#memberOrderCommentUpdate .rank').addClass('selected').find('.img-fluid').attr('src', $('.container.member-order-Comment .comment-record .right .img-fluid').attr('src'));
+                        $('#memberOrderCommentUpdate .rank span').text($('.container.member-order-Comment .comment-record .right .comment .rank span').text());
+                        $('#memberOrderCommentUpdate').modal('show');
+                    }
+                );
+            </script>
+        </div>
+
+        <footer class="member-order-QA-Comment-footer">
+            <div class="member-Comment">
+                <img src="images/member-order-Comment-animation-1.png" class="img-fluid" alt="" />
+                <img src="images/member-order-Comment-animation-2.png" class="img-fluid" alt="" />
+                <img src="images/member-order-Comment-animation-2.png" class="img-fluid" alt="" />
+                <img src="images/member-order-Comment-animation-2.png" class="img-fluid" alt="" />
+                <img src="images/member-order-Comment-animation-3.png" class="img-fluid" alt="" />
+                <img src="images/member-order-Comment-animation-4.png" class="img-fluid" alt="" />
+                <img src="images/member-order-Comment-animation-4.png" class="img-fluid" alt="" />
+                <img src="images/member-order-Comment-animation-4.png" class="img-fluid" alt="" />
+                <img src="images/member-order-qa-footer-bg.png" class="img-fluid" alt="" />
+            </div>
+        </footer>
+
+        <div id="memberOrderCommentUpdate" class="ui modal">
+            <div class="comment">
+                <div class="comment-rank-group">
+                    <span class="rank-selected"></span>
+                    <div class="rank">
+                        <span></span>
+                        <img src="" class="img-fluid" alt="" />
+                    </div>
+                </div>
+                <textarea name="member-order-comment-update" class="title" maxlength="150" rows="2" placeholder="留下你的評論......"></textarea>
+            </div>
+            <button class="submit" type="none">確認修改</button>
+        </div>
+        <script>
+            // 滑鼠移至Rank圖示時，滑動特效與click綁定
+            $('#memberOrderCommentUpdate .comment .comment-rank-group').hover(
+                function() {
+                    let rankArry = ['images/comment-rank-1-selected.png', 'images/comment-rank-2-selected.png', 'images/comment-rank-3-selected.png'];
+                    let rank = parseInt($(this).find('.rank span').text());
+                    let createRank = [];
+                    $.each(rankArry, function(i, v) {
+                        if (i + 1 == rank) {
+                            return null;
+                        } else {
+                            createRank.push($('<div></div>').addClass('rank').append([
+                                $('<span></span>').text(i + 1),
+                                $('<img/>').addClass('img-fluid').attr('src', v)
+                            ]).click(
+                                function() {
+                                    let rankArry = ['images/comment-rank-1-selected.png', 'images/comment-rank-2-selected.png', 'images/comment-rank-3-selected.png'];
+                                    let rank = parseInt($(this).children('span').text());
+                                    $(this).parent('.comment-rank-group').find('.rank-selected').text(rank);
+                                    $(this).parent('.comment-rank-group').find('.rank').eq(0).children('span').text(rank);
+                                    $(this).parent('.comment-rank-group').find('.rank').eq(0).find('.img-fluid').attr('src', rankArry[rank - 1]);
+                                    $(this).parent('.comment-rank-group').find('.rank').each(function(i, v) {
+                                        if (i == 0) {
+                                            return null;
+                                        } else {
+                                            $(this).remove();
+                                        }
+                                    });
+                                }
+                            ));
+                        }
+                    });
+                    $(this).find('.rank').eq(0).after(createRank);
+                    $('#memberOrderCommentUpdate .comment .comment-rank-group .rank:nth-child(3)').animate({
+                        right: "-12%"
+                    }, 500);
+                    $('#memberOrderCommentUpdate .comment .comment-rank-group .rank:nth-child(4)').animate({
+                        right: "-20%"
+                    }, 500);
+                },
+                function() {
+                    $('#memberOrderCommentUpdate .comment .comment-rank-group .rank:nth-child(3), #memberOrderCommentUpdate .comment .comment-rank-group .rank:nth-child(4)').animate({
+                        right: "-4%"
+                    }, 500, function() {
+                        $('#memberOrderCommentUpdate .comment .comment-rank-group .rank').each(function(i, v) {
+                            if (i == 0) {
+                                return null;
+                            } else {
+                                $(this).remove();
+                            }
+                        })
+                    });
+                });
+
+            // Rank圖示Click選定評分
+            $('#memberOrderCommentUpdate .comment .comment-rank-group .rank').click(
+                function() {
+                    let rank = parseInt($(this).children('span').text());
+                    $(this).parent('.comment-rank-group').find('.rank').eq(0).children('span').text(rank);
+                    $(this).parent('.comment-rank-group').find('.rank').eq(0).find('.img-fluid').attr('src', $(this).find('.img-fluid').attr('src'));
+                    $(this).parent('.comment-rank-group').find('.rank-selected').text(rank);
+                    $(this).parent('.comment-rank-group').find('.rank').each(function(i, v) {
+                        if (i == 0) {
+                            return null;
+                        } else {
+                            $(this).remove();
+                        }
+                    });
+                }
+            );
+
+            // //修改彈跳視窗確認修改
+            $('#memberOrderCommentUpdate .submit').click(
+                function() {
+                    let commentRecord = {
+                        "orderID": location.search.substr(location.search.indexOf('=') + 1),
+                        "star": parseInt($('#memberOrderCommentUpdate .comment .comment-rank-group>.rank-selected').text()),
+                        "commentText": $('#memberOrderCommentUpdate .title').val()
+                    };
+
+                    console.log(commentRecord);
+                    $('#memberOrderCommentUpdate').modal('hide');
+                    // $.post('<c:url value="/user/orderComment/updateOrderComment">', commentRecord, function(data) {
+                    //     if (typeof data.success === "undefined") {} else {
+                    //         location.reload();
+                    //     }
+                    // });
+                }
+            );
+        </script>
+    </div>
+
+
+
+</body>
+
+</html>

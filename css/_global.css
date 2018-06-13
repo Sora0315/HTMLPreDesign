@@ -113,7 +113,9 @@ button:focus,
 textarea:focus,
 input:focus,
 select,
-option {
+option,
+ul,
+li {
     outline: none;
     outline-width: 0;
 }

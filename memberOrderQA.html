@@ -1,0 +1,386 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- X-UA-Compatible設置IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--RWD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <meta name="author" content="萊茵巴赫科技" />
+    <meta name="copyright" content="萊茵巴赫科技" />
+    <!-- 結構化資料 SEO 與 meta 標籤 -->
+    <meta property="og:title" content="柚美。柚好" />
+    <meta property="og:url" content="">
+    <meta property="og:image" content="要顯示的縮圖網址" />
+    <meta property="og:description" content="網頁描述" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>柚美。柚好</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/semantic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="js/reinbachCommon.js"></script>
+</head>
+
+<body style="background: none">
+    <div class="member-order-QA-Commnent-fadein">
+        <!--半共用樣式區，Header-->
+        <header class="member-common-header">
+            <a href="index.html" class="member-QA-Commnent-site-logo">
+                <img src="images/webLogo-order-check.png" class="img-fluid" alt="" />
+            </a>
+            <img src="images/order-bounce-logo1.png" class="img-fluid bounce-logo" alt="" />
+            <img src="images/order-bounce-logo2.png" class="img-fluid bounce-logo" alt="" />
+
+            <div class="member-order-QA-Comment">
+                <img src="images/member-myorder-header-bg.png " class="img-fluid " alt=" " />
+                <div class="icon-link ">
+                    <a href=" " class=" ">
+                        <img src="images/icon-fb.png " class="img-fluid " alt=" " />
+                    </a>
+                    <a href=" " class=" ">
+                        <img src="images/icon-ig.png " class="img-fluid " alt=" " />
+                    </a>
+                    <a href=" " class=" ">
+                        <img src="images/icon-utube.png " class="img-fluid " alt=" " />
+                    </a>
+                </div>
+                <div class="footer-title">
+                    <div class="title ">會員訂單管理</div>
+                    <div class="title ">我的訂單-訂單詢問</div>
+                </div>
+                <div class="footer-link ">
+                    <a href="news.html " class="wonderfulType nav-link ">
+                        <div class="title ">最新消息</div>
+                        <div class="title ">News</div>
+                    </a>
+                    <a href="productIndex.html " class="wonderfulType nav-link ">
+                        <div class="title ">商品專區</div>
+                        <div class="title ">Products</div>
+                    </a>
+                    <a href=" " class="wonderfulType nav-link ">
+                        <div class="title ">相片底家</div>
+                        <div class="title ">Photos</div>
+                    </a>
+                    <a href="story.html " class="wonderfulType nav-link ">
+                        <div class="title ">美好故事</div>
+                        <div class="title ">About&nbsp;Us</div>
+                    </a>
+                    <a href=" " class="wonderfulType nav-link ">
+                        <div class="title ">美好問答</div>
+                        <div class="title ">Q&A</div>
+                    </a>
+                    <a href="contact.html " class="wonderfulType nav-link ">
+                        <div class="title ">找尋美好</div>
+                        <div class="title ">Find&nbsp;Us</div>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <script>
+            $('.member-order-QA-Comment .footer-link .nav-link').hover(
+                function() {
+                    $(this).children('.title:last-child').css('opacity', "1 ");
+                },
+                function() {
+                    $(this).children('.title:last-child').css('opacity', "0 ");
+                }
+            );
+            $('.member-common-header .member-QA-Commnent-site-logo').hover(
+                function() {
+                    $(this).parent('.member-common-header').children('.bounce-logo').toggleClass('rotate360');
+                },
+                function() {
+                    $(this).parent('.member-common-header').children('.bounce-logo').toggleClass('rotate360');
+                }
+            );
+        </script>
+
+        <img src="images/order-detail-previous-page.png" class="img-fluid previous-page member-QA" alt="" />
+        <script>
+            $('.member-order-QA-Commnent-fadein .previous-page').click(
+                function() {
+                    location.replace('/memberMyOrder.html');
+                }
+            );
+        </script>
+
+        <div class="container member-order-QA">
+            <script>
+                var testMemberOrderQA = [{
+                    "OrderID": "O000000001",
+                    "Batch": 3,
+                    "Sort": "我想要問配送細節",
+                    "Text": "可不可以幫我送到太平洋的某個荒島給Wilson呢？",
+                    "Time": "2018.06.07 17:45",
+                    "ReplyText": "",
+                    "ReplyTime": "",
+                    "HasRead": "No"
+                }, {
+                    "OrderID": "O000000001",
+                    "Batch": 1,
+                    "Sort": "我想要問.........",
+                    "Text": "請問，商品收到後該如何檢查柚子是否受損？",
+                    "Time": "2018.06.07 17:45",
+                    "ReplyText": "隨便看看就好。",
+                    "ReplyTime": "2018.06.07 18:05",
+                    "HasRead": "Yes"
+                }, {
+                    "OrderID": "O000000001",
+                    "Batch": 2,
+                    "Sort": "我想要問.........",
+                    "Text": "請問，可以跟甜辣醬一起吃嗎？",
+                    "Time": "2018.06.07 18:45",
+                    "ReplyText": "不建議這樣玩食物好嗎~。",
+                    "ReplyTime": "2018.06.07 20:25",
+                    "HasRead": "Yes"
+                }];
+
+                var testMemberData = [{
+                    'MemberID': 'M0000000009',
+                    'Name': '松島聰',
+                    'Mail': 'matsushima@gmail.com',
+                    'ImgUrl': 'images/m2.png',
+                    'Bonus': 150,
+                    'Funds': 2500
+                }];
+            </script>
+
+            <!--提問區塊-->
+            <div class="new-qa">
+                <div class="left">
+                    <img src="images/m2.png" class="img-fluid" alt="" />
+                    <div class="title name">松島聰</div>
+                </div>
+                <div class="right">
+                    <ul id="member-order-qa-drop-menu-select" tabindex="0" class="member-order-qa-drop-dwon">
+                        <li>我想要問關於訂單<span class="sort">CS00000001</span></li>
+                        <li>我想要問付款方式<span class="sort">CS00000002</span></li>
+                        <li>我想要問配送細節<span class="sort">CS00000003</span></li>
+                        <li>我想要問........<span class="sort">CS00000004</span></li>
+                    </ul>
+                    <textarea name="member-order-qa" class="member-order-qa-area" maxlength="150" rows="10"></textarea>
+                    <button class="submit" tpye="none">送出</button>
+                </div>
+
+                <script>
+                    $.fn.contactDropSelect = function() {
+                        var ul = $(this);
+
+                        if (!ul.hasClass('ul-select')) {
+                            ul.addClass('ul-select');
+                        }
+                        // SVG arrow
+                        var arrow = $('<div></div>').addClass('contact-drop-triangle');
+                        $('li:first-of-type', this).addClass('active').append(arrow);
+                        $(this).on('click', 'li', function(event) {
+
+                            // Remove div#selected if it exists
+                            if ($('#member-order-qa-selected--ul-select').length) {
+                                $('#member-order-qa-selected--ul-select').remove();
+                            }
+                            ul.before('<div id="member-order-qa-selected--ul-select">');
+                            var selected = $('#member-order-qa-selected--ul-select');
+                            $('li #ul-arrow', ul).remove();
+                            ul.toggleClass('active');
+                            // Remove active class from any <li> that has it...
+                            ul.children().removeClass('active');
+                            // And add the class to the <li> that gets clicked
+                            $(this).toggleClass('active');
+
+                            var selectedText = $(this).text();
+                            var indexEnd = selectedText.indexOf('C');
+                            selectedText = selectedText.substring(0, indexEnd);
+                            if (ul.hasClass('active')) {
+                                selected.text(selectedText).addClass('active').append(arrow);
+                            } else {
+                                selected.text('').removeClass('active');
+                                $('li.active', ul).append(arrow);
+                            }
+                        });
+                        // Make ul tabbable
+                        $(ul).focus(function() {
+                            $(this).keydown(function(e) {
+                                if (e.which == 38 || 40) { // Up or down keypress
+                                    $(this).addClass('active');
+                                    var liActive = $('li.active', ul);
+                                    var liPrev = $('li.active', ul).prev();
+                                    var liNext = $('li.active', ul).next();
+                                    if (e.which == 38) { // Down
+                                        liActive.removeClass('active');
+                                        liPrev.addClass('active');
+                                    }
+                                    if (e.which == 40) { // Down
+                                        liActive.removeClass('active');
+                                        liNext.addClass('active');
+                                    }
+                                }
+                            });
+                            $(this).keydown(function(e) {
+                                if (e.which == 13) { // Down
+                                    ul.removeClass('active');
+                                }
+                            });
+                        });
+                        // Close the faux select menu when clicking outside it 
+                        $(document).on('click', function(event) {
+                            if ($('.member-order-qa-drop-dwon.ul-select').length) {
+                                if (!$('ul.ul-select').has(event.target).length == 0) {
+                                    return;
+                                } else {
+                                    $('.member-order-qa-drop-dwon.ul-select').removeClass('active');
+                                    $('#member-order-qa-selected--ul-select').removeClass('active').text('');
+                                    $('#ul-arrow').remove();
+                                    $('.member-order-qa-drop-dwon.ul-select li.active').append(arrow);
+                                }
+                            }
+                        });
+                    }
+
+                    // Run
+                    $('#member-order-qa-drop-menu-select').contactDropSelect();
+                </script>
+                <script>
+                    $('.new-qa .submit').click(
+                        function() {
+                            if ($('.member-order-qa-area').val().length == 0) {
+                                $('#qa-notice .title').text('請陳述問題內容，謝謝');
+                                $('#qa-notice').modal('show');
+                                return null;
+                            };
+
+                            let jsonObj = {
+                                "orderID": location.search.substr(location.search.indexOf('=') + 1),
+                                "sortID": $('#member-order-qa-drop-menu-select li.active .sort').text(),
+                                "text": $('.member-order-qa-area').val()
+                            };
+
+                            // $.post('<c:url value="/user/qa/insertMyQA"/>', jsonObj, function(data) {
+                            //     let dataReturn = JSON.parse(data);
+                            //     if (dataReturn.success === "新增訂單詢問成功") {
+                            //         $('#qa-notice .title').text('謝謝您的提問，我們將盡快回復您。');
+                            //         $('#qa-notice').modal('show');
+                            //         location.reload();
+                            //     } else {
+                            //         $('#qa-notice .title').text('無法成功提問。');
+                            //         $('#qa-notice').modal('show');
+                            //     }
+                            // });
+
+                            $('#qa-notice .title').text('謝謝您的提問，我們將盡快回復您。');
+                            $('#qa-notice').modal('show');
+                        }
+                    );
+                </script>
+            </div>
+
+            <script>
+                var memberOrderQA = testMemberOrderQA;
+                var memberData = testMemberData;
+                $(function() {
+                    // $.post('<c:url value="/user/qa/getMyQA"/>', {
+                    //     "oredrID": location.search.substr(location.search.indexOf('=') + 1)
+                    // }, function(data) {
+                    //     memberOrderQA = data;
+                    // });
+                    // $.post('<c:url value="/user/member/getMyInfo"/>', function(data) {
+                    //     memberData = data;
+                    // });
+
+                    if (memberOrderQA != null) {
+                        loadMemberOrderQA(memberOrderQA);
+                    } else {};
+                });
+
+
+                //載入詢問紀錄
+                function loadMemberOrderQA(jsonDataIn) {
+                    $('.qa-record-group').remove();
+                    let qaArry = [];
+                    $.each(jsonDataIn, function(i, v) {
+                        let qRight = $('<div></div>').addClass('right').append(
+                            [$('<div></div>').addClass('title').text(jsonDataIn[i].Sort),
+                                $('<div></div>').addClass('content').text(jsonDataIn[i].Text),
+                                $('<div></div>').addClass('time').text('-留言於').append($('<span></span>').text(jsonDataIn[i].Time))
+                            ]
+                        );
+
+                        let qLeft = $('<div></div>').addClass('left').append(
+                            [$('<img/>').addClass('img-fluid').attr('src', function() {
+                                    if (typeof memberData[0].ImgUrl === "undefined") {
+                                        return 'images/mem-default.png';
+                                    } else {
+                                        return memberData[0].ImgUrl;
+                                    }
+                                }()),
+                                $('<div></div>').addClass('title name').text(function() {
+                                    if (typeof memberData[0].Name === "undefined") {
+                                        return '美好會員';
+                                    } else {
+                                        return memberData[0].Name;
+                                    }
+                                }())
+                            ]
+                        );
+                        // 提問部分
+                        let q = $('<div></div>').addClass('q').append([qLeft, qRight]);
+
+                        // 回答的部分
+                        var ans;
+
+                        if (jsonDataIn[i].ReplyText.length == 0 || typeof jsonDataIn[i].ReplyText === "undefined") {
+                            ans = null;
+                        } else {
+                            var ansLeft = $('<div></div>').addClass('left').append(
+                                [$('<div></div>').addClass('title').text('Re：' + jsonDataIn[i].Sort),
+                                    $('<div></div>').addClass('content').text(jsonDataIn[i].ReplyText),
+                                    $('<div></div>').addClass('time').text('-留言於').append($('<span></span>').text(jsonDataIn[i].ReplyTime))
+                                ]
+                            );
+
+                            var ansRight = $('<div></div>').addClass('right').append(
+                                [$('<img/>').addClass('img-fluid').attr('src', 'images/mem-default.png'),
+                                    $('<div></div>').addClass('title name').text('Wonderful')
+                                ]
+                            );
+                            ans = $('<div></div>').addClass('ans').append([ansLeft, ansRight]);
+                        }
+
+                        // 問答組
+                        let QA = $('<div></div>').addClass('qa-record').append([ans, q]);
+                        qaArry.push(QA);
+                    });
+                    $('.new-qa').after($('<div></div>').addClass('qa-record-group').append(qaArry));
+                };
+            </script>
+
+        </div>
+
+        <footer class="member-order-QA-Comment-footer">
+            <div class="member-QA">
+                <img src="images/member-order-QA-animation-1.png" class="img-fluid" alt="" />
+                <img src="images/member-order-QA-animation-2.png" class="img-fluid" alt="" />
+                <img src="images/member-order-qa-footer-bg.png" class="img-fluid" alt="" />
+            </div>
+        </footer>
+    </div>
+
+    <div id="qa-notice" class="ui modal">
+        <div class="title"></div>
+        <hr/>
+        <button class="submit" type="none">關閉</button>
+    </div>
+
+    <script>
+        $('#qa-notice button').click(
+            function() {
+                $(this).parent('#qa-notice').modal('hide');
+            }
+        );
+    </script>
+
+
+
+</body>
+
+</html>

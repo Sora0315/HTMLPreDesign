@@ -1,0 +1,384 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- X-UA-Compatible設置IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--RWD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <meta name="author" content="萊茵巴赫科技" />
+    <meta name="copyright" content="萊茵巴赫科技" />
+    <!-- 結構化資料 SEO 與 meta 標籤 -->
+    <meta property="og:title" content="柚美。柚好" />
+    <meta property="og:url" content="">
+    <meta property="og:image" content="要顯示的縮圖網址" />
+    <meta property="og:description" content="網頁描述" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>柚美。柚好</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/semantic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="js/reinbachCommon.js"></script>
+</head>
+
+<body style="background: none">
+    <div class="member-order-detail-fade-in">
+        <!--共用樣式區，Header-->
+        <header>
+            <nav class="nav member-order-detail-menu">
+                <img src="images/order-bounce-logo1.png" class="img-fluid bounce-logo" alt="" />
+                <a href="index.html" class="order-check-site-logo">
+                    <img src="images/webLogo-order-check.png" class="img-fluid" alt="" />
+                </a>
+                <img src="images/order-bounce-logo2.png" class="img-fluid bounce-logo" alt="" />
+            </nav>
+        </header>
+        <script>
+            $('.member-order-detail-menu .order-check-site-logo').hover(
+                function() {
+                    $(this).parent('.member-order-detail-menu').children('.bounce-logo').toggleClass('rotate360');
+                },
+                function() {
+                    $(this).parent('.member-order-detail-menu').children('.bounce-logo').toggleClass('rotate360');
+                }
+            );
+        </script>
+
+        <img src="images/member-order-detail-hangtag.png" class="hang-tag img-fluid" alt="" />
+        <img src="images/order-detail-previous-page.png" class="img-fluid previous-page" alt="" />
+        <script>
+            $('.member-order-detail-fade-in .previous-page').click(
+                function() {
+
+                    location.replace('/memberMyOrder.html');
+                }
+            )
+        </script>
+
+
+        <div class="container my-order-detail">
+            <div class="title">訂單編號：<span></span></div>
+            <div class="index"></div>
+            <table class="record-table">
+            </table>
+            <div class="subtotal">
+                <div class="use-count">紅利/購物金使用：<span></span>元</div>
+                <div class="fee">運費：<span></span>元</div>
+                <div class="total">應付總額：<span></span>元</div>
+            </div>
+
+            <div class="paging">
+                <img src="images/dot-left.png" class="img-fluid" alt="" />
+                <img src="images/dot-right.png" class="img-fluid" alt="" />
+            </div>
+        </div>
+        <script>
+            var testMyOrderDetail = [{
+                "NO": 1,
+                "ProductID": "P000000001",
+                "Name": "十斤裝手提文旦禮盒(嚴選40年老欉)",
+                "Sort": "文旦禮盒",
+                "OrderID": "O000000001",
+                "Price": 675,
+                "Qty": 2,
+                "SubTotal": 1350
+            }, {
+                "NO": 2,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "Sort": "文旦禮盒",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }, {
+                "NO": 3,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "Sort": "文旦禮盒",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }, {
+                "NO": 4,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "Sort": "文旦禮盒",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }, {
+                "NO": 5,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "Sort": "文旦禮盒",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }, {
+                "NO": 6,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "Sort": "文旦禮盒",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }, {
+                "NO": 7,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }, {
+                "NO": 8,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "Sort": "文旦禮盒",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }, {
+                "NO": 9,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }, {
+                "NO": 10,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "Sort": "文旦禮盒",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }, {
+                "NO": 11,
+                "ProductID": "P000000002",
+                "Name": "五斤裝手提文旦禮盒(嚴選40年老欉)",
+                "Sort": "文旦禮盒",
+                "OrderID": "O000000001",
+                "Price": 360,
+                "Qty": 1,
+                "SubTotal": 360
+            }];
+
+            var testOredrDetailFee = [{
+                "Fee": 50
+            }];
+            var testOredrDetailDiscount = [{
+                "Discount": 150,
+                "Total": 5750
+            }];
+        </script>
+
+
+        <script>
+            var myOrderDetail = testMyOrderDetail;
+            var oredrDetailDiscount = testOredrDetailDiscount;
+            var oredrDetailFee = testOredrDetailFee;
+
+            $(function() {
+                var referrer = document.referrer;
+                var orderDetailorderID = location.search.substr(location.search.indexOf('=') + 1);
+
+                // $.post('<c:url value="/user/ordDetail/getOrdDetail"/>', {
+                //     'OrderID': location.search.substr(location.search.indexOf('=') + 1)
+                // }, function(data) {
+                //     myOrderDetail = data;
+                // });
+
+                // $.post('<c:url value="/user/order/getOneOrder"/>', {
+                //     'OrderID': location.search.substr(location.search.indexOf('=') + 1)
+                // }, function(data) {
+                //     oredrDetailDiscount = data;
+                // });
+
+                // $.post('<c:url value="/user/delivery/getAllFeeByOrderID"/>', {
+                //     'OrderID': location.search.substr(location.search.indexOf('=') + 1)
+                // }, function(data) {
+                //     oredrDetailFee = data;
+                // });
+
+                $('.container.my-order-detail .title span').text(orderDetailorderID);
+                if (myOrderDetail != null) {
+                    loadMyOrderDetail(myOrderDetail, 0);
+                } else {
+                    noOrderDetail();
+                    $('.paging .img-fluid').css('display', 'none');
+                };
+                loadOrderDetailInfo(oredrDetailDiscount);
+                loadOrderDetailFee(oredrDetailFee);
+
+            });
+
+            //動態生成資料
+            //有Order Detail時
+            function loadMyOrderDetail(jsonDataIn, startIndex) {
+                if (startIndex > jsonDataIn.length) {
+                    startIndex = startIndex - 5;
+                }
+                if (startIndex < 0) {
+                    startIndex = 0;
+                };
+                $('.record-table').text('');
+                $('.container.my-order-detail .index').text(startIndex);
+                var trArry = [];
+                let head = $('<tr></tr>').addClass('head-of-table').append([
+                    $('<th></th>').text('No.'),
+                    $('<th></th>').text('商品編號'),
+                    $('<th></th>').text('商品名稱'),
+                    $('<th></th>').text('數量'),
+                    $('<th></th>').text('單價'),
+                    $('<th></th>').text('小計')
+                ]);
+                trArry.push(head);
+                for (let i = startIndex; i < (startIndex + 5); i++) {
+                    var row;
+                    if (i > jsonDataIn.length - 1) {
+                        row = $('<tr></tr>').append([
+                            $('<td></td>').html('&nbsp;'),
+                            $('<td></td>').html('&nbsp;'),
+                            $('<td></td>').html('&nbsp;'),
+                            $('<td></td>').html('&nbsp;'),
+                            $('<td></td>').html('&nbsp;'),
+                            $('<td></td>').html('&nbsp;')
+                        ]);
+                    } else {
+                        row = $('<tr></tr>').append([
+                            $('<td></td>').text(jsonDataIn[i].NO),
+                            $('<td></td>').text(jsonDataIn[i].ProductID),
+                            $('<td></td>').text(jsonDataIn[i].Name).css('cursor', 'pointer').click(function() {
+                                location.href = 'product-detail.html?productID=' + jsonDataIn[i].ProductID + "&sort=" + jsonDataIn[i].Sort;
+                            }),
+                            $('<td></td>').text(jsonDataIn[i].Qty),
+                            $('<td></td>').text(jsonDataIn[i].Price),
+                            $('<td></td>').text(jsonDataIn[i].SubTotal)
+                        ]);
+                    };
+                    trArry.push(row);
+                }
+                $('.record-table').append(trArry);
+            };
+
+            //無Order Detail時
+            function noOrderDetail() {
+                let head = $('<tr></tr>').addClass('head-of-table').append([
+                    $('<th></th>').text('No.'),
+                    $('<th></th>').text('商品編號'),
+                    $('<th></th>').text('商品名稱'),
+                    $('<th></th>').text('數量'),
+                    $('<th></th>').text('單價'),
+                    $('<th></th>').text('小計')
+                ]);
+                let noData = $('<tr></tr>').attr('rowspan', '5').append($('<td></td>').css('padding', '10% 0').attr('colspan', '6').text('目前尚無紀錄。'));
+                $('.record-table').append([head, noData]);
+            };
+
+            // 下5筆
+            $('.paging .img-fluid:last-child').click(function() {
+                loadMyOrderDetail(myOrderDetail, parseInt($('.container.my-order-detail .index').text()) + 5);
+            });
+
+            // 上5筆
+            $('.paging .img-fluid:first-child').click(function() {
+                loadMyOrderDetail(myOrderDetail, parseInt($('.container.my-order-detail .index').text()) - 5);
+            });
+
+            // 載入折抵金額
+            function loadOrderDetailInfo(jsonDataIn) {
+                if (jsonDataIn === null) {
+                    $('.container.my-order-detail .subtotal .use-count>span').text('-');
+                    $('.container.my-order-detail .subtotal .total>span').text('-');
+                } else {
+                    $('.container.my-order-detail .subtotal .use-count>span').text(jsonDataIn[0].Discount);
+                    $('.container.my-order-detail .subtotal .total>span').text(jsonDataIn[0].Total);
+                }
+
+            };
+
+            //載入運費
+            function loadOrderDetailFee(jsonDataIn) {
+                if (jsonDataIn === null) {
+                    $('.container.my-order-detail .subtotal .fee span').text('-');
+                } else {
+                    $('.container.my-order-detail .subtotal .fee span').text(jsonDataIn[0].Fee);
+                }
+            };
+        </script>
+
+        <!--半共用樣式區，Footer-->
+        <footer class="member-common-footer">
+            <div class="member-myOrder-detail animation-1">
+                <img src="images/member-myorder-detail-animation-1.png" class="img-fluid" alt="" />
+                <img src="images/member-myorder-detail-animation-2.png" class="img-fluid" alt="" />
+                <img src="images/member-myorder-detail-animation-3.png" class="img-fluid" alt="" />
+                <img src="images/member-myorder-detail-animation-4.png" class="img-fluid" alt="" />
+                <img src="images/member-myorder-footer-bg.png " class="img-fluid " alt=" " />
+                <div class="icon-link ">
+                    <a href=" " class=" ">
+                        <img src="images/icon-fb.png " class="img-fluid " alt=" " />
+                    </a>
+                    <a href=" " class=" ">
+                        <img src="images/icon-ig.png " class="img-fluid " alt=" " />
+                    </a>
+                    <a href=" " class=" ">
+                        <img src="images/icon-utube.png " class="img-fluid " alt=" " />
+                    </a>
+                </div>
+                <div class="footer-title">
+                    <div class="title ">會員訂單管理</div>
+                    <div class="title ">我的訂單-訂單明細</div>
+                </div>
+                <div class="footer-link ">
+                    <a href="news.html " class="wonderfulType nav-link ">
+                        <div class="title ">最新消息</div>
+                        <div class="title ">News</div>
+                    </a>
+                    <a href="productIndex.html " class="wonderfulType nav-link ">
+                        <div class="title ">商品專區</div>
+                        <div class="title ">Products</div>
+                    </a>
+                    <a href=" " class="wonderfulType nav-link ">
+                        <div class="title ">相片底家</div>
+                        <div class="title ">Photos</div>
+                    </a>
+                    <a href="story.html " class="wonderfulType nav-link ">
+                        <div class="title ">美好故事</div>
+                        <div class="title ">About&nbsp;Us</div>
+                    </a>
+                    <a href=" " class="wonderfulType nav-link ">
+                        <div class="title ">美好問答</div>
+                        <div class="title ">Q&A</div>
+                    </a>
+                    <a href="contact.html " class="wonderfulType nav-link ">
+                        <div class="title ">找尋美好</div>
+                        <div class="title ">Find&nbsp;Us</div>
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <script>
+            $('.member-myOrder-detail .footer-link .nav-link').hover(
+                function() {
+                    $(this).children('.title:last-child').css('opacity', "1 ");
+                },
+                function() {
+                    $(this).children('.title:last-child').css('opacity', "0 ");
+                }
+            );
+        </script>
+    </div>
+</body>
+
+</html>

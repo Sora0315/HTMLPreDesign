@@ -1,0 +1,190 @@
+/* Member漢堡的樣式 */
+
+#memberSidebar {
+    width: 15% !important;
+    background-color: #fcfcfc;
+}
+
+#memberSidebar div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#memberSidebar .header {
+    width: 100%;
+    font-size: 1.2vw;
+    letter-spacing: 0.3vw;
+    color: #fff;
+    font-weight: 800;
+    text-align: center;
+    padding: 5% 10%;
+    background-color: #20616e;
+}
+
+#memberSidebar .header:hover {
+    color: #e8c3d5;
+    cursor: pointer;
+}
+
+#memberSidebar .sidebar-logo {
+    width: 100%;
+    background-color: #fcfcfc;
+    padding: 2% 0;
+}
+
+#memberSidebar .sidebar-logo .img-fluid {
+    margin: 0 auto;
+    width: 15%;
+}
+
+#memberSidebar .section-header {
+    width: 100%;
+    border: none;
+    padding: 2.5% 0;
+    text-align: center;
+    font-size: 1.2vw;
+    letter-spacing: 0.3vw;
+    background-color: #a1bf98;
+    color: #1a2576;
+    font-weight: 800;
+}
+
+#memberSidebar a.item {
+    margin: 0;
+    background-color: #fff !important;
+    border: none;
+    color: #1a2576;
+    text-align: center;
+    font-size: 1vw;
+    letter-spacing: 0.1vw;
+    font-weight: 600;
+}
+
+#memberSidebar a.item .img-fluid {
+    width: 7%;
+    margin-right: 5%;
+    display: inline-block;
+    opacity: 0;
+}
+
+#memberSidebar .profile-manage a.item:hover {
+    background-color: #afd1a5 !important;
+}
+
+#memberSidebar .order-manage a.item:hover {
+    background-color: #ecd85f !important;
+}
+
+#memberSidebar .bonus-funds-manage a.item:hover {
+    background-color: #ec925f !important;
+    color: #fff;
+}
+
+#memberSidebar .order-help a.item:hover {
+    background-color: #e47e81 !important;
+    color: #fff;
+}
+
+.member-common-menu {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0.5% 0;
+}
+
+.member-common-menu .hamburger {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    font-size: 350%;
+    font-weight: 600;
+    transform: translate(0, -50%);
+    color: #1a2576;
+    width: 5%;
+    cursor: pointer;
+}
+
+.member-common-menu .hamburger:hover {
+    color: #e8c3d5;
+}
+
+.member-common-menu .order-check-site-logo {
+    width: 4.5%;
+    display: inline-block;
+    margin: 0 auto;
+    cursor: pointer;
+    opacity: 1.0;
+}
+
+.member-common-menu>.img-fluid:first-child {
+    position: absolute;
+    width: 0.8%;
+    bottom: 10%;
+    left: 49.2%;
+    z-index: 5;
+}
+
+.member-common-menu>.img-fluid:last-child {
+    position: absolute;
+    width: 1%;
+    bottom: 12%;
+    left: 51.3%;
+    z-index: 5;
+}
+
+
+/* 會員中心共用footer */
+
+.member-common-footer {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+/* 會員中心共用header */
+
+.member-common-header {
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+/* 尚未登入Modal的樣式 */
+
+#not-login {
+    width: 25%;
+    padding: 2%;
+    text-align: center;
+    border: none;
+    border-radius: 10pt;
+    margin-left: -12.5%;
+}
+
+#not-login .title {
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    color: #727272;
+    margin-bottom: 8%;
+    line-height: 2rem;
+}
+
+#not-login button {
+    padding: 2% 4%;
+    font-size: 1vw;
+    border: none;
+    border-radius: 5pt;
+    background-color: #cccaca;
+    color: #fff;
+    cursor: pointer;
+}
+
+#not-login button:hover {
+    background-color: #66a64f;
+}

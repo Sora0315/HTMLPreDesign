@@ -1,0 +1,347 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- X-UA-Compatible設置IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--RWD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <meta name="author" content="萊茵巴赫科技" />
+    <meta name="copyright" content="萊茵巴赫科技" />
+    <!-- 結構化資料 SEO 與 meta 標籤 -->
+    <meta property="og:title" content="柚美。柚好" />
+    <meta property="og:url" content="">
+    <meta property="og:image" content="要顯示的縮圖網址" />
+    <meta property="og:description" content="網頁描述" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>柚美。柚好</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/semantic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="js/reinbachCommon.js"></script>
+</head>
+
+<body style="background: none">
+    <!--共用樣式區，sidebar-->
+    <div id="memberSidebar" class="ui left vertical inverted sidebar menu">
+        <div class="header">美好會員中心</div>
+        <div class="sidebar-logo">
+            <img src="images/member-sidebar-logo.png" class="img-fluid" alt="" />
+        </div>
+        <div class="section-header">會員資料管理</div>
+        <div class="profile-manage">
+            <a class="item nav-link" href="memberProfile.html">個人資料修改</a>
+            <a class="item nav-link" href="memberResetPwd.html">密碼修改</a>
+        </div>
+        <div class="section-header">會員訂單管理</div>
+        <div class="order-manage">
+            <a class="item nav-link" href="memberMyOrder.html">我的訂單</a>
+            <a class="item nav-link" href="">退貨申請</a>
+            <a class="item nav-link" href="">修改訂單</a>
+            <a class="item nav-link" href="">取消訂單</a>
+        </div>
+        <div class="section-header">紅利與購物金</div>
+        <div class="bonus-funds-manage">
+            <a class="item nav-link" href="memberBonus.html">紅利回饋</a>
+            <a class="item nav-link" href="memberFunds.html">購物金</a>
+        </div>
+        <div class="section-header">購物小幫手</div>
+        <div class="order-help">
+            <a class="item nav-link" href="memberHelper1.html">紅利回饋與購物金說明</a>
+            <a class="item nav-link" href="memberHelper2.html">購物流程</a>
+            <a class="item nav-link" href="memberHelper3.html">服務條款與隱私政策</a>
+        </div>
+    </div>
+    <script>
+        $('#memberSidebar .item').hover(
+            function() {
+                $(this).children('.img-fluid').css('opacity', '1');
+            },
+            function() {
+                $(this).children('.img-fluid').css('opacity', '0');
+            }
+        );
+    </script>
+
+    <div class="pusher" style="position:relative">
+        <!--共用樣式區，Header-->
+        <header>
+            <nav class="nav member-common-menu">
+                <img src="images/order-bounce-logo1.png" class="img-fluid bounce-logo" alt="" />
+                <div class="hamburger">&#9776;</div>
+                <a href="index.html" class="order-check-site-logo">
+                    <img src="images/webLogo-order-check.png" class="img-fluid" alt="" />
+                </a>
+                <img src="images/order-bounce-logo2.png" class="img-fluid bounce-logo" alt="" />
+            </nav>
+        </header>
+        <script>
+            $('.member-common-menu .hamburger').click(
+                function() {
+                    $('#memberSidebar').sidebar('toggle');
+                }
+            );
+            $('.member-common-menu .order-check-site-logo').hover(
+                function() {
+                    $(this).parent('.member-common-menu').children('.bounce-logo').toggleClass('rotate360');
+                },
+                function() {
+                    $(this).parent('.member-common-menu').children('.bounce-logo').toggleClass('rotate360');
+                }
+            );
+        </script>
+
+
+        <div class="container bonus-record">
+            <div class="title">親愛的<span></span>，您目前可用的紅利回饋為<span></span></div>
+            <div class="index"></div>
+            <table class="record-table">
+            </table>
+            <div class="subtotal">
+                <div class="use-count">已扣除點數：<span></span></div>
+                <div class="avail-count">可用點數：<span></span></div>
+            </div>
+
+            <script>
+                // 假資料
+                var bonusData = [{
+                    "Qty": +120,
+                    "Time": "2018.04.11",
+                    "Memo": "O000000003"
+                }, {
+                    "Qty": -20,
+                    "Time": "2018.04.20",
+                    "Memo": "O000000013"
+                }, {
+                    "Qty": -50,
+                    "Time": "2018.04.30",
+                    "Memo": "O000000015"
+                }, {
+                    "Qty": +100,
+                    "Time": "2018.05.01",
+                    "Memo": "O000000022"
+                }, {
+                    "Qty": +10,
+                    "Time": "2018.05.05",
+                    "Memo": "O000000099"
+                }, {
+                    "Qty": +15,
+                    "Time": "2018.05.07",
+                    "Memo": "O000000105"
+                }, {
+                    "Qty": -5,
+                    "Time": "2018.05.11",
+                    "Memo": "O000000110"
+                }, {
+                    "Qty": +20,
+                    "Time": "2018.05.15",
+                    "Memo": "O000000118"
+                }, {
+                    "Qty": +130,
+                    "Time": "2018.05.20",
+                    "Memo": "O000000119"
+                }, {
+                    "Qty": +220,
+                    "Time": "2018.05.22",
+                    "Memo": "O000000122"
+                }, {
+                    "Qty": -100,
+                    "Time": "2018.05.24",
+                    "Memo": "O000000220"
+                }, {
+                    "Qty": +6,
+                    "Time": "2018.06.01",
+                    "Memo": "O000000225"
+                }];
+
+                var memberBonusTotalData = [{
+                    "Name": "木村佳乃",
+                    "Bonus": "90點",
+                    "UseBonus": "70點"
+                }]
+            </script>
+
+            <div class="paging">
+                <img src="images/dot-left.png" class="img-fluid" alt="" />
+                <img src="images/dot-right.png" class="img-fluid" alt="" />
+            </div>
+        </div>
+        <img src="images/bonus-funds-notice.png" class="img-fluid bonus-funds-notice" alt="" />
+        <script>
+            var bonusRecord;
+            var memberBonusTotal;
+
+            //依據查詢結果同Footer圖片
+            var bonusRecordFooter = [
+                $('<img/>').attr('src', 'images/bonus-animation-2.png').addClass('img-fluid heart'), [$('<img/>').attr('src', 'images/bonus-animation-3.png').addClass('img-fluid left-eye'), $('<img/>').attr('src', 'images/bonus-animation-4.png').addClass('img-fluid right-eye')]
+            ];
+
+            $(function() {
+                // $.post('<c:url value="/user/bonusRecord/getMyBonusRecord"/>', function(data) {
+                //     bonusRecord = data;
+                // });
+                // $.post('<c:url value="/user/bonusRecord/getMemberData"/>', data, function(data) {
+                //     memberBonusTotal = data;
+                // });
+                bonusRecord = bonusData;
+                memberBonusTotal = memberBonusTotalData;
+
+                // 如果查詢無資料時
+                if (bonusRecord != null) {
+                    loadBonusRecord(bonusRecord, 0);
+                    $('.member-common-footer .member-bouns-funds>.img-fluid:first-child').after(bonusRecordFooter[0]);
+                } else {
+                    noBonusRecord();
+                    $('.paging .img-fluid').css('display', 'none');
+                    $('.member-common-footer .member-bouns-funds>.img-fluid:first-child').after([bonusRecordFooter[1][0], bonusRecordFooter[1][1]]);
+                };
+
+                lodaBonusSubtotal(memberBonusTotal);
+
+            });
+
+            //動態生成資料
+            //有Bonus Record時
+            function loadBonusRecord(jsonDataIn, startIndex) {
+                if (startIndex > jsonDataIn.length) {
+                    startIndex = startIndex - 5;
+                }
+                if (startIndex < 0) {
+                    startIndex = 0;
+                };
+                $('.record-table').text('');
+                $('.container.bonus-record .index').text(startIndex);
+                var trArry = [];
+                let head = $('<tr></tr>').addClass('head-of-table').append([
+                    $('<th></th>').text('生效日期'),
+                    $('<th></th>').text('點數異動'),
+                    $('<th></th>').text('異動事由')
+                ]);
+                trArry.push(head);
+                for (var i = startIndex; i < (startIndex + 5); i++) {
+                    var row;
+                    if (i > jsonDataIn.length - 1) {
+                        row = $('<tr></tr>').append([
+                            $('<td></td>').html('&nbsp;'),
+                            $('<td></td>').html('&nbsp;'),
+                            $('<td></td>').html('&nbsp;')
+                        ]);
+                    } else {
+                        row = $('<tr></tr>').append([
+                            $('<td></td>').text(jsonDataIn[i].Time),
+                            $('<td></td>').text(
+                                function() {
+                                    if (jsonDataIn[i].Qty > 0) {
+                                        return "+" + jsonDataIn[i].Qty;
+                                    } else {
+                                        return jsonDataIn[i].Qty;
+                                    }
+                                }()
+                            ).css('color', function() {
+                                if (parseInt(jsonDataIn[i].Qty) > 0) {
+                                    return "#ed1c24";
+                                } else {
+                                    return "#727272";
+                                }
+                            }()),
+                            $('<td></td>').text(jsonDataIn[i].Memo)
+                        ]);
+                    }
+                    trArry.push(row);
+                }
+                $('.record-table').append(trArry);
+            };
+
+            //無Bonus Record時
+            function noBonusRecord() {
+                let head = $('<tr></tr>').addClass('head-of-table').append([
+                    $('<th></th>').text('生效日期'),
+                    $('<th></th>').text('點數異動'),
+                    $('<th></th>').text('異動事由')
+                ]);
+                let noData = $('<tr></tr>').append($('<td></td>').attr('colspan', '3').text('目前尚無紀錄。'));
+                $('.record-table').append([head, noData]);
+            };
+
+            //載入可用點數與消耗點數
+            function lodaBonusSubtotal(jsonDataIn) {
+                $('.container.bonus-record>.title span:first-child').text(jsonDataIn[0].Name);
+                $('.container.bonus-record>.title span:last-child').text(jsonDataIn[0].Bonus);
+                $('.use-count span').text(jsonDataIn[0].UseBonus);
+                $('.avail-count span').text(jsonDataIn[0].Bonus);
+            };
+
+            // 下5筆
+            $('.paging .img-fluid:last-child').click(function() {
+                loadBonusRecord(bonusRecord, parseInt($('.container.bonus-record .index').text()) + 5);
+            });
+
+            // 上5筆
+            $('.paging .img-fluid:first-child').click(function() {
+                loadBonusRecord(bonusRecord, parseInt($('.container.bonus-record .index').text()) - 5);
+            });
+        </script>
+
+        <!--半共用樣式區，Footer-->
+        <footer class=" member-common-footer ">
+            <div class="member-bouns-funds ">
+                <img src="images/bonus-animation-1.png " class="img-fluid " alt=" " />
+                <img src="images/member-bouns-funds-footer-bg.png " class="img-fluid " alt=" " />
+                <div class="icon-link ">
+                    <a href=" " class=" ">
+                        <img src="images/icon-fb.png " class="img-fluid " alt=" " />
+                    </a>
+                    <a href=" " class=" ">
+                        <img src="images/icon-ig.png " class="img-fluid " alt=" " />
+                    </a>
+                    <a href=" " class=" ">
+                        <img src="images/icon-utube.png " class="img-fluid " alt=" " />
+                    </a>
+                </div>
+                <div class="footer-title ">
+                    <div class="title ">紅利與購物金查詢</div>
+                    <div class="title ">紅利回饋</div>
+                </div>
+                <div class="footer-link ">
+                    <a href="news.html " class="wonderfulType nav-link ">
+                        <div class="title ">最新消息</div>
+                        <div class="title ">News</div>
+                    </a>
+                    <a href="productIndex.html " class="wonderfulType nav-link ">
+                        <div class="title ">商品專區</div>
+                        <div class="title ">Products</div>
+                    </a>
+                    <a href=" " class="wonderfulType nav-link ">
+                        <div class="title ">相片底家</div>
+                        <div class="title ">Photos</div>
+                    </a>
+                    <a href="story.html " class="wonderfulType nav-link ">
+                        <div class="title ">美好故事</div>
+                        <div class="title ">About&nbsp;Us</div>
+                    </a>
+                    <a href=" " class="wonderfulType nav-link ">
+                        <div class="title ">美好問答</div>
+                        <div class="title ">Q&A</div>
+                    </a>
+                    <a href="contact.html " class="wonderfulType nav-link ">
+                        <div class="title ">找尋美好</div>
+                        <div class="title ">Find&nbsp;Us</div>
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <script>
+            $('.member-bouns-funds .footer-link .nav-link').hover(
+                function() {
+                    $(this).children('.title:last-child').css('opacity', "1 ");
+                },
+                function() {
+                    $(this).children('.title:last-child').css('opacity', "0 ");
+                }
+            )
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+.container.reset-pwd {
+    margin: 5% auto 5% auto;
+    width: 60%;
+}
+
+.reset-pwd .origin-pwd,
+.reset-pwd .new-pwd,
+.reset-pwd .confirm-pwd {
+    position: relative;
+    margin: 4% auto;
+    text-align: center;
+}
+
+.reset-pwd .origin-pwd label,
+.reset-pwd .new-pwd label,
+.reset-pwd .confirm-pwd label {
+    width: 20%;
+    color: rgba(17, 25, 27, 0.8);
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+    text-align: left;
+    font-weight: 800;
+}
+
+.reset-pwd .origin-pwd input,
+.reset-pwd .new-pwd input,
+.reset-pwd .confirm-pwd input {
+    width: 40%;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1vw;
+    padding: 1% 2%;
+    border: 1px solid rgba(204, 202, 202, 1);
+}
+
+.reset-pwd .origin-pwd input:focus,
+.reset-pwd .new-pwd input:focus,
+.reset-pwd .confirm-pwd input:focus {
+    border: 1px solid #66a64f;
+}
+
+.reset-pwd .new-pwd span {
+    position: absolute;
+    width: 30%;
+    bottom: -50%;
+    left: 34.6%;
+    font-size: 0.7vw;
+    letter-spacing: 0.2vw;
+    color: rgba(17, 25, 27, 0.6);
+    font-weight: bold;
+}
+
+.reset-pwd-submit {
+    display: block;
+    position: relative;
+    width: 10%;
+    margin: 0 0 0 43%;
+    border: none;
+    background-color: #cccaca;
+    color: #fff;
+    padding: 1% 1%;
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.reset-pwd-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.reset-pwd-submit:enabled:hover {
+    background-color: #afd1a5;
+}
+
+
+/* 密碼格式檢核,密碼雙重檢核Modal樣式 */
+
+#resetPwdNotice1 {
+    width: 25%;
+    padding: 2%;
+    text-align: center;
+    border: none;
+    border-radius: 10pt;
+    margin-left: -12.5%;
+}
+
+#resetPwdNotice1 .title {
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    color: #727272;
+    margin-bottom: 8%;
+    line-height: 2rem;
+}
+
+#resetPwdNotice1 button {
+    padding: 2% 4%;
+    font-size: 1vw;
+    border: none;
+    border-radius: 5pt;
+    background-color: #cccaca;
+    color: #fff;
+    cursor: pointer;
+}
+
+#resetPwdNotice1 button:hover {
+    background-color: #66a64f;
+}
+
+
+/* 密碼修改成功失敗Modal樣式 */
+
+#fail-reset-pwd,
+#reset-pwd-confirm,
+#success-reset-pwd {
+    width: 25%;
+    padding: 2%;
+    text-align: center;
+    border: none;
+    border-radius: 10pt;
+    margin-left: -12.5%;
+}
+
+#success-reset-pwd {
+    width: 35%;
+}
+
+#reset-pwd-confirm {
+    padding: 0;
+    text-align: right;
+}
+
+#fail-reset-pwd .title {
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    color: #727272;
+    margin-bottom: 8%;
+    line-height: 2rem;
+}
+
+#reset-pwd-confirm .box {
+    padding: 2% 4%;
+    border-bottom: 1px solid rgba(17, 25, 27, 0.2);
+    margin-bottom: 2%;
+}
+
+#reset-pwd-confirm .title,
+#success-reset-pwd .title {
+    text-align: left;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    color: #11191b;
+    margin-bottom: 1%;
+    line-height: 2rem;
+    font-weight: 800;
+}
+
+#success-reset-pwd .title {
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+#fail-reset-pwd button,
+#success-reset-pwd button {
+    padding: 2% 4%;
+    font-size: 1vw;
+    border: none;
+    border-radius: 5pt;
+    background-color: #cccaca;
+    color: #fff;
+    cursor: pointer;
+}
+
+#fail-reset-pwd button:hover,
+#success-reset-pwd button:hover {
+    background-color: #66a64f;
+}
+
+#reset-pwd-confirm button {
+    margin-left: 4%;
+    margin-right: 4%;
+    padding: 2% 0%;
+    font-size: 1vw;
+    border: none;
+    border-radius: 5pt;
+    background-color: rgba(255, 255, 255, 0);
+    color: #11191b;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#reset-pwd-confirm button:hover {
+    color: #afd1a5;
+}

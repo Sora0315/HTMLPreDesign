@@ -1,0 +1,409 @@
+/* 紅利與購物金說明的樣式 */
+
+.container.member-helper {
+    margin: 2% auto 2% auto;
+    padding: 0 7.5%;
+    width: 100vw;
+}
+
+.container.member-helper .translateX {
+    position: absolute;
+    width: 4%;
+    border: none;
+    cursor: pointer;
+    border-radius: 65%;
+    padding: 0.1% 0;
+    background: rgba(202, 202, 202, 0.4);
+    z-index: 0;
+    right: 1%;
+    top: 35%;
+}
+
+.container2.member-helper .translateX {
+    position: absolute;
+    width: 4%;
+    border: none;
+    cursor: pointer;
+    border-radius: 65%;
+    padding: 0.1% 0;
+    background: rgba(202, 202, 202, 0.4);
+    z-index: 0;
+    left: 1%;
+    top: 35%;
+    transform: rotate(180deg);
+}
+
+.container.member-helper .translateX:hover,
+.container2.member-helper .translateX:hover {
+    background: rgba(202, 202, 202, 0.9);
+}
+
+.container.member-helper .flip-container {
+    position: absolute;
+    display: block;
+    width: 10%;
+    top: 25%;
+    left: 43.5%;
+}
+
+.container.member-helper .flip-container .flipper {
+    animation: flipper 2s infinite ease-in-out;
+}
+
+.container.member-helper .flip-container:hover .flipper {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -o-transform: none;
+    transform: none;
+}
+
+.container.member-helper .left-50,
+.container.member-helper .right-30 {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.container.member-helper .left-50 {
+    width: 50%
+}
+
+.container.member-helper .right-30 {
+    width: 30%;
+}
+
+.container.member-helper .info .left,
+.container.member-helper .info .right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.container.member-helper .info>.right {
+    color: #727272;
+    font-weight: 800;
+    padding-left: 3%;
+}
+
+.container.member-helper .left-50 .info {
+    margin-bottom: 8%;
+}
+
+.container.member-helper .left-50 .info .right .title {
+    margin-top: 1.5%;
+    margin-bottom: 4%;
+}
+
+.container.member-helper .left-50 .info .left {
+    width: 7%;
+}
+
+.container.member-helper .left-50 .info .right {
+    width: 90%;
+}
+
+.container.member-helper .info .right .title {
+    width: auto;
+    font-size: 1.2vw;
+    letter-spacing: 0.3vw;
+}
+
+.container.member-helper .info .right .content {
+    font-size: 0.85vw;
+    letter-spacing: 0.3vw;
+    line-height: 2.5rem;
+}
+
+.container.member-helper .right-30 {
+    margin-left: 15%;
+}
+
+.container.member-helper .right-30 .info {
+    margin-bottom: 12%;
+}
+
+.container.member-helper .right-30 .info .left {
+    width: 11.67%;
+}
+
+.container.member-helper .right-30 .info .right {
+    width: 87%;
+}
+
+.container.member-helper .right-30 .info .right .title {
+    margin-top: 3%;
+    margin-bottom: 6.5%;
+}
+
+.container2.member-helper {
+    background-color: #fff;
+    width: 100vw;
+    margin: 1% auto 0 auto;
+    padding: 0 7.5%;
+    position: absolute;
+    left: 100vw;
+    z-index: 0;
+}
+
+.container2.member-helper .funds-info {
+    width: 80%;
+    position: relative;
+    margin: 0 auto 10% auto;
+}
+
+.container2.member-helper .funds-info .info {
+    width: 100%;
+    margin: 0 auto 3.5% auto;
+    text-align: center;
+}
+
+.container2.member-helper .funds-info .info:nth-child(2n+1) .left {
+    width: 50%;
+    margin-right: 2%;
+}
+
+.container2.member-helper .funds-info .info:nth-child(2n) .left {
+    width: 10%;
+}
+
+.container2.member-helper .funds-info .info:nth-child(2n+1) .right {
+    width: 10%;
+}
+
+.container2.member-helper .funds-info .info:nth-child(2n) .right {
+    width: 50%;
+    margin-left: 2%;
+}
+
+.container2.member-helper .funds-info .info .left,
+.container2.member-helper .funds-info .info .right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.container2.member-helper .funds-info .title {
+    color: #727272;
+    font-size: 1.2vw;
+    letter-spacing: 0.3vw;
+    text-align: left;
+    font-weight: 800;
+    margin-bottom: 2%;
+}
+
+.container2.member-helper .funds-info .left .content,
+.container2.member-helper .funds-info .right .content {
+    color: #727272;
+    font-size: 0.85vw;
+    letter-spacing: 0.3vw;
+    text-align: left;
+    font-weight: 600;
+    line-height: 2.5rem;
+}
+
+.container.member-helper .paging .img-fluid:hover {
+    opacity: 1;
+}
+
+
+/* 購物流程說明樣式 */
+
+.container.member-helper2 {
+    text-align: center;
+}
+
+.container.member-helper2 .flip-container {
+    display: inline-block;
+    width: 18%;
+    margin: 0;
+    cursor: pointer;
+}
+
+.container.member-helper2 .flip-container:hover .flipper {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+
+/* 條款說明的樣式 */
+
+.container.member-helper3 {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    color: #727272;
+}
+
+.container.member-helper3 .title {
+    font-size: 1.2vw;
+    font-weight: 800;
+    letter-spacing: 0.2vw;
+    margin-bottom: 1.5%
+}
+
+.container.member-helper3 .content {
+    font-size: 0.9vw;
+    font-weight: 800;
+    letter-spacing: 0.2vw;
+    line-height: 3rem;
+    margin-bottom: 3%;
+}
+
+.container.member-helper3 .content:last-child {
+    margin-bottom: 15%;
+}
+
+.container.member-helper3 .sub-content {
+    padding-left: 2.5%;
+}
+
+
+/* 各項說明Footer樣式 */
+
+.member-common-footer .member-helper {
+    position: relative;
+}
+
+.member-common-footer .member-helper.animation-1>.img-fluid:nth-child(1) {
+    position: absolute;
+    width: 10%;
+    bottom: 68%;
+    left: 5%;
+    z-index: -1;
+}
+
+.member-common-footer .member-helper.animation-1>.img-fluid:nth-child(2) {
+    position: absolute;
+    width: 2.5%;
+    top: -90%;
+    left: 14.5%;
+    z-index: -1;
+}
+
+.member-common-footer .member-helper.animation-1>.img-fluid:nth-child(3) {
+    position: absolute;
+    width: 3.5%;
+    top: -96%;
+    left: 14%;
+    z-index: -1;
+    animation: light-bling 1s ease-in infinite;
+}
+
+.member-common-footer .member-helper.animation-1>.img-fluid:nth-child(4) {
+    position: absolute;
+    width: 3.5%;
+    top: -96%;
+    left: 14%;
+    z-index: -1;
+    animation: light-bling2 1s ease-in infinite;
+}
+
+.member-common-footer .member-helper.animation-1>.img-fluid:nth-child(5) {
+    position: absolute;
+    width: 20%;
+    bottom: 110%;
+    right: 3%;
+    z-index: -1;
+}
+
+.member-common-footer .member-helper.animation-2>.img-fluid:nth-child(1) {
+    position: absolute;
+    width: 10%;
+    bottom: 90%;
+    left: 80%;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.member-common-footer .member-helper.animation-2>.img-fluid:nth-child(2) {
+    position: absolute;
+    width: 2.5%;
+    top: -110%;
+    left: 89.5%;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.member-common-footer .member-helper.animation-2>.img-fluid:nth-child(3) {
+    position: absolute;
+    width: 3.5%;
+    top: -116%;
+    left: 89%;
+    z-index: -1;
+    animation: light-bling 1s ease-in infinite;
+}
+
+.member-common-footer .member-helper.animation-2>.img-fluid:nth-child(4) {
+    position: absolute;
+    width: 3.5%;
+    top: -116%;
+    left: 89%;
+    z-index: -1;
+    animation: light-bling2 1s ease-in infinite;
+}
+
+.member-helper .icon-link {
+    position: absolute;
+    width: 10%;
+    bottom: 5%;
+    left: 0%;
+    text-align: center;
+    z-index: 5;
+}
+
+.member-helper .icon-link a {
+    display: inline-block;
+    width: 18%;
+    margin: 0 5%;
+    vertical-align: middle;
+}
+
+.member-helper .footer-title {
+    width: 15%;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    text-align: center;
+}
+
+.member-helper .footer-title .title {
+    color: #1a2576;
+    font-weight: 800;
+}
+
+.member-helper .footer-title .title:first-child {
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+}
+
+.member-helper .footer-title .title:last-child {
+    font-size: 0.8vw;
+    letter-spacing: 0.1vw;
+}
+
+.member-helper .footer-link {
+    position: absolute;
+    top: 40%;
+    right: 0%;
+    text-align: center;
+}
+
+.member-helper .footer-link .nav-link {
+    vertical-align: middle;
+    color: #e47e81;
+}
+
+.member-helper .footer-link .nav-link:hover {
+    color: #1a2576;
+}
+
+.member-helper .footer-link .nav-link .title:first-child {
+    font-size: 1vw;
+    letter-spacing: 0.5vw;
+}
+
+.member-helper .footer-link .nav-link .title:last-child {
+    font-size: 0.000001vw;
+    letter-spacing: 0.01vw;
+    opacity: 0;
+}

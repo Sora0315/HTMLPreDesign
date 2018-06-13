@@ -101,18 +101,6 @@
     z-index: 5;
 }
 
-.rotate360 {
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transition: -webkit-transform .5s ease-in-out;
-    -ms-transition: -ms-transform .5s ease-in-out;
-    -o-transition: -o-transform .5s ease-in-out;
-    transition: transform .5s ease-in-out;
-}
-
 .order-check {
     position: relative;
     width: 100%;

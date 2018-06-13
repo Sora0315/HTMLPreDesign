@@ -1,0 +1,197 @@
+.container.bonus-record {
+    margin: 2% auto 2% auto;
+    width: 60%;
+}
+
+.container.bonus-record .title {
+    width: 50%;
+    margin: 2% auto 3%;
+    font-size: 1vw;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.2vw;
+    color: #11191b;
+}
+
+.container.bonus-record .index {
+    display: none;
+}
+
+.container.bonus-record .title span:last-child {
+    color: #ed1c24;
+}
+
+.container.bonus-record .record-table,
+.container.bonus-record .subtotal {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #edeaea;
+    border-collapse: collapse;
+}
+
+.container.bonus-record .subtotal {
+    border-top: 2px solid #cccaca;
+    text-align: right;
+}
+
+.container.bonus-record .subtotal .use-count,
+.container.bonus-record .subtotal .avail-count {
+    color: #727272;
+    font-size: 0.9vw;
+    letter-spacing: 0.2vw;
+    font-weight: 800;
+    padding: 1.5% 2% 1.5% 0%;
+}
+
+.container.bonus-record .record-table tr:nth-child(2n+1) {
+    background-color: #edeaea;
+}
+
+.container.bonus-record .record-table th {
+    color: #11191b;
+    font-size: 1vw;
+    letter-spacing: 0.1vw;
+    padding: 2%;
+}
+
+.container.bonus-record .record-table td {
+    font-size: 0.8vw;
+    letter-spacing: 0.1vw;
+    color: #727272;
+    padding: 2%;
+    font-weight: 700;
+}
+
+.container.bonus-record .paging {
+    width: 50%;
+    margin: 2% auto;
+    text-align: center;
+}
+
+.container.bonus-record .paging .img-fluid {
+    display: inline-block;
+    width: 5%;
+    vertical-align: middle;
+    margin: 0 2%;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.container.bonus-record .paging .img-fluid:hover {
+    opacity: 1;
+}
+
+.img-fluid.bonus-funds-notice {
+    position: absolute;
+    width: 48%;
+    bottom: -18%;
+    right: 1%;
+}
+
+
+/* 更改會員資料與密碼的Footer樣式 */
+
+.member-common-footer .member-bouns-funds {
+    position: relative;
+}
+
+.member-common-footer .member-bouns-funds>.img-fluid:first-child {
+    position: absolute;
+    width: 10%;
+    top: -77%;
+    left: 23.5%;
+    z-index: 5;
+}
+
+.member-common-footer .member-bouns-funds .img-fluid.heart {
+    position: absolute;
+    width: 4.5%;
+    top: -25%;
+    left: 26.5%;
+    z-index: -2;
+    animation: bonus-animation 1s infinite;
+}
+
+.member-common-footer .member-bouns-funds .left-eye,
+.member-common-footer .member-bouns-funds .right-eye {
+    position: absolute;
+    width: 0.9%;
+    animation: eye-moving 2s infinite;
+}
+
+.member-common-footer .member-bouns-funds .left-eye {
+    top: -27.8%;
+    left: 26.8%;
+}
+
+.member-common-footer .member-bouns-funds .right-eye {
+    top: -27.1%;
+    left: 29.5%;
+}
+
+.member-bouns-funds .icon-link {
+    position: absolute;
+    width: 10%;
+    top: 20%;
+    left: 1%;
+    text-align: center;
+    z-index: 5;
+}
+
+.member-bouns-funds .icon-link a {
+    display: inline-block;
+    width: 18%;
+    margin: 0 5%;
+    vertical-align: middle;
+}
+
+.member-bouns-funds .footer-title {
+    width: 15%;
+    position: absolute;
+    bottom: 10%;
+    left: 23.5%;
+    text-align: center;
+}
+
+.member-bouns-funds .footer-title .title {
+    color: #1a2576;
+    font-weight: 800;
+}
+
+.member-bouns-funds .footer-title .title:first-child {
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+}
+
+.member-bouns-funds .footer-title .title:last-child {
+    font-size: 0.8vw;
+    letter-spacing: 0.1vw;
+}
+
+.member-bouns-funds .footer-link {
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+    text-align: center;
+}
+
+.member-bouns-funds .footer-link .nav-link {
+    vertical-align: middle;
+    color: #ec925f;
+}
+
+.member-bouns-funds .footer-link .nav-link:hover {
+    color: #1a2576;
+}
+
+.member-bouns-funds .footer-link .nav-link .title:first-child {
+    font-size: 1vw;
+    letter-spacing: 0.5vw;
+}
+
+.member-bouns-funds .footer-link .nav-link .title:last-child {
+    font-size: 0.000001vw;
+    letter-spacing: 0.01vw;
+    opacity: 0;
+}

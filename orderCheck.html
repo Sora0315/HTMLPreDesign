@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
 <html>
 
 <head>
@@ -140,10 +139,10 @@
             );
             $('.order-check-menu .order-check-site-logo').hover(
                 function() {
-                    $(this).parent('.order-check-menu').children('.img-fluid').toggleClass('rotate360');
+                    $(this).parent('.order-check-menu').children('.bounce-logo').toggleClass('rotate360');
                 },
                 function() {
-                    $(this).parent('.order-check-menu').children('.img-fluid').toggleClass('rotate360');
+                    $(this).parent('.order-check-menu').children('.bounce-logo').toggleClass('rotate360');
                 }
             );
         </script>
@@ -456,7 +455,7 @@
                                 recieptAddr = recieptAddr + v;
                             }
                         );
-                        recieptAddr = recieptAddr + $(this).find('.reciept-product input[name="addr"]').val();
+                        recieptAddr = recieptAddr + "-" + $(this).find('.reciept-product input[name="addr"]').val();
 
                         var cartJson = JSON.parse(Cookies.get('cart'));
                         var productAndQtyArry = [];
@@ -1051,7 +1050,7 @@
                                         return datetime;
                                     }() + '前'
                                 );
-                                $('#completeOrder').moda({
+                                $('#completeOrder').modal({
                                     onHidden: function() {
                                         // location.href = '/index.html?referred=' + 'noback';
                                         location.replace('/index.html?referred=' + 'noback');

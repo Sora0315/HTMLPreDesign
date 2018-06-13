@@ -280,8 +280,8 @@
                 opts = self.options,
                 county = '',
                 list = {
-                    'county': '<option value="">縣市</option>',
-                    'district': '<option value="">鄉鎮市區</option>'
+                    'county': '<option value="">選擇縣市</option>',
+                    'district': '<option value="">選擇鄉鎮</option>'
                 },
                 tpl = [];
 

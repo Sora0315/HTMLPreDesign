@@ -1,0 +1,815 @@
+/* 訂單評論與詢問，葉面由下往上滑動樣式 */
+
+.member-order-QA-Commnent-fadein {
+    margin-top: 100vh;
+    opacity: 0;
+    animation: fade-in-from-bottom 2s forwards;
+    position: relative;
+}
+
+
+/* 訂單QA與Comment的Header樣式 */
+
+.member-common-header .member-QA-Commnent-site-logo {
+    width: 5%;
+    position: absolute;
+    top: 10%;
+    left: 2%;
+    opacity: 1.0;
+    z-index: 1;
+}
+
+.member-common-header .bounce-logo {
+    position: absolute;
+    z-index: 1;
+}
+
+.member-common-header .bounce-logo:nth-child(2) {
+    width: 0.8%;
+    bottom: 6%;
+    left: 3.65%;
+}
+
+.member-common-header .bounce-logo:nth-child(3) {
+    width: 1.2%;
+    bottom: 7%;
+    left: 5.8%;
+}
+
+.member-common-header .member-order-QA-Comment {
+    position: relative;
+}
+
+.member-order-QA-Comment .icon-link {
+    position: absolute;
+    width: 10%;
+    top: 12%;
+    right: 0.5%;
+    text-align: right;
+    z-index: 5;
+}
+
+.member-order-QA-Comment .icon-link a {
+    display: inline-block;
+    width: 18%;
+    margin: 0 5%;
+    vertical-align: middle;
+}
+
+.member-order-QA-Comment .footer-title {
+    width: 15%;
+    position: absolute;
+    bottom: 15%;
+    left: 23.5%;
+    text-align: center;
+}
+
+.member-order-QA-Comment .footer-title .title {
+    color: #1a2576;
+    font-weight: 800;
+}
+
+.member-order-QA-Comment .footer-title .title:first-child {
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+}
+
+.member-order-QA-Comment .footer-title .title:last-child {
+    font-size: 0.8vw;
+    letter-spacing: 0.1vw;
+}
+
+.member-order-QA-Comment .footer-link {
+    position: absolute;
+    bottom: -1%;
+    right: 3%;
+    text-align: center;
+}
+
+.member-order-QA-Comment .footer-link .nav-link {
+    vertical-align: middle;
+    color: #ecd85f;
+}
+
+.member-order-QA-Comment .footer-link .nav-link:hover {
+    color: #1a2576;
+}
+
+.member-order-QA-Comment .footer-link .nav-link .title:first-child {
+    font-size: 1vw;
+    letter-spacing: 0.5vw;
+}
+
+.member-order-QA-Comment .footer-link .nav-link .title:last-child {
+    font-size: 0.000001vw;
+    letter-spacing: 0.01vw;
+    opacity: 0;
+}
+
+.member-QA.previous-page {
+    position: fixed;
+    width: 4%;
+    top: 50%;
+    left: -1.2%;
+    cursor: pointer;
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.member-QA.previous-page:hover {
+    left: 0;
+    transition: left 0.5s;
+}
+
+.member-QA.previous-page .title {
+    font-size: 2vw;
+}
+
+.member-QA.previous-page .img-fluid {
+    width: 4vw;
+    float: right;
+    transform: rotate(180deg);
+}
+
+
+/* 訂單詢問主區塊樣式 */
+
+.container.member-order-QA {
+    width: 100%;
+}
+
+.container.member-order-QA .new-qa,
+.container.member-order-QA .qa-record-group {
+    width: 80%;
+    margin: 5% auto;
+}
+
+.container.member-order-QA .qa-record-group {
+    border-top: 1px solid #cccaca;
+    padding-top: 2%;
+    padding-left: 10%;
+}
+
+.container.member-order-QA .qa-record-group .q {
+    margin-left: 3.5%;
+}
+
+.container.member-order-QA .qa-record-group .ans {
+    margin-left: 11.5%;
+}
+
+.container.member-order-QA .new-qa .left,
+.container.member-order-QA .qa-record-group .q .left,
+.container.member-order-QA .qa-record-group .ans .right {
+    display: inline-block;
+    vertical-align: top;
+    width: 10%;
+    margin-right: 1%;
+    text-align: center;
+}
+
+.container.member-order-QA .qa-record-group .q .left {
+    width: 7%;
+}
+
+.container.member-order-QA .qa-record-group .ans .right {
+    width: 8%;
+}
+
+.container.member-order-QA .new-qa .left .title,
+.container.member-order-QA .qa-record-group .q .left .title,
+.container.member-order-QA .qa-record-group .ans .right .title {
+    margin-top: 2%;
+    font-size: 1vw;
+    font-weight: 800;
+    letter-spacing: 0.2vw;
+}
+
+.container.member-order-QA .qa-record-group .ans .right .title {
+    font-size: 0.8vw;
+}
+
+.container.member-order-QA .new-qa .right,
+.container.member-order-QA .qa-record-group .q .right,
+.container.member-order-QA .qa-record-group .ans .left {
+    display: inline-block;
+    vertical-align: top;
+    width: 85%;
+    position: relative;
+}
+
+.container.member-order-QA .qa-record-group .q .right {
+    width: 68.5%;
+}
+
+.container.member-order-QA .qa-record-group .ans .left {
+    width: 75%;
+    margin-right: 1%;
+}
+
+.container.member-order-QA .qa-record-group .q .right .title,
+.container.member-order-QA .qa-record-group .ans .left .title,
+.container.member-order-QA .qa-record-group .q .right .content,
+.container.member-order-QA .qa-record-group .ans .left .content {
+    font-size: 1vw;
+    font-weight: 600;
+    letter-spacing: 0.2vw;
+    padding: 2% 0 2% 2%;
+    border: 1px solid #cccaca;
+    color: #727272;
+}
+
+.container.member-order-QA .qa-record-group .q .right .title,
+.container.member-order-QA .qa-record-group .ans .left .title {
+    border-bottom: 1px solid #cccaca;
+    background-color: #cccaca;
+    color: #11191b;
+}
+
+.container.member-order-QA .qa-record-group .q .right .content,
+.container.member-order-QA .qa-record-group .ans .left .content {
+    padding-bottom: 4%;
+}
+
+.container.member-order-QA .qa-record-group .time {
+    text-align: right;
+    font-size: 0.8vw;
+    letter-spacing: 0.2vw;
+    color: #727272;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+
+/* 下拉式選單客製化樣式 */
+
+.member-order-qa-drop-dwon {
+    width: 25%;
+    margin-bottom: 5%;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    color: rgba(17, 25, 27, 0.4);
+    text-align: center;
+    border: 1px solid #cccaca;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 800;
+}
+
+.member-order-qa-drop-dwon .sort {
+    display: none;
+}
+
+.member-order-qa-drop-dwon .contact-drop-triangle,
+#member-order-qa-selected--ul-select .contact-drop-triangle {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #cccaca;
+    border-radius: 5pt;
+    float: right;
+    margin-right: 2%;
+    margin-top: 1%;
+    width: 0;
+    height: 0;
+    z-index: -50;
+}
+
+.member-order-qa-drop-dwon.ul-select {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+    margin: 0;
+    padding: 1.5% 2%;
+}
+
+.member-order-qa-drop-dwon.ul-select li {
+    border-radius: 3px;
+    display: none;
+}
+
+.member-order-qa-drop-dwon.ul-select li.active {
+    letter-spacing: 0.2vw;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 3px;
+    color: rgba(17, 25, 27, 0.4);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.member-order-qa-drop-dwon.ul-select.active {
+    position: absolute;
+    border: 1px solid #cccaca;
+    z-index: 99;
+    background-color: #fff;
+    padding: 0 !important;
+}
+
+.member-order-qa-drop-dwon.ul-select.active li {
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display: block;
+    padding: 4% 0;
+}
+
+.member-order-qa-drop-dwon.ul-select.active li:hover {
+    background: #cccaca;
+    color: rgb(17, 25, 27);
+}
+
+.member-order-qa-drop-dwon.ul-select.active li.active {
+    background: #cccaca;
+    color: rgb(17, 25, 27);
+}
+
+.member-order-qa-drop-dwon.ul-select.active li.active:hover {
+    background: #cccaca;
+    color: rgb(17, 25, 27);
+}
+
+#member-order-qa-selected--ul-select {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 25%;
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+    color: rgba(17, 25, 27, 0.4);
+    font-weight: 800;
+}
+
+#member-order-qa-selected--ul-select.active {
+    width: 25%;
+    border: 1px solid #cccaca;
+    -webkit-box-shadow: 0 0 2px #aaa;
+    box-shadow: 0 0 2px #aaa;
+    padding: 1.5% 2%;
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+}
+
+.container.member-order-QA .new-qa .right .member-order-qa-area {
+    padding: 2%;
+    font-size: 1vw;
+    font-weight: 600;
+    letter-spacing: 0.1vw;
+    resize: none;
+    border: 1px solid #cccaca;
+    width: 100%;
+    margin-top: 1%;
+}
+
+.container.member-order-QA .new-qa .right .submit {
+    background-color: #cccaca;
+    color: #727272;
+    border: none;
+    font-size: 1.2vw;
+    letter-spacing: 0.4vw;
+    padding: 1.5% 4%;
+    margin-top: 1%;
+    font-weight: 800;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 5%;
+}
+
+.container.member-order-QA .new-qa .right .submit::after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.container.member-order-QA .new-qa .right .submit:hover {
+    background-color: #727272;
+    color: #fff;
+}
+
+
+/* 訂單評論主區塊樣式 */
+
+
+/* 訂單評論紀錄樣式 */
+
+.container.member-order-Comment {
+    width: 100%;
+}
+
+.container.member-order-Comment .new-comment,
+.container.member-order-Comment .comment-record {
+    width: 80%;
+    margin: 5% auto;
+}
+
+.container.member-order-Comment .new-comment {
+    margin-top: 10%;
+}
+
+.container.member-order-Comment .comment-record {
+    padding-top: 5%;
+    padding-left: 10%;
+    position: relative;
+}
+
+.container.member-order-Comment .new-comment .left,
+.container.member-order-Comment .comment-record .left {
+    display: inline-block;
+    vertical-align: top;
+    width: 10%;
+    margin-right: 1%;
+    text-align: center;
+}
+
+.container.member-order-Comment .new-comment .left .title,
+.container.member-order-Comment .comment-record .left .title {
+    margin-top: 1%;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    font-weight: 800;
+}
+
+.container.member-order-Comment .comment-record .left {
+    width: 7%;
+}
+
+.container.member-order-Comment .comment-record .update {
+    width: 18%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2%;
+}
+
+.container.member-order-Comment .comment-record .update .submit {
+    background-color: #cccaca;
+    color: #727272;
+    border: none;
+    font-size: 1.2vw;
+    letter-spacing: 0.4vw;
+    padding: 8% 8%;
+    margin: 10% auto;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.container.member-order-Comment .comment-record .update .submit:hover {
+    background-color: #ecd85f;
+    color: #11191b;
+}
+
+.container.member-order-Comment .new-comment .right,
+.container.member-order-Comment .comment-record .right {
+    display: inline-block;
+    vertical-align: top;
+    width: 85%;
+    position: relative;
+}
+
+.container.member-order-Comment .comment-record .right {
+    width: 68.5%;
+}
+
+.container.member-order-Comment .comment-record .right .comment,
+.container.member-order-Comment .comment-record .right .comment-reply {
+    padding: 2% 3%;
+    border: 1px solid #cccaca;
+}
+
+.container.member-order-Comment .comment-record .right .comment {
+    padding-top: 5%;
+}
+
+.container.member-order-Comment .comment-record .right .comment-reply {
+    background-color: #cccaca;
+}
+
+.container.member-order-Comment .comment-record .right .comment .title,
+.container.member-order-Comment .comment-record .right .comment-reply {
+    font-size: 1.1vw;
+    font-weight: 500;
+    color: #11191b;
+    letter-spacing: 0.2vw;
+    line-height: 3rem;
+}
+
+.container.member-order-Comment .comment-record .right .comment .time,
+.container.member-order-Comment .comment-record .right .comment-reply .time {
+    text-align: right;
+    font-size: 0.8vw;
+    letter-spacing: 0.2vw;
+    font-weight: 800;
+    color: #727272;
+    margin-top: 3%;
+    margin-bottom: -2%;
+    margin-right: -2%;
+}
+
+.container.member-order-Comment .new-comment .comment-rank-group,
+.container.member-order-Comment .comment-record .right .comment .comment-rank-group {
+    width: 94%;
+    margin-left: 1%;
+    text-align: right;
+    margin-top: -4%;
+    margin-bottom: 1%;
+    position: relative;
+}
+
+.container.member-order-Comment .comment-record .right .comment .comment-rank-group {
+    margin-left: 8%;
+}
+
+.container.member-order-Comment .new-comment .comment-rank-group>.img-fluid {
+    position: absolute;
+    transform: rotate(90deg);
+    width: 3%;
+    top: -95%;
+    right: 8.5%;
+    animation: finger-from-left-to-right 3s step-start 2.5s infinite;
+}
+
+.container.member-order-Comment .new-comment .comment-rank-group .rank,
+.container.member-order-Comment .comment-record .right .comment .comment-rank-group .rank {
+    width: 3%;
+    margin-left: 1%;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.container.member-order-Comment .comment-record .right .comment .comment-rank-group .rank {
+    width: 5%;
+    opacity: 1;
+    cursor: default;
+}
+
+.container.member-order-Comment .new-comment .comment-rank-group .rank-selected,
+.container.member-order-Comment .new-comment .comment-rank-group .rank span,
+.container.member-order-Comment .comment-record .right .comment .comment-rank-group .rank-selected,
+.container.member-order-Comment .comment-record .right .comment .comment-rank-group .rank span {
+    display: none;
+}
+
+.container.member-order-Comment .new-comment .comment-rank-group .rank:hover {
+    opacity: 1;
+}
+
+.container.member-order-Comment .new-comment .comment-rank-group .rank.selected {
+    opacity: 1 !important;
+}
+
+.container.member-order-Comment .new-comment .member-order-comment-area {
+    padding: 2%;
+    font-size: 1vw;
+    font-weight: 600;
+    letter-spacing: 0.1vw;
+    resize: none;
+    border: 1px solid #cccaca;
+    width: 100%;
+}
+
+.container.member-order-Comment .new-comment .submit {
+    background-color: #cccaca;
+    color: #727272;
+    border: none;
+    font-size: 1.2vw;
+    letter-spacing: 0.4vw;
+    padding: 1.5% 4%;
+    margin-top: 1%;
+    font-weight: 800;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 5%;
+}
+
+.container.member-order-Comment .new-comment .submit::after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.container.member-order-Comment .new-comment .submit:hover {
+    background-color: #727272;
+    color: #fff;
+}
+
+
+/* 訂單QA的Footer樣式 */
+
+.member-order-QA-Comment-footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.member-order-QA-Comment-footer .member-QA .img-fluid:nth-child(1) {
+    position: absolute;
+    width: 7%;
+    top: -955%;
+    left: 5%;
+    z-index: -1;
+}
+
+.member-order-QA-Comment-footer .member-QA .img-fluid:nth-child(2) {
+    position: absolute;
+    width: 1.8%;
+    top: -1085%;
+    left: 11.5%;
+    opacity: 0;
+    animation: opacity-transit 1.5s infinite ease-in-out;
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(1) {
+    position: absolute;
+    width: 7%;
+    top: -955%;
+    left: 10%;
+    z-index: -1;
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(2),
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(3),
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(4) {
+    position: absolute;
+    width: 0.6%;
+    opacity: 0;
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(2) {
+    top: -955%;
+    left: 10.5%;
+    animation: opacity-transit2 0.5s forwards;
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(3) {
+    top: -1035%;
+    left: 9.8%;
+    animation: opacity-transit2 0.5s forwards;
+    animation-delay: 1s
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(4) {
+    top: -1125%;
+    left: 9.3%;
+    animation: opacity-transit2 0.5s forwards;
+    animation-delay: 2s;
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(5) {
+    position: absolute;
+    width: 6%;
+    top: -1700%;
+    left: 5%;
+    opacity: 0;
+    animation: opacity-transit2 0.5s forwards;
+    animation-delay: 3s;
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(6),
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(7),
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(8) {
+    position: absolute;
+    width: 0.6%;
+    z-index: 2;
+    opacity: 0;
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(6) {
+    top: -1420%;
+    left: 6.3%;
+    animation: opacity-transit2 0.5s 4s forwards, dot-up-down1 1s 4s infinite;
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(7) {
+    top: -1500%;
+    left: 7.8%;
+    animation: opacity-transit2 0.5s 4s forwards, dot-up-down2 1s 4.2s infinite;
+}
+
+.member-order-QA-Comment-footer .member-Comment .img-fluid:nth-child(8) {
+    top: -1480%;
+    left: 9.3%;
+    animation: opacity-transit2 0.5s 4s forwards, dot-up-down3 1s 4.4s infinite;
+}
+
+#qa-notice {
+    width: 25%;
+    padding: 1% 0;
+    text-align: center;
+    border: none;
+    border-radius: 10pt;
+    margin-left: -12.5%;
+}
+
+#qa-notice .title {
+    text-align: center;
+    font-size: 1.1vw;
+    letter-spacing: 0.2vw;
+    color: #11191b;
+    margin-bottom: 2%;
+    line-height: 2rem;
+    font-weight: 800;
+}
+
+#qa-notice .submit {
+    margin-top: 5%;
+    border: none;
+    color: #fff;
+    font-size: 1.2vw;
+    font-weight: 500;
+    letter-spacing: 0.2vw;
+    background-color: #727272;
+    padding: 2% 4%;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+#qa-notice .submit:hover {
+    background-color: #ecd85f;
+    color: #727272;
+}
+
+
+/* 訂單評論修改彈跳視窗樣式 */
+
+#memberOrderCommentUpdate {
+    position: relative;
+    border-radius: 5pt;
+    width: 50%;
+    padding: 3% 2%;
+}
+
+#memberOrderCommentUpdate .comment {
+    position: relative;
+    font-size: 1.1vw;
+    font-weight: 500;
+    letter-spacing: 0.2vw;
+    line-height: 3rem;
+}
+
+#memberOrderCommentUpdate .comment .comment-rank-group .rank-selected,
+#memberOrderCommentUpdate .comment .comment-rank-group .rank span {
+    display: none;
+}
+
+#memberOrderCommentUpdate .comment .comment-rank-group .rank {
+    position: absolute;
+    width: 8%;
+    padding: 1%;
+    top: -80%;
+    right: -4%;
+    z-index: 0;
+    cursor: pointer;
+}
+
+#memberOrderCommentUpdate .comment .comment-rank-group .rank.selected {
+    z-index: 0;
+}
+
+#memberOrderCommentUpdate .title {
+    padding: 2%;
+    font-size: 1.2vw;
+    font-weight: 500;
+    letter-spacing: 0.1vw;
+    line-height: 3rem;
+    resize: none;
+    width: 100%;
+    border: none;
+}
+
+#memberOrderCommentUpdate .submit {
+    position: absolute;
+    width: 20%;
+    bottom: -40%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 1.2vw;
+    font-weight: 800;
+    letter-spacing: 0.2vw;
+    background-color: #cccaca;
+    border: none;
+    color: #fff;
+    padding: 2% 3%;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+#memberOrderCommentUpdate .submit:hover {
+    background-color: #ecd85f;
+    color: #727272;
+}
