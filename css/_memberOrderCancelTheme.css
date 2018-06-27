@@ -1,0 +1,240 @@
+/* 取消訂單樣式 */
+
+.container.order-cancel {
+    position: relative;
+    width: 90%;
+}
+
+.container.order-cancel .title {
+    width: 50%;
+    margin: 2% auto 1%;
+    font-size: 1vw;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.2vw;
+    color: #11191b;
+}
+
+.container.order-cancel .search-block {
+    width: 50%;
+    margin: 10% auto 1%;
+    font-size: 1.2vw;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.2vw;
+}
+
+.container.order-cancel .search-block .search-bar,
+.container.order-cancel .search-block .img-fluid {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.container.order-cancel .search-block .search-bar {
+    width: 50%;
+    padding: 1% 2%;
+    border: 1px solid #cccaca;
+    letter-spacing: 0.1vw;
+    margin-left: 5%;
+    color: #727272;
+}
+
+.container.order-cancel .search-block .search-bar:focus {
+    border: 1px solid #ecd85f;
+}
+
+.container.order-cancel .cancel-order-id {
+    display: none;
+}
+
+.container.order-cancel .search-block .img-fluid {
+    width: 4.8%;
+    content: url('../images/magnifier-gray.png');
+    cursor: pointer;
+}
+
+.container.order-cancel .search-block .img-fluid:hover {
+    content: url('../images/magnifier-yellow.png');
+}
+
+.container.order-cancel>.img-fluid {
+    width: 50%;
+    margin: 2% auto;
+}
+
+
+/* 取消訂單Table樣式 */
+
+.container.order-cancel .index {
+    display: none;
+}
+
+.container.order-cancel .record-table,
+.container.order-cancel .subtotal {
+    width: 80%;
+    margin: 2% auto 0 auto;
+    border-collapse: collapse;
+    opacity: 0;
+    border: 1px solid #edeaea;
+}
+
+.container.order-cancel .subtotal {
+    color: #727272;
+    border-top: 2px solid #cccaca;
+    text-align: right;
+    font-size: 0.9vw;
+    letter-spacing: 0.2vw;
+    font-weight: 800;
+    padding: 1% 2% 1% 0%;
+    margin-top: 0;
+}
+
+.container.order-cancel .subtotal span {
+    width: 5%;
+    display: inline-block;
+}
+
+.container.order-cancel tr:nth-child(2n+1) {
+    background-color: #edeaea;
+}
+
+.container.order-cancel th,
+.container.order-cancel td {
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    font-weight: 700;
+    line-height: 3.5rem;
+}
+
+.container.order-cancel th {
+    color: #11191b;
+    text-align: center;
+    font-size: 1.1vw;
+}
+
+.container.order-cancel td {
+    color: #727272;
+}
+
+.container.order-cancel td:nth-child(1) {
+    text-align: center;
+    width: 5%;
+    border-left: #cccaca;
+}
+
+.container.order-cancel td:nth-child(2) {
+    width: 15%;
+    text-align: center;
+}
+
+.container.order-cancel td:nth-child(3) {
+    width: 40%;
+    text-align: left;
+    padding-left: 5%;
+}
+
+.container.order-cancel td:nth-child(4) {
+    width: 10%;
+    text-align: center;
+}
+
+.container.order-cancel td:nth-child(5) {
+    width: 15%;
+    text-align: center;
+}
+
+.container.order-cancel td:nth-child(6) {
+    width: 15%;
+    text-align: center;
+}
+
+.container.order-cancel .paging {
+    width: 40%;
+    margin: 1% auto;
+    text-align: center;
+    opacity: 0;
+}
+
+.container.order-cancel .paging .img-fluid {
+    display: inline-block;
+    width: 5%;
+    vertical-align: middle;
+    margin: 0 2%;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.container.order-cancel .paging .img-fluid:hover {
+    opacity: 1;
+}
+
+.container.order-cancel>.submit {
+    margin: 3% auto 15% auto;
+    background-color: #cccaca;
+    border: none;
+    color: #fff;
+    font-size: 1.2vw;
+    padding: 1% 2%;
+    width: 15%;
+    display: block;
+    cursor: pointer;
+    letter-spacing: 0.2vw;
+}
+
+.container.order-cancel>.submit:hover {
+    background-color: #ecd85f;
+    color: #11191b;
+}
+
+.member-myOrder.animation-1.order-cancel .img-fluid:nth-child(3) {
+    position: absolute;
+    top: -70%;
+    left: 37%;
+    width: 30%;
+    z-index: -99;
+}
+
+
+/* 取消訂單確認Modal的樣式 */
+
+#cancelOrderConfirm {
+    width: 25%;
+    padding: 1% 0 0 0;
+    text-align: right;
+    border: none;
+    border-radius: 10pt;
+    margin-left: -12.5%;
+}
+
+#cancelOrderConfirm .title {
+    margin-right: 40%;
+    font-size: 1.1vw;
+    letter-spacing: 0.2vw;
+    color: #11191b;
+    margin-bottom: 2%;
+    line-height: 2rem;
+    font-weight: 800;
+}
+
+#cancelOrderConfirm hr::after {
+    text-align: right;
+}
+
+#cancelOrderConfirm .submit,
+#cancelOrderConfirm .cancel {
+    margin-top: 1%;
+    border: none;
+    color: #11191b;
+    font-size: 1.1vw;
+    font-weight: 500;
+    letter-spacing: 0.2vw;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 2% 4%;
+    margin-bottom: 1%;
+    cursor: pointer;
+}
+
+#cancelOrderConfirm .submit:hover,
+#cancelOrderConfirm .cancel:hover {
+    color: #ecd85f;
+}

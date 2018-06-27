@@ -6,20 +6,20 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Wonderful", "http://localho
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_12408"
-		Debug.AspNetCompiler.PhysicalPath = "D:\HTML PreDesign\Wonderful\"
+		Debug.AspNetCompiler.PhysicalPath = "E:\HTML PreDesign\Wonderful\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12408\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_12408"
-		Release.AspNetCompiler.PhysicalPath = "D:\HTML PreDesign\Wonderful\"
+		Release.AspNetCompiler.PhysicalPath = "E:\HTML PreDesign\Wonderful\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12408\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "D:\HTML PreDesign\Wonderful\"
+		SlnRelativePath = "E:\HTML PreDesign\Wonderful\"
 	EndProjectSection
 EndProject
 Global

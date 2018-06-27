@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -64,7 +63,7 @@
         );
     </script>
 
-    <div class="pusher">
+    <div class="pusher" style="position:relative">
         <!--共用樣式區，Header-->
         <header>
             <nav class="nav member-common-menu">
@@ -93,61 +92,36 @@
         </script>
 
 
-        <div class="container member-helper2">
-            <div class="flip-container">
-                <div class="flipper">
-                    <div class="front">
-                        <img src='images/member-helper-step1-front.png' class="img-fluid" />
-                    </div>
-                    <div class="back">
-                        <img src='images/member-helper-step1-back.png' class="img-fluid" />
-                    </div>
-                </div>
+        <div class="container return-index">
+            <div class="title">請輸入欲退貨的訂單編號</div>
+            <div class="search-block">
+                <input class="search-bar" type="text" />
+                <img src="images/magnifier-gray.png" class="img-fluid submit" alt="" />
             </div>
-            <div class="flip-container">
-                <div class="flipper">
-                    <div class="front">
-                        <img src='images/member-helper-step2-front.png' class="img-fluid" />
-                    </div>
-                    <div class="back">
-                        <img src='images/member-helper-step2-back.png' class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="flip-container">
-                <div class="flipper">
-                    <div class="front">
-                        <img src='images/member-helper-step3-front.png' class="img-fluid" />
-                    </div>
-                    <div class="back">
-                        <img src='images/member-helper-step3-back.png' class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="flip-container">
-                <div class="flipper">
-                    <div class="front">
-                        <img src='images/member-helper-step4-front.png' class="img-fluid" />
-                    </div>
-                    <div class="back">
-                        <img src='images/member-helper-step4-back.png' class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-
-
+            <img src="images/return-index-notice.png" class="img-fluid" alt="" />
         </div>
+
+        <script>
+            $('.container.return-index .submit').click(
+                function() {
+                    if (($('.container.return-index .search-bar').val()).trim().length == 0) {
+                        $('#returnIndexNotice .title').text('請輸入訂單編號。');
+                        $('#returnIndexNotice').modal('show');
+                    } else {
+                        location.href = 'memberOrderReturnStep1.html?orderID=' + $('.container.return-index .search-bar').val();
+                    }
+
+                }
+            );
+        </script>
 
 
         <!--半共用樣式區，Footer-->
-        <footer class="member-common-footer">
-            <div class="member-helper animation-1">
-                <img src="images/member-helper2-animation-1.png" class="img-fluid" alt="" />
-                <img src="images/member-helper2-animation-2.png" class="img-fluid" alt="" />
-                <img src="images/member-helper2-animation-3.png" class="img-fluid" alt="" />
-                <img src="images/member-helper2-animation-4.png" class="img-fluid" alt="" />
-                <img src="images/member-helper2-notice.png" class="img-fluid" alt="" />
-                <img src="images/member-helper-footer-bg.png " class="img-fluid " alt=" " />
+        <footer class=" member-common-footer">
+            <div class="member-myOrder animation-1">
+                <img src="images/member-myorder-animation-1.png" class="img-fluid" alt="" />
+                <img src="images/member-myorder-animation-2.png" class="img-fluid" alt="" />
+                <img src="images/member-myorder-footer-bg.png " class="img-fluid " alt=" " />
                 <div class="icon-link ">
                     <a href=" " class=" ">
                         <img src="images/icon-fb.png " class="img-fluid " alt=" " />
@@ -160,8 +134,8 @@
                     </a>
                 </div>
                 <div class="footer-title ">
-                    <div class="title ">購物小幫手</div>
-                    <div class="title ">購物流程</div>
+                    <div class="title ">會員訂單管理</div>
+                    <div class="title ">退貨申請</div>
                 </div>
                 <div class="footer-link ">
                     <a href="news.html " class="wonderfulType nav-link ">
@@ -192,16 +166,28 @@
             </div>
         </footer>
         <script>
-            $('.member-helper .footer-link .nav-link').hover(
+            $('.member-myOrder .footer-link .nav-link').hover(
                 function() {
                     $(this).children('.title:last-child').css('opacity', "1 ");
                 },
                 function() {
                     $(this).children('.title:last-child').css('opacity', "0 ");
                 }
-            )
+            );
         </script>
     </div>
+
+    <div class="ui modal" id="returnIndexNotice">
+        <div class="title"></div>
+        <hr/>
+        <button type="none" class="submit">關閉</button>
+    </div>
+
+    <script>
+        $('#returnIndexNotice .submit').click(function() {
+            $('#returnIndexNotice').modal('hide');
+        })
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,810 @@
+/* 退貨申請Index主區塊樣式 */
+
+.container.return-index {
+    position: relative;
+    width: 90%;
+}
+
+.container.return-index .title {
+    width: 50%;
+    margin: 2% auto 1%;
+    font-size: 1vw;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.2vw;
+    color: #11191b;
+}
+
+.container.return-index .search-block {
+    width: 50%;
+    margin: 1% auto 3%;
+    font-size: 1.2vw;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.2vw;
+}
+
+.container.return-index .search-block .search-bar,
+.container.return-index .search-block .img-fluid {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.container.return-index .search-block .search-bar {
+    width: 50%;
+    padding: 1% 2%;
+    border: 1px solid #cccaca;
+    letter-spacing: 0.1vw;
+    margin-left: 5%;
+    color: #727272;
+}
+
+.container.return-index .search-block .search-bar:focus {
+    border: 1px solid #ecd85f;
+}
+
+.container.return-index .search-block .img-fluid {
+    width: 4.8%;
+    content: url('../images/magnifier-gray.png');
+    cursor: pointer;
+}
+
+.container.return-index .search-block .img-fluid:hover {
+    content: url('../images/magnifier-yellow.png');
+}
+
+.container.return-index>.img-fluid {
+    width: 50%;
+    margin: 2% auto;
+}
+
+
+/* 退貨Index的modal樣式 */
+
+#returnIndexNotice {
+    width: 25%;
+    padding: 1% 0;
+    text-align: center;
+    border: none;
+    border-radius: 10pt;
+    margin-left: -12.5%;
+}
+
+#returnIndexNotice .title {
+    text-align: center;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    color: #11191b;
+    margin-bottom: 5%;
+    line-height: 2rem;
+    font-weight: 800;
+}
+
+#returnIndexNotice .submit {
+    margin-top: 5%;
+    border: none;
+    color: #fff;
+    font-size: 1vw;
+    font-weight: 500;
+    letter-spacing: 0.2vw;
+    background-color: #727272;
+    padding: 2% 4%;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+#returnIndexNotice .submit:hover {
+    background-color: #ecd85f;
+    color: #727272;
+}
+
+
+/* 退貨All Step共通主區塊樣式 */
+
+.container.return-step-common {
+    position: relative;
+    width: 90%;
+}
+
+.container.return-step-common .steps-bar {
+    width: 100%;
+    position: relative;
+}
+
+.container.return-step-common .steps-bar .back-return-step {
+    position: absolute;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    width: 23.5%;
+    background-color: none;
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: center;
+    top: 0;
+}
+
+.container.return-step-common .steps-bar .back-return-step:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.container.return-step-common .steps-bar .back-return-step:nth-child(2) {
+    left: 0;
+}
+
+.container.return-step-common .steps-bar .back-return-step:nth-child(3) {
+    left: 25%;
+}
+
+.container.return-step-common .steps-bar .back-return-step:nth-child(4) {
+    left: 50%;
+}
+
+.container.return-step-common>.title {
+    width: 78%;
+    margin: 2% auto 1% auto;
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+    font-weight: 800;
+    color: #727272;
+}
+
+.container.return-step-common>.title span {
+    font-size: 0.8vw;
+    margin-left: 2%;
+}
+
+
+/* 退貨Step1 主區塊樣式 */
+
+.container.return-step1 .select-all {
+    width: 78%;
+    margin: 0 auto;
+}
+
+.container.return-step1 .select-all .boolean {
+    display: none;
+}
+
+.container.return-step1 .select-all>.select-icon {
+    width: 2.5%;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 1%;
+    border: 3px solid #cccaca;
+    border-radius: 50%;
+    position: relative;
+    text-align: center;
+    color: #727272;
+    font-size: 1vw;
+}
+
+.container.return-step1 .select-all>.select-icon:hover {
+    border: 3px solid #727272;
+}
+
+.container.return-step1 .select-all>.title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    font-weight: 800;
+    color: #727272;
+}
+
+
+/*退貨Step1 配送明細樣式(複雜區塊) */
+
+.container.return-step1 table {
+    border-collapse: collapse;
+}
+
+.container.return-step1 .delivery-detail {
+    width: 80%;
+    color: #727272;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    word-break: break-all;
+    font-weight: 800;
+    margin: 0 auto 2%;
+    border-collapse: separate;
+    border-spacing: 0 2rem;
+}
+
+.container.return-step1 .delivery-detail .delivery .index {
+    width: 5%;
+    text-align: center;
+    border: 1px solid #cccaca;
+    border-right: none;
+}
+
+.container.return-step1 .delivery-detail .delivery .receipt {
+    width: 30%;
+    padding: 1% 2%;
+    border: 1px solid #cccaca;
+    line-height: 2.5rem;
+    border-right: none;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products {
+    width: 65%;
+    border: 1px solid #cccaca;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products {
+    width: 100%;
+    color: #727272;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    font-weight: 800;
+    line-height: 3.5rem;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .product td {
+    border-top: 1px solid #cccaca;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .product:first-child td {
+    border-top: none;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .left {
+    width: 15%;
+    padding: 1% 2%;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .right {
+    width: 50%;
+    padding: 1% 2%;
+    border-right: 1px solid #cccaca;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .right .delivery-id {
+    display: none;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .option {
+    width: 25%;
+    text-align: center;
+    border-right: 1px solid #cccaca;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .option .max {
+    display: none;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .option .img-fluid,
+.container.return-step1 .delivery-detail .delivery .all-products .products .option .number {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2%;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .option .img-fluid {
+    cursor: pointer;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .option .img-fluid {
+    width: 10%;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .select {
+    width: 10%;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .select .boolean {
+    display: none;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .select .select-icon {
+    width: 39%;
+    margin: 0 auto;
+    cursor: pointer;
+    vertical-align: middle;
+    border: 3px solid #cccaca;
+    border-radius: 50%;
+    text-align: center;
+    color: #727272;
+    font-size: 1vw;
+    line-height: 2.1rem;
+    font-weight: 500;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .select .select-icon span {
+    font-size: 0.3vw;
+}
+
+.container.return-step1 .delivery-detail .delivery .all-products .products .select .select-icon:hover {
+    border: 3px solid #727272;
+}
+
+.container.return-step1 .submit {
+    margin: 0 auto 15% auto;
+    background-color: rgba(204, 202, 202, 0.8);
+    border: none;
+    color: #fff;
+    font-size: 1.2vw;
+    padding: 1% 2%;
+    width: 10%;
+    display: block;
+    cursor: pointer;
+    letter-spacing: 0.2vw;
+}
+
+.container.return-step1 .submit:hover {
+    background-color: rgba(204, 202, 202, 1);
+}
+
+
+/* 退貨Step2, Step3 主區塊樣式 */
+
+.container.return-step2>.title,
+.container.return-step3>.title {
+    width: 50%;
+    margin: 2% auto;
+}
+
+.container.return-step4>.title {
+    width: 70%;
+    margin: 1% auto;
+    font-size: 1.1vw;
+}
+
+.container.return-step3>.title {
+    font-size: 1vw;
+    margin: 1% auto;
+}
+
+.container.return-step2 .selection,
+.container.return-step3 .selection {
+    width: 50%;
+    margin: 2% auto;
+}
+
+.container.return-step3 .selection {
+    margin: 1% auto;
+}
+
+.container.return-step2 .selection .boolean,
+.container.return-step3 .selection .boolean {
+    display: none;
+}
+
+.container.return-step2 .selection .select-icon,
+.container.return-step3 .selection .select-icon {
+    display: inline-block;
+    vertical-align: top;
+    width: 3.5%;
+    margin-right: 2%;
+    cursor: pointer;
+    border: 3px solid #cccaca;
+    border-radius: 50%;
+    position: relative;
+    text-align: center;
+    color: #727272;
+    font-size: 1vw;
+    line-height: 1.5rem;
+}
+
+.container.return-step3 .selection .select-icon {
+    width: 3%;
+    font-size: 0.9vw;
+    line-height: 1.3rem;
+    margin-right: 1.5%;
+}
+
+.container.return-step2 .selection .select-icon:hover,
+.container.return-step3 .selection .select-icon:hover {
+    border: 3px solid #727272;
+}
+
+.container.return-step2 .selection .title,
+.container.return-step3 .selection .title {
+    width: 90%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0.8vw;
+    letter-spacing: 0.2vw;
+    font-weight: 800;
+    color: #727272;
+    line-height: 2rem;
+}
+
+.container.return-step2 .selection .title>span,
+.container.return-step3 .selection .title>span:nth-child(1) {
+    display: block;
+    font-size: 1.1vw;
+    line-height: 2rem;
+    margin-bottom: 2%;
+}
+
+.container.return-step3 .selection .title>span:nth-child(1) {
+    font-size: 1vw;
+}
+
+.container.return-step3 .selection .title span:nth-child(2) {
+    display: block;
+    margin-block-start: 2%;
+    color: #ed1c24;
+}
+
+.container.return-step3 .sub-title,
+.container.return-step4 .sub-title {
+    width: 100%;
+    margin: 1% auto;
+    text-align: left;
+    font-size: 0.8vw;
+    font-weight: 700;
+    letter-spacing: 0.2vw;
+    color: #727272;
+}
+
+.container.return-step4 .sub-title {
+    width: 70%;
+    font-size: 1vw;
+    padding-left: 0.5%;
+    border-left: 5px solid #cccaca;
+}
+
+.container.return-step3 .sub-title>span {
+    display: inline-block;
+}
+
+.container.return-step3 .selection:nth-child(4) .sub-title input {
+    border: 1px solid #cccaca;
+    font-size: 0.8vw;
+    letter-spacing: 0.1vw;
+    color: #727272;
+    padding: 0.8% 2%;
+    width: 30%;
+}
+
+.container.return-step3 .selection:nth-child(4) .sub-title input:focus {
+    border: 1px solid #727272;
+}
+
+.container.return-step2 .submit,
+.container.return-step3 .submit,
+.container.return-step4 .submit {
+    margin: 5% auto 15% auto;
+    background-color: rgba(204, 202, 202, 0.8);
+    border: none;
+    color: #fff;
+    font-size: 1.2vw;
+    padding: 1% 2%;
+    width: 10%;
+    display: block;
+    cursor: pointer;
+    letter-spacing: 0.2vw;
+}
+
+.container.return-step3 .submit,
+.container.return-step4 .submit {
+    margin: 2% auto 10% auto;
+    padding: 0.5% 1%;
+    font-size: 1vw;
+}
+
+.container.return-step4 .submit {
+    margin: 1% auto 11% auto;
+}
+
+.container.return-step2 .submit:hover,
+.container.return-step3 .submit:hover,
+.container.return-step4 .submit:hover {
+    background-color: rgba(204, 202, 202, 1);
+}
+
+
+/* 退貨Step4 主區塊樣式 */
+
+.container.return-step4 .confirm-return {
+    width: 70%;
+    margin: 1% auto;
+    border-collapse: collapse;
+}
+
+.container.return-step4 .confirm-return tr td {
+    border-bottom: 2px solid #edeaea;
+}
+
+.container.return-step4 .confirm-return tr:last-child td {
+    border-bottom: none;
+}
+
+.container.return-step4 .confirm-return td {
+    font-size: 0.9vw;
+    letter-spacing: 0.1vw;
+    font-weight: 700;
+    color: #727272;
+    padding: 1.5%;
+}
+
+.container.return-step4 .confirm-return td:nth-child(1) {
+    width: 4%;
+}
+
+.container.return-step4 .confirm-return td:nth-child(2) {
+    width: 10%;
+}
+
+.container.return-step4 .confirm-return td:nth-child(3) {
+    width: 30%;
+    line-height: 2.5rem;
+}
+
+.container.return-step4 .confirm-return td:nth-child(4) {
+    width: 40%;
+    line-height: 2.5rem;
+}
+
+.container.return-step4 .refund-info {
+    width: 70%;
+    margin: 1% auto;
+}
+
+.container.return-step4 .refund-info .title {
+    width: 50%;
+    font-size: 0.9vw;
+    letter-spacing: 0.1vw;
+    font-weight: 700;
+    color: #727272;
+    margin: 1% 0 0 2%;
+}
+
+.container.return-step4 .refund-info .refund-total {
+    margin-top: 2.5%;
+    color: #ed1c24;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+}
+
+
+/* 選定後圓圈的樣式 */
+
+.selected-circle {
+    border: 3px solid #727272 !important;
+}
+
+
+/* 退貨All Step共通Footer樣式 */
+
+.member-common-footer .member-order-return-step-common {
+    position: relative;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(1),
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(1) {
+    position: absolute;
+    width: 8.5%;
+    top: -94%;
+    z-index: -1;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(1) {
+    left: 5%;
+}
+
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(1) {
+    right: 5%;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(2),
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(2) {
+    position: absolute;
+    width: 5%;
+    top: -170%;
+    opacity: 1;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(2) {
+    left: 9.5%;
+}
+
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(2) {
+    right: 9.5%;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(n+3):nth-child(-n+8),
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(n+3):nth-child(-n+8) {
+    position: absolute;
+    width: 0.6%;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(3),
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(3) {
+    top: -130%;
+    opacity: 1;
+    animation: rain-drop-1 2s infinite;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(3) {
+    left: 10.2%;
+}
+
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(3) {
+    right: 10.2%;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(4),
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(4) {
+    top: -130%;
+    opacity: 1;
+    animation: rain-drop-1 2s infinite;
+    animation-delay: 0.5s;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(4) {
+    left: 11.7%;
+}
+
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(4) {
+    right: 11.7%;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(5),
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(5) {
+    top: -130%;
+    opacity: 1;
+    animation: rain-drop-1 2s infinite;
+    animation-delay: 0.2s;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(5) {
+    left: 13.2%;
+}
+
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(5) {
+    right: 13.2%;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(6),
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(6) {
+    top: -115%;
+    opacity: 1;
+    animation: rain-drop-2 2s infinite;
+    animation-delay: 0.8s;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(6) {
+    left: 11%;
+}
+
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(6) {
+    right: 11%;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(7),
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(7) {
+    top: -115%;
+    opacity: 1;
+    animation: rain-drop-2 2s infinite;
+    animation-delay: 0.8s;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(7) {
+    left: 12.5%;
+}
+
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(7) {
+    right: 12.5%;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(8),
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(8) {
+    top: -100%;
+    opacity: 1;
+    animation: rain-drop-3 2s infinite;
+    animation-delay: 0.2s;
+}
+
+.member-common-footer .member-order-return-step-common.step1>.img-fluid:nth-child(8) {
+    left: 11.75%;
+}
+
+.member-common-footer .member-order-return-step-common.step2>.img-fluid:nth-child(8) {
+    right: 11.7%;
+}
+
+.member-order-return-step-common .icon-link {
+    position: absolute;
+    width: 10%;
+    top: 15%;
+    right: 0.5%;
+    text-align: right;
+    z-index: 5;
+}
+
+.member-order-return-step-common .icon-link a {
+    display: inline-block;
+    width: 18%;
+    margin: 0 5%;
+    vertical-align: middle;
+}
+
+.member-order-return-step-common .footer-title {
+    width: 15%;
+    position: absolute;
+    bottom: 15%;
+    left: 23.5%;
+    text-align: center;
+}
+
+.member-order-return-step-common .footer-title .title {
+    color: #1a2576;
+    font-weight: 800;
+}
+
+.member-order-return-step-common .footer-title .title:first-child {
+    font-size: 1.2vw;
+    letter-spacing: 0.2vw;
+}
+
+.member-order-return-step-common .footer-title .title:last-child {
+    font-size: 0.8vw;
+    letter-spacing: 0.1vw;
+}
+
+.member-order-return-step-common .footer-link {
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+    text-align: center;
+}
+
+.member-order-return-step-common .footer-link .nav-link {
+    vertical-align: middle;
+    color: #ecd85f;
+}
+
+.member-order-return-step-common .footer-link .nav-link:hover {
+    color: #1a2576;
+}
+
+.member-order-return-step-common .footer-link .nav-link .title:first-child {
+    font-size: 1vw;
+    letter-spacing: 0.5vw;
+}
+
+.member-order-return-step-common .footer-link .nav-link .title:last-child {
+    font-size: 0.000001vw;
+    letter-spacing: 0.01vw;
+    opacity: 0;
+}
+
+#returnStepNotice {
+    width: 25%;
+    padding: 1% 0;
+    text-align: center;
+    border: none;
+    border-radius: 10pt;
+    margin-left: -12.5%;
+}
+
+#returnStepNotice .title {
+    text-align: center;
+    font-size: 1.1vw;
+    letter-spacing: 0.2vw;
+    color: #11191b;
+    margin-bottom: 5%;
+    line-height: 2rem;
+    font-weight: 800;
+}
+
+#returnStepNotice .submit {
+    margin-top: 5%;
+    border: none;
+    color: #fff;
+    font-size: 1.2vw;
+    font-weight: 500;
+    letter-spacing: 0.2vw;
+    background-color: #727272;
+    padding: 2% 4%;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+#returnStepNotice .submit:hover {
+    background-color: #ecd85f;
+    color: #727272;
+}

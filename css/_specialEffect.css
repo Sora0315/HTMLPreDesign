@@ -10,6 +10,39 @@
     transition: transform .5s ease-in-out;
 }
 
+@keyframes rain-drop-1 {
+    0% {
+        top: -140%;
+        opacity: 1;
+    }
+    100% {
+        top: -100%;
+        opacity: 0;
+    }
+}
+
+@keyframes rain-drop-2 {
+    0% {
+        top: -130%;
+        opacity: 1;
+    }
+    100% {
+        top: -90%;
+        opacity: 0;
+    }
+}
+
+@keyframes rain-drop-3 {
+    0% {
+        top: -115%;
+        opacity: 1;
+    }
+    100% {
+        top: -70%;
+        opacity: 0;
+    }
+}
+
 @keyframes profile-animation {
     0% {
         transform: rotate(-15deg);

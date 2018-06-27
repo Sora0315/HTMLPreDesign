@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -64,7 +63,7 @@
         );
     </script>
 
-    <div class="pusher">
+    <div class="pusher" style="position:relative">
         <!--共用樣式區，Header-->
         <header>
             <nav class="nav member-common-menu">
@@ -93,61 +92,100 @@
         </script>
 
 
-        <div class="container member-helper2">
-            <div class="flip-container">
-                <div class="flipper">
-                    <div class="front">
-                        <img src='images/member-helper-step1-front.png' class="img-fluid" />
-                    </div>
-                    <div class="back">
-                        <img src='images/member-helper-step1-back.png' class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="flip-container">
-                <div class="flipper">
-                    <div class="front">
-                        <img src='images/member-helper-step2-front.png' class="img-fluid" />
-                    </div>
-                    <div class="back">
-                        <img src='images/member-helper-step2-back.png' class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="flip-container">
-                <div class="flipper">
-                    <div class="front">
-                        <img src='images/member-helper-step3-front.png' class="img-fluid" />
-                    </div>
-                    <div class="back">
-                        <img src='images/member-helper-step3-back.png' class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="flip-container">
-                <div class="flipper">
-                    <div class="front">
-                        <img src='images/member-helper-step4-front.png' class="img-fluid" />
-                    </div>
-                    <div class="back">
-                        <img src='images/member-helper-step4-back.png' class="img-fluid" />
-                    </div>
-                </div>
+        <div class="container return-step2 return-step-common">
+            <div class="steps-bar">
+                <img src="images/return-step-bar-2.png" class="img-fluid" alt="" />
+                <a href="" class="back-return-step">Step1選擇商品</a>
             </div>
 
 
+            <div class="title">請勾選您欲退貨的方式</div>
+            <div class="selection">
+                <div class="boolean">0</div>
+                <div class="select-icon"></div>
+                <div class="title">
+                    <span>我想要退款</span>您可選擇將此筆金額儲值為線上購物金或提供匯款資料，約需 7~10個工作天辦理退款程序，屆時我們也會以e-mail通知您。<br/><br/>請注意：您無須寄回瑕疵商品，但系統將會自動扣除此筆訂單的紅利回饋。
+                </div>
+            </div>
+            <button class="submit" type="none">下一步</button>
         </div>
+
+        <script>
+            $(function() {
+                returnStep2SelectCircleHeight();
+                returnStepsBarHeight();
+                generateUrlOfReturnSteps();
+            });
+
+            // 選擇圓圈的高度隨著視窗寬度而定resize
+            $(window).resize(
+                function() {
+                    returnStep2SelectCircleHeight();
+                    returnStepsBarHeight();
+                }
+            );
+
+            // 選擇圓圈的高度隨著視窗寬度而定
+            function returnStep2SelectCircleHeight() {
+                $('.container.return-step2 .selection .select-icon').css('height', function() {
+                    return $('.container.return-step2 .selection .select-icon').width() * 1.2;
+                }());
+            };
+
+            // 設定Step Bar連結的高度
+            function returnStepsBarHeight() {
+                $('.container.return-step-common .steps-bar .back-return-step').css('height', function() {
+                    return $('.container.return-step-common .steps-bar .img-fluid').height();
+                }());
+            };
+
+            // 設定Step Bar的每一個連結導向
+            function generateUrlOfReturnSteps() {
+                let orderID = location.search.substr(location.search.indexOf('=') + 1);
+                $('.container.return-step-common .steps-bar .back-return-step').each(function(i, v) {
+                    $(this).attr('href', '/memberOrderReturnStep' + (i + 1) + '.html?orderID=' + orderID);
+                });
+            };
+
+            $('.container.return-step2 .selection .select-icon').click(
+                function() {
+                    if ($(this).parents('.selection').children('.boolean').text() == "0") {
+                        $(this).html('&#10004;').addClass('selected-circle');
+                        $(this).parents('.selection').children('.boolean').text("1");
+                    } else {
+                        $(this).html('').removeClass('selected-circle');
+                        $(this).parents('.selection').children('.boolean').text("0");
+                    }
+                }
+            );
+
+            $('.container.return-step2 .submit').click(
+                function() {
+                    $('.container.return-step2 .boolean').each(function(i, v) {
+                        if ($(this).text() == "1") {
+                            location.href = 'memberOrderReturnStep3.html?orderID=' + location.search.substr(location.search.indexOf('=') + 1);
+                            return null;
+                        }
+                        $('#returnStepNotice .title').text('請選擇一種退貨方式。');
+                        $('#returnStepNotice').modal('show');
+                    });
+                }
+            );
+        </script>
 
 
         <!--半共用樣式區，Footer-->
-        <footer class="member-common-footer">
-            <div class="member-helper animation-1">
-                <img src="images/member-helper2-animation-1.png" class="img-fluid" alt="" />
-                <img src="images/member-helper2-animation-2.png" class="img-fluid" alt="" />
-                <img src="images/member-helper2-animation-3.png" class="img-fluid" alt="" />
-                <img src="images/member-helper2-animation-4.png" class="img-fluid" alt="" />
-                <img src="images/member-helper2-notice.png" class="img-fluid" alt="" />
-                <img src="images/member-helper-footer-bg.png " class="img-fluid " alt=" " />
+        <footer class=" member-common-footer">
+            <div class="member-order-return-step-common step2">
+                <img src="images/return-animation-1.png" class="img-fluid" alt="" />
+                <img src="images/dark-cloud.png" class="img-fluid" alt="" />
+                <img src="images/rain-light.png" class="img-fluid" alt="" />
+                <img src="images/rain-heavy.png" class="img-fluid" alt="" />
+                <img src="images/rain-light.png" class="img-fluid" alt="" />
+                <img src="images/rain-heavy.png" class="img-fluid" alt="" />
+                <img src="images/rain-light.png" class="img-fluid" alt="" />
+                <img src="images/rain-heavy.png" class="img-fluid" alt="" />
+                <img src="images/member-myorder-footer-bg.png " class="img-fluid " alt=" " />
                 <div class="icon-link ">
                     <a href=" " class=" ">
                         <img src="images/icon-fb.png " class="img-fluid " alt=" " />
@@ -160,8 +198,8 @@
                     </a>
                 </div>
                 <div class="footer-title ">
-                    <div class="title ">購物小幫手</div>
-                    <div class="title ">購物流程</div>
+                    <div class="title ">會員訂單管理</div>
+                    <div class="title ">退貨申請：商品處理方式</div>
                 </div>
                 <div class="footer-link ">
                     <a href="news.html " class="wonderfulType nav-link ">
@@ -192,16 +230,28 @@
             </div>
         </footer>
         <script>
-            $('.member-helper .footer-link .nav-link').hover(
+            $('.member-order-return-step-common .footer-link .nav-link').hover(
                 function() {
                     $(this).children('.title:last-child').css('opacity', "1 ");
                 },
                 function() {
                     $(this).children('.title:last-child').css('opacity', "0 ");
                 }
-            )
+            );
         </script>
     </div>
+    <div class="ui modal" id="returnStepNotice">
+        <div class="title"></div>
+        <hr />
+        <button type="none" class="submit">關閉</button>
+    </div>
+    <script>
+        $('#returnStepNotice .submit').click(
+            function() {
+                $('#returnStepNotice').modal('hide');
+            }
+        )
+    </script>
 </body>
 
 </html>

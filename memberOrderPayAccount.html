@@ -78,20 +78,20 @@
                 "PayTime": "2018-07-10"
             }];
 
-            var meberOrderPayAccountRecrod;
+            var memberOrderPayAccountRecrod;
             $(function() {
-                meberOrderPayAccountRecrod = testMeberOrderPayAccountRecrod;
+                memberOrderPayAccountRecrod = testMeberOrderPayAccountRecrod;
                 // $.post('<c:url value="/order/getOneOrder">', {
                 //     "orderID": location.search.substr(location.search.indexOf('=') + 1)
                 // }, function(data) {
-                //     meberOrderPayAccountRecrod = data;
+                //     memberOrderPayAccountRecrod = data;
                 // });
-                loadPayAccount(meberOrderPayAccountRecrod);
+                loadPayAccount(memberOrderPayAccountRecrod);
             })
 
 
             // 動態生成Bank代碼
-            function dynamicBankCode(selectedCode) {
+            function dynamicBankCode(selectedCode, target) {
                 let bankCodeJson = [{
                     "code": "004",
                     "name": "臺灣銀行"
@@ -240,7 +240,7 @@
                     "code": "997",
                     "name": "中華民國信用合作社聯合社南區聯合資訊處理中心"
                 }];
-                $('.container.pay-account .sub-title:nth-child(5) select').append(
+                $(target).append(
                     function() {
                         let bankCodeArry = [];
                         $.each(bankCodeJson, function(i, v) {
@@ -267,13 +267,13 @@
                     $('.container.pay-account .sub-title:nth-child(4) span').text(jsonDataIn[0].Total);
                     // 如果有帳號紀錄時
                     if (typeof jsonDataIn[0].Account != "undefined") {
-                        dynamicBankCode(jsonDataIn[0].Bank);
+                        dynamicBankCode(jsonDataIn[0].Bank, '.container.pay-account .sub-title:nth-child(5) select');
                         $('.container.pay-account .sub-title:nth-child(6) input').val(jsonDataIn[0].Account);
                         $('.container.pay-account .sub-title:nth-child(7) input').val(jsonDataIn[0].PayTime);
                     }
                     // 無帳號紀錄時
                     else {
-                        dynamicBankCode(null);
+                        dynamicBankCode(null, '.container.pay-account .sub-title:nth-child(5) select');
                     }
                 }
                 // 無資料時
@@ -286,7 +286,7 @@
                 function() {
                     let payAccountRecord = {
                         "orderID": location.search.substr(location.search.indexOf('=') + 1),
-                        "payAccount": $('.container.pay-account .sub-title:nth-child(6) input').val(),
+                        "payAccount": $('.container.pay-account .sub-title:nth-child(5) option:selected').text().substr(0, 3) + "-" + $('.container.pay-account .sub-title:nth-child(6) input').val(),
                         "payTime": $('.container.pay-account .sub-title:nth-child(7) input').val()
                     };
                     // $.post('<c:url value="/order/updatePayAccount">', payAccountRecord, function(data) {

@@ -32,4 +32,6 @@
 @import url('_memberMyOrderDetailTheme.css');
 @import url('_memberQACommentTheme.css');
 @import url('_memberOrderPayAccountTheme.css');
+@import url('_memberOrderReturnTheme.css');
+@import url('_memberOrderCancelTheme.css');
 @import url('semantic.css');

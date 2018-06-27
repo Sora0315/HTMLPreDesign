@@ -23,11 +23,52 @@
 </head>
 
 <body style="background: none">
-    <div class="member-order-detail-fade-in">
+    <!--共用樣式區，sidebar-->
+    <div id="memberSidebar" class="ui left vertical inverted sidebar menu">
+        <div class="header">美好會員中心</div>
+        <div class="sidebar-logo">
+            <img src="images/member-sidebar-logo.png" class="img-fluid" alt="" />
+        </div>
+        <div class="section-header">會員資料管理</div>
+        <div class="profile-manage">
+            <a class="item nav-link" href="memberProfile.html">個人資料修改</a>
+            <a class="item nav-link" href="memberResetPwd.html">密碼修改</a>
+        </div>
+        <div class="section-header">會員訂單管理</div>
+        <div class="order-manage">
+            <a class="item nav-link" href="memberMyOrder.html">我的訂單</a>
+            <a class="item nav-link" href="memberOrderReturnIndex.html">退貨申請</a>
+            <a class="item nav-link" href="memberOrderCancel.html">取消訂單</a>
+        </div>
+        <div class="section-header">紅利與購物金</div>
+        <div class="bonus-funds-manage">
+            <a class="item nav-link" href="memberBonus.html">紅利回饋</a>
+            <a class="item nav-link" href="memberFunds.html">購物金</a>
+        </div>
+        <div class="section-header">購物小幫手</div>
+        <div class="order-help">
+            <a class="item nav-link" href="memberHelper1.html">紅利回饋與購物金說明</a>
+            <a class="item nav-link" href="memberHelper2.html">購物流程</a>
+            <a class="item nav-link" href="memberHelper3.html">服務條款與隱私政策</a>
+        </div>
+    </div>
+    <script>
+        $('#memberSidebar .item').hover(
+            function() {
+                $(this).children('.img-fluid').css('opacity', '1');
+            },
+            function() {
+                $(this).children('.img-fluid').css('opacity', '0');
+            }
+        );
+    </script>
+
+    <div class="pusher" style="position:relative">
         <!--共用樣式區，Header-->
         <header>
-            <nav class="nav member-order-detail-menu">
+            <nav class="nav member-common-menu">
                 <img src="images/order-bounce-logo1.png" class="img-fluid bounce-logo" alt="" />
+                <div class="hamburger">&#9776;</div>
                 <a href="index.html" class="order-check-site-logo">
                     <img src="images/webLogo-order-check.png" class="img-fluid" alt="" />
                 </a>
@@ -35,30 +76,30 @@
             </nav>
         </header>
         <script>
-            $('.member-order-detail-menu .order-check-site-logo').hover(
+            $('.member-common-menu .hamburger').click(
                 function() {
-                    $(this).parent('.member-order-detail-menu').children('.bounce-logo').toggleClass('rotate360');
+                    $('#memberSidebar').sidebar('toggle');
+                }
+            );
+            $('.member-common-menu .order-check-site-logo').hover(
+                function() {
+                    $(this).parent('.member-common-menu').children('.bounce-logo').toggleClass('rotate360');
                 },
                 function() {
-                    $(this).parent('.member-order-detail-menu').children('.bounce-logo').toggleClass('rotate360');
+                    $(this).parent('.member-common-menu').children('.bounce-logo').toggleClass('rotate360');
                 }
             );
         </script>
 
-        <img src="images/member-order-detail-hangtag.png" class="hang-tag img-fluid" alt="" />
-        <img src="images/order-detail-previous-page.png" class="img-fluid previous-page" alt="" />
-        <script>
-            $('.member-order-detail-fade-in .previous-page').click(
-                function() {
 
-                    location.replace('/memberMyOrder.html');
-                }
-            )
-        </script>
+        <div class="container order-cancel">
+            <div class="search-block">
+                <div class="title">請輸入欲取消的訂單編號</div>
+                <input class="search-bar" type="text" />
+                <img src="images/magnifier-gray.png" class="img-fluid submit" alt="" />
+            </div>
+            <div class="cancel-order-id"></div>
 
-
-        <div class="container my-order-detail">
-            <div class="title">訂單編號：<span></span></div>
             <div class="index"></div>
             <table class="record-table">
             </table>
@@ -67,12 +108,13 @@
                 <div class="fee">運費：<span></span>元</div>
                 <div class="total">應付總額：<span></span>元</div>
             </div>
-
             <div class="paging">
                 <img src="images/dot-left.png" class="img-fluid" alt="" />
                 <img src="images/dot-right.png" class="img-fluid" alt="" />
             </div>
+
         </div>
+
         <script>
             var testMyOrderDetail = [{
                 "NO": 1,
@@ -180,51 +222,67 @@
                 "Discount": 150,
                 "Total": 5750
             }];
-        </script>
 
-
-        <script>
             var myOrderDetail = testMyOrderDetail;
             var oredrDetailDiscount = testOredrDetailDiscount;
             var oredrDetailFee = testOredrDetailFee;
 
-            $(function() {
-                var referrer = document.referrer;
-                var orderDetailorderID = location.search.substr(location.search.indexOf('=') + 1);
+            $('.container.order-cancel .submit').click(
+                function() {
+                    if (($('.container.order-cancel .search-bar').val()).trim().length == 0) {
+                        $('#returnIndexNotice .title').text('請輸入訂單編號。');
+                        $('#returnIndexNotice').modal('show');
+                    } else {
+                        // 先將原本的取消訂單按鈕清空
+                        $('.container.order-cancel>.submit').remove();
+                        let orderDetailorderID = $('.container.order-cancel .search-bar').val();
+                        $('.container.order-cancel .cancel-order-id').text(orderDetailorderID);
+                        // $.post('<c:url value="/user/ordDetail/getOrdDetail"/>', {
+                        //     'OrderID': location.search.substr(location.search.indexOf('=') + 1)
+                        // }, function(data) {
+                        //     myOrderDetail = data;
+                        // });
 
-                // $.post('<c:url value="/user/ordDetail/getOrdDetail"/>', {
-                //     'OrderID': location.search.substr(location.search.indexOf('=') + 1)
-                // }, function(data) {
-                //     myOrderDetail = data;
-                // });
+                        // $.post('<c:url value="/user/order/getOneOrder"/>', {
+                        //     'OrderID': location.search.substr(location.search.indexOf('=') + 1)
+                        // }, function(data) {
+                        //     oredrDetailDiscount = data;
+                        // });
 
-                // $.post('<c:url value="/user/order/getOneOrder"/>', {
-                //     'OrderID': location.search.substr(location.search.indexOf('=') + 1)
-                // }, function(data) {
-                //     oredrDetailDiscount = data;
-                // });
+                        // $.post('<c:url value="/user/delivery/getAllFeeByOrderID"/>', {
+                        //     'OrderID': location.search.substr(location.search.indexOf('=') + 1)
+                        // }, function(data) {
+                        //     oredrDetailFee = data;
+                        // });
 
-                // $.post('<c:url value="/user/delivery/getAllFeeByOrderID"/>', {
-                //     'OrderID': location.search.substr(location.search.indexOf('=') + 1)
-                // }, function(data) {
-                //     oredrDetailFee = data;
-                // });
+                        if (myOrderDetail != null) {
+                            loadOrderCancelDetail(myOrderDetail, 0);
+                        } else {
+                            noOrderDetail();
+                            $('.paging .img-fluid').css('display', 'none');
+                        };
+                        loadOrderCancelDetailInfo(oredrDetailDiscount);
+                        loadOrderCancelDetailFee(oredrDetailFee);
 
-                $('.container.my-order-detail .title span').text(orderDetailorderID);
-                if (myOrderDetail != null) {
-                    loadMyOrderDetail(myOrderDetail, 0);
-                } else {
-                    noOrderDetail();
-                    $('.paging .img-fluid').css('display', 'none');
-                };
-                loadOrderDetailInfo(oredrDetailDiscount);
-                loadOrderDetailFee(oredrDetailFee);
-
-            });
+                        $('.member-myOrder.animation-1.order-cancel .img-fluid:nth-child(3)').fadeOut(500);
+                        $('.container.order-cancel .search-block').animate({
+                            "margin-top": "1%"
+                        }, 1000, function() {
+                            $('.container.order-cancel .record-table, .container.order-cancel .subtotal, .container.order-cancel .paging').animate({
+                                'opacity': 1
+                            }, 1000);
+                        });
+                        $('.container.order-cancel .paging').after($('<button></button>').attr({
+                            'type': 'none',
+                            'onclick': 'cancelOrderConfirmModal(this)'
+                        }).addClass('submit').text('取消訂單').fadeIn(500));
+                    }
+                }
+            );
 
             //動態生成資料
             //有Order Detail時
-            function loadMyOrderDetail(jsonDataIn, startIndex) {
+            function loadOrderCancelDetail(jsonDataIn, startIndex) {
                 if (startIndex > jsonDataIn.length) {
                     startIndex = startIndex - 5;
                 }
@@ -232,7 +290,7 @@
                     startIndex = 0;
                 };
                 $('.record-table').text('');
-                $('.container.my-order-detail .index').text(startIndex);
+                $('.container.order-cancel .index').text(startIndex);
                 var trArry = [];
                 let head = $('<tr></tr>').addClass('head-of-table').append([
                     $('<th></th>').text('No.'),
@@ -246,21 +304,19 @@
                 for (let i = startIndex; i < (startIndex + 5); i++) {
                     var row;
                     if (i > jsonDataIn.length - 1) {
-                        row = $('<tr></tr>').append([
-                            $('<td></td>').html('&nbsp;'),
-                            $('<td></td>').html('&nbsp;'),
-                            $('<td></td>').html('&nbsp;'),
-                            $('<td></td>').html('&nbsp;'),
-                            $('<td></td>').html('&nbsp;'),
-                            $('<td></td>').html('&nbsp;')
-                        ]);
+                        // row = $('<tr></tr>').append([
+                        //     $('<td></td>').html('&nbsp;'),
+                        //     $('<td></td>').html('&nbsp;'),
+                        //     $('<td></td>').html('&nbsp;'),
+                        //     $('<td></td>').html('&nbsp;'),
+                        //     $('<td></td>').html('&nbsp;'),
+                        //     $('<td></td>').html('&nbsp;')
+                        // ]);
                     } else {
                         row = $('<tr></tr>').append([
                             $('<td></td>').text(jsonDataIn[i].NO),
                             $('<td></td>').text(jsonDataIn[i].ProductID),
-                            $('<td></td>').text(jsonDataIn[i].Name).css('cursor', 'pointer').click(function() {
-                                location.href = 'product-detail.html?productID=' + jsonDataIn[i].ProductID + "&sort=" + jsonDataIn[i].Sort;
-                            }),
+                            $('<td></td>').text(jsonDataIn[i].Name),
                             $('<td></td>').text(jsonDataIn[i].Qty),
                             $('<td></td>').text(jsonDataIn[i].Price),
                             $('<td></td>').text(jsonDataIn[i].SubTotal)
@@ -287,43 +343,69 @@
 
             // 下5筆
             $('.paging .img-fluid:last-child').click(function() {
-                loadMyOrderDetail(myOrderDetail, parseInt($('.container.my-order-detail .index').text()) + 5);
+                loadOrderCancelDetail(myOrderDetail, parseInt($('.container.order-cancel .index').text()) + 5);
             });
 
             // 上5筆
             $('.paging .img-fluid:first-child').click(function() {
-                loadMyOrderDetail(myOrderDetail, parseInt($('.container.my-order-detail .index').text()) - 5);
+                loadOrderCancelDetail(myOrderDetail, parseInt($('.container.order-cancel .index').text()) - 5);
             });
 
             // 載入折抵金額
-            function loadOrderDetailInfo(jsonDataIn) {
+            function loadOrderCancelDetailInfo(jsonDataIn) {
                 if (jsonDataIn === null) {
-                    $('.container.my-order-detail .subtotal .use-count>span').text('-');
-                    $('.container.my-order-detail .subtotal .total>span').text('-');
+                    $('.container.order-cancel .subtotal .use-count>span').text('-');
+                    $('.container.order-cancel .subtotal .total>span').text('-');
                 } else {
-                    $('.container.my-order-detail .subtotal .use-count>span').text(jsonDataIn[0].Discount);
-                    $('.container.my-order-detail .subtotal .total>span').text(jsonDataIn[0].Total);
+                    $('.container.order-cancel .subtotal .use-count>span').text(jsonDataIn[0].Discount);
+                    $('.container.order-cancel .subtotal .total>span').text(jsonDataIn[0].Total);
                 }
 
             };
 
             //載入運費
-            function loadOrderDetailFee(jsonDataIn) {
+            function loadOrderCancelDetailFee(jsonDataIn) {
                 if (jsonDataIn === null) {
-                    $('.container.my-order-detail .subtotal .fee span').text('-');
+                    $('.container.order-cancel .subtotal .fee span').text('-');
                 } else {
-                    $('.container.my-order-detail .subtotal .fee span').text(jsonDataIn[0].Fee);
+                    $('.container.order-cancel .subtotal .fee span').text(jsonDataIn[0].Fee);
                 }
+            };
+
+            //取消訂單按鈕，彈跳視窗確認
+            function cancelOrderConfirmModal(e) {
+                $('#cancelOrderConfirm').modal('show');
+            };
+
+            // 彈跳視窗按Yes取消訂單
+            function memberOrderCancel(e) {
+                $('#cancelOrderConfirm').modal('hide');
+                $.post('<c:url value="/order/cancelOrder"/>', $('.container.order-cancel .cancel-order-id').text(),
+                    function(data) {
+                        if (data.success === "已取消此筆訂單。") {
+                            $('#returnIndexNotice .title').text('已取消此筆訂單。');
+                            $('#returnIndexNotice').modal('show');
+                        } else if (data.fail === "取消訂單失敗，請洽管理員。") {
+                            $('#returnIndexNotice .title').text('取消訂單失敗，請洽管理員。');
+                            $('#returnIndexNotice').modal('show');
+                        } else {
+                            $('#returnIndexNotice .title').text('發生錯誤，請洽管理員。');
+                            $('#returnIndexNotice').modal('show');
+                        }
+                    }
+                );
+                // $('#returnIndexNotice .title').text('發生錯誤，請洽管理員。');
+                // $('#returnIndexNotice').modal('show');
             };
         </script>
 
+
         <!--半共用樣式區，Footer-->
-        <footer class="member-common-footer">
-            <div class="member-myOrder-detail animation-1">
-                <img src="images/member-myorder-detail-animation-1.png" class="img-fluid" alt="" />
-                <img src="images/member-myorder-detail-animation-2.png" class="img-fluid" alt="" />
-                <img src="images/member-myorder-detail-animation-3.png" class="img-fluid" alt="" />
-                <img src="images/member-myorder-detail-animation-4.png" class="img-fluid" alt="" />
+        <footer class=" member-common-footer">
+            <div class="member-myOrder animation-1 order-cancel">
+                <img src="images/member-myorder-animation-1.png" class="img-fluid" alt="" />
+                <img src="images/member-myorder-animation-2.png" class="img-fluid" alt="" />
+                <img src="images/order-cancel-notice.png" class="img-fluid" alt="" />
                 <img src="images/member-myorder-footer-bg.png " class="img-fluid " alt=" " />
                 <div class="icon-link ">
                     <a href=" " class=" ">
@@ -336,9 +418,9 @@
                         <img src="images/icon-utube.png " class="img-fluid " alt=" " />
                     </a>
                 </div>
-                <div class="footer-title">
+                <div class="footer-title ">
                     <div class="title ">會員訂單管理</div>
-                    <div class="title ">我的訂單-訂單明細</div>
+                    <div class="title ">退貨申請</div>
                 </div>
                 <div class="footer-link ">
                     <a href="news.html " class="wonderfulType nav-link ">
@@ -369,7 +451,7 @@
             </div>
         </footer>
         <script>
-            $('.member-myOrder-detail .footer-link .nav-link').hover(
+            $('.member-myOrder .footer-link .nav-link').hover(
                 function() {
                     $(this).children('.title:last-child').css('opacity', "1 ");
                 },
@@ -379,6 +461,31 @@
             );
         </script>
     </div>
+
+    <div class="ui modal" id="cancelOrderConfirm">
+        <div class="title">確定取消此筆訂單嗎？</div>
+        <hr/>
+        <button type="none" class="submit" onclick="memberOrderCancel(this)">Yes</button>
+        <button type="none" class="cancel">No</button>
+    </div>
+
+    <script>
+        $('#cancelOrderConfirm .cancel').click(function() {
+            $('#cancelOrderConfirm').modal('hide');
+        })
+    </script>
+
+    <div class="ui modal" id="returnIndexNotice">
+        <div class="title"></div>
+        <hr/>
+        <button type="none" class="submit">關閉</button>
+    </div>
+
+    <script>
+        $('#returnIndexNotice .submit').click(function() {
+            $('#returnIndexNotice').modal('hide');
+        })
+    </script>
 </body>
 
 </html>
